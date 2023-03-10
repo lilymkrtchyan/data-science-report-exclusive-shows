@@ -10,37 +10,45 @@ Working together as a team is critical for your success on this project. Conflic
 
 ## Team name
 
-TODO
+Phenomenal-Eevee
 
 ## To what goals do we all commit?
 
-TODO: discuss and document here
+Submit things (if possible) ahead of the deadline, and create a project 
+collaboratively that we are proud of. 
 
 ## Weekly meetings
 
-TODO: discuss and document here
 
-## Meeting "location"
+Tuesdays 6-7. Weekdays 9-10 (tentative)
 
-TODO: discuss and document here
+## Meeting "location" 
+
+Zoom meetings
 
 ## Primary method of communication
 
-TODO: discuss and document here
+Slack. 
 
 ## How should someone notify the others if they cannot attend a lab or scheduled team meeting?
 
-TODO: discuss and document here
+Slack. 
 
 ## By when should everyone have their portion of the lab completed?
 
-TODO: discuss and document here
+Before Tuesday's Meeting from 6-7 (or 9-10). 
 
 ## How will we hold ourselves and one another accountable?
 
 What (exactly) will we say to a team member who appears not to be contributing equally? To a team member who fails to deliver what was promised?
 
-TODO: discuss and document here
+"We wanted to check in with your progress. We feel as though you are not equally 
+contributing your fair share/amount to the overall project and wanted to work out
+methods with you to address this issue." 
+
+"We wanted to discuss what you submitted last time and wanted to make sure 
+that you're up to date with team expectations for work quality."
+
 
 ## What else do we want to include in this agreement?
 
@@ -48,7 +56,7 @@ Maybe your team needs a *fun* clause...
 
 **Tip:** Not everything in life is about work. Sometimes it is important to celebrate too. Consider grabbing a coffee or ice cream at the completion of your project to celebrate!
 
-TODO: discuss and document here
+Eat food/get drinks to celebrate the completion of the project. 
 
 ## Using your agreement
 
