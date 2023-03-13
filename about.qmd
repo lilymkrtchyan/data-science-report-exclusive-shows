@@ -6,8 +6,9 @@ editor: visual
 
 This project was developed by **\[Phenomenal Eevee\]** For [INFO 2950: Introduction to Data Science](https://info2950.infosci.cornell.edu) at Cornell University. The team is comprised of the following team members.
 
--   Team member 1: One sentence description of Team member 1 (e.g., year, major, etc.). Hi.
--   Team member 2: Joyce is a sophomore studying Information Science and Psychology . (e.g., year, major, etc.). Joyce really dislikes chocolate ice cream.
--   Team member 3: One sentence description of Team member 3 (e.g., year, major, etc.).
--   Team member 4: One sentence description of Team member 4 (e.g., year, major, etc.).
--   ...
+-   Team member 1: Kayla is a Junior studying Information Science and Communication.
+-   Team member 2: Joyce is a sophomore studying Information Science and Psychology.
+-   Team member 3: Pinxian is a info-sci major junior at CAS.
+-   Team member 4: Uyen is a Sophomore majoring in Information Science.
+-   Team member 5: Lili is a sophomore majoring in cognitive science and information
+-   
