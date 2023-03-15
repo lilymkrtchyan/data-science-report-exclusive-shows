@@ -30,7 +30,7 @@ library(dplyr)
 
 -   Write a brief description of the observations.
 
-    Each observation is a song. Each row contains the id, artist, album name, song name, popularity, duration, explicitness, rating of danceability, rating of energy, key, loudness, mode, speechness, acousticness, instrumentalness, liveness, valence, tempo, time signature, and track genre of the song on Spotify. There are 114000 observations and 21 columns in the dataset. 
+    Each observation is a song. Each row contains the id, artist, album name, song name, popularity, duration, explicitness, rating of danceability, rating of energy, key, loudness, mode, speechness, acousticness, instrumentalness, liveness, valence, tempo, time signature, and track genre of the song on Spotify. There are 114000 observations and 21 columns in the dataset.
 
 ## Research question
 
@@ -71,7 +71,7 @@ library(dplyr)
 
 spotify <- read.csv("data/dataset.csv")
 
-glimpse(spotify)
+skimr::skim(spotify)
 
 ```
 
@@ -133,7 +133,7 @@ glimpse(spotify)
 
 tvshows <- read.csv("data/tv_shows.csv")
 
-glimpse(tvshows)
+skimr::skim(tvshows)
 
 ```
 
@@ -206,6 +206,6 @@ glimpse(tvshows)
 
 ds_salary <- read.csv("data/ds_salaries.csv") 
 
-glimpse(ds_salary)
+skimr::skim(ds_salary)
 
 ```
