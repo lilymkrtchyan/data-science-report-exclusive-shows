@@ -227,30 +227,78 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="data-1" class="level1">
 <h1>Data 1</h1>
 <section id="introduction-and-data" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-and-data">Introduction and data</h2>
 <ul>
-<li><p>Identify the source of the data.</p></li>
-<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p></li>
-<li><p>Write a brief description of the observations.</p></li>
+<li><p>Identify the source of the data.</p>
+<p>Kaggle: Spotify Tracks Dataset</p>
+<p>Source: <a href="https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset?resource=download" class="uri">https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset?resource=download</a></p></li>
+<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p>
+<p>The data was collected and cleansed using Spotify’s web API and Python by the original data curator.</p></li>
+<li><p>Write a brief description of the observations.</p>
+<p>Each observation is a song. Each row contains the id, artist, album name, song name, popularity, duration, explicitness, rating of danceability, and rating of energy of the song on Spotify.</p></li>
 </ul>
 </section>
 <section id="research-question" class="level2">
 <h2 class="anchored" data-anchor-id="research-question">Research question</h2>
 <ul>
-<li>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</li>
-<li>A description of the research topic along with a concise statement of your hypotheses on this topic.</li>
-<li>Identify the types of variables in your research question. Categorical? Quantitative?</li>
+<li><p>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</p>
+<ul>
+<li><p>Are the most popular songs on Spotify more danceable?&nbsp;</p></li>
+<li><p>Are the most popular songs on Spotify longer in duration?</p></li>
+<li><p>What genre are the most popular songs on Spotify?</p></li>
+</ul></li>
+<li><p>A description of the research topic along with a concise statement of your hypotheses on this topic.</p>
+<p>Music is an integral enterprise to our daily life. Whether it be listening to the radio or attending a concert, we experience different types of music at frequent rates. Thus, it’s interesting to explore what makes different songs popular; we are especially interested in danceability, duration, and genre. Currently, we hypothesize that the most popular songs on Spotify are highly danceable, short, pop songs.</p></li>
+<li><p>Identify the types of variables in your research question. Categorical? Quantitative?</p>
+<ul>
+<li><p><strong>Track_id:</strong> Qualitative - description</p></li>
+<li><p><strong>Artists: Qualitative - descriptive</strong></p></li>
+<li><p><strong>Duration:</strong> Quantitative</p></li>
+<li><p><strong>Album_name: Qualitative - descriptive</strong></p></li>
+<li><p><strong>Track_name: Qualitative- descriptive</strong></p></li>
+<li><p><strong>Popularity: Quantitative</strong></p></li>
+<li><p><strong>Danceability: Quantitative</strong></p></li>
+<li><p><strong>Track_genre:</strong> Categorical</p></li>
+</ul></li>
 </ul>
 </section>
 <section id="glimpse-of-data" class="level2">
 <h2 class="anchored" data-anchor-id="glimpse-of-data">Glimpse of data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>spotify <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/dataset.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(spotify)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 114,000
+Columns: 21
+$ X                &lt;int&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,…
+$ track_id         &lt;chr&gt; "5SuOikwiRyPMVoIQDJUgSV", "4qPNDBW1i3p13qLCt0Ki3A", "…
+$ artists          &lt;chr&gt; "Gen Hoshino", "Ben Woodward", "Ingrid Michaelson;ZAY…
+$ album_name       &lt;chr&gt; "Comedy", "Ghost (Acoustic)", "To Begin Again", "Craz…
+$ track_name       &lt;chr&gt; "Comedy", "Ghost - Acoustic", "To Begin Again", "Can'…
+$ popularity       &lt;int&gt; 73, 55, 57, 71, 82, 58, 74, 80, 74, 56, 74, 69, 52, 6…
+$ duration_ms      &lt;int&gt; 230666, 149610, 210826, 201933, 198853, 214240, 22940…
+$ explicit         &lt;chr&gt; "False", "False", "False", "False", "False", "False",…
+$ danceability     &lt;dbl&gt; 0.676, 0.420, 0.438, 0.266, 0.618, 0.688, 0.407, 0.70…
+$ energy           &lt;dbl&gt; 0.4610, 0.1660, 0.3590, 0.0596, 0.4430, 0.4810, 0.147…
+$ key              &lt;int&gt; 1, 1, 0, 0, 2, 6, 2, 11, 0, 1, 8, 4, 7, 3, 2, 4, 2, 1…
+$ loudness         &lt;dbl&gt; -6.746, -17.235, -9.734, -18.515, -9.681, -8.807, -8.…
+$ mode             &lt;int&gt; 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0,…
+$ speechiness      &lt;dbl&gt; 0.1430, 0.0763, 0.0557, 0.0363, 0.0526, 0.1050, 0.035…
+$ acousticness     &lt;dbl&gt; 0.0322, 0.9240, 0.2100, 0.9050, 0.4690, 0.2890, 0.857…
+$ instrumentalness &lt;dbl&gt; 1.01e-06, 5.56e-06, 0.00e+00, 7.07e-05, 0.00e+00, 0.0…
+$ liveness         &lt;dbl&gt; 0.3580, 0.1010, 0.1170, 0.1320, 0.0829, 0.1890, 0.091…
+$ valence          &lt;dbl&gt; 0.7150, 0.2670, 0.1200, 0.1430, 0.1670, 0.6660, 0.076…
+$ tempo            &lt;dbl&gt; 87.917, 77.489, 76.332, 181.740, 119.949, 98.017, 141…
+$ time_signature   &lt;int&gt; 4, 4, 4, 3, 4, 4, 3, 4, 4, 4, 4, 3, 4, 4, 4, 3, 4, 4,…
+$ track_genre      &lt;chr&gt; "acoustic", "acoustic", "acoustic", "acoustic", "acou…</code></pre>
+</div>
 </div>
 </section>
 </section>
@@ -259,9 +307,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="introduction-and-data-1" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-and-data-1">Introduction and data</h2>
 <ul>
-<li><p>Identify the source of the data.</p></li>
-<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p></li>
-<li><p>Write a brief description of the observations.</p></li>
+<li><p>Identify the source of the data.</p>
+<ul>
+<li><p>Kaggle: "TV shows on Netflix, Prime Video, Hulu, and Disney+"</p></li>
+<li><p><a href="https://www.kaggle.com/datasets/ruchi798/tv-shows-on-netflix-prime-video-hulu-and-disney" class="uri">https://www.kaggle.com/datasets/ruchi798/tv-shows-on-netflix-prime-video-hulu-and-disney</a></p></li>
+</ul></li>
+<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p>
+<ul>
+<li>The data was collected and uploaded in 2021. The curator scraped the available television shows during that time from Netflix, Prime Video, Hulu, and Disney+ and uploaded them to this data set.</li>
+</ul></li>
+<li><p>Write a brief description of the observations.</p>
+<ul>
+<li>We have 12 columns and 5368 observations. The columns are the titles of the show (string), whether the show is streamed on Hulu, Disney+, Prime Video, or Netflix, the ranking of the show (integer out of 100), the year it was produced, the target age group (string). We have 1 if the show is streamed on a specific platform, and 0 otherwise. All the shows have a unique identifier.</li>
+</ul></li>
 </ul>
 </section>
 <section id="research-question-1" class="level2">
@@ -275,7 +333,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="glimpse-of-data-1" class="level2">
 <h2 class="anchored" data-anchor-id="glimpse-of-data-1">Glimpse of data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>tvshows <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/tv_shows.csv"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(tvshows)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 5,368
+Columns: 12
+$ X               &lt;int&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …
+$ ID              &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,…
+$ Title           &lt;chr&gt; "Breaking Bad", "Stranger Things", "Attack on Titan", …
+$ Year            &lt;int&gt; 2008, 2016, 2013, 2015, 2017, 2005, 2013, 2010, 2011, …
+$ Age             &lt;chr&gt; "18+", "16+", "18+", "18+", "16+", "7+", "18+", "18+",…
+$ IMDb            &lt;chr&gt; "9.4/10", "8.7/10", "9.0/10", "8.8/10", "8.8/10", "9.3…
+$ Rotten.Tomatoes &lt;chr&gt; "100/100", "96/100", "95/100", "94/100", "93/100", "93…
+$ Netflix         &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+$ Hulu            &lt;int&gt; 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, …
+$ Prime.Video     &lt;int&gt; 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, …
+$ Disney.         &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …
+$ Type            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</code></pre>
+</div>
 </div>
 </section>
 </section>
@@ -300,7 +376,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="glimpse-of-data-2" class="level2">
 <h2 class="anchored" data-anchor-id="glimpse-of-data-2">Glimpse of data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ds_salary <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/ds_salaries.csv"</span>) </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ds_salary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 607
+Columns: 12
+$ X                  &lt;int&gt; 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1…
+$ work_year          &lt;int&gt; 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 202…
+$ experience_level   &lt;chr&gt; "MI", "SE", "SE", "MI", "SE", "EN", "SE", "MI", "MI…
+$ employment_type    &lt;chr&gt; "FT", "FT", "FT", "FT", "FT", "FT", "FT", "FT", "FT…
+$ job_title          &lt;chr&gt; "Data Scientist", "Machine Learning Scientist", "Bi…
+$ salary             &lt;int&gt; 70000, 260000, 85000, 20000, 150000, 72000, 190000,…
+$ salary_currency    &lt;chr&gt; "EUR", "USD", "GBP", "USD", "USD", "USD", "USD", "H…
+$ salary_in_usd      &lt;int&gt; 79833, 260000, 109024, 20000, 150000, 72000, 190000…
+$ employee_residence &lt;chr&gt; "DE", "JP", "GB", "HN", "US", "US", "US", "HU", "US…
+$ remote_ratio       &lt;int&gt; 0, 0, 50, 0, 50, 100, 100, 50, 100, 50, 0, 0, 0, 10…
+$ company_location   &lt;chr&gt; "DE", "JP", "GB", "HN", "US", "US", "US", "HU", "US…
+$ company_size       &lt;chr&gt; "L", "S", "M", "S", "L", "L", "S", "L", "L", "S", "…</code></pre>
+</div>
 </div>
 
 

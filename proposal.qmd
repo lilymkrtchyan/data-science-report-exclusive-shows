@@ -26,7 +26,7 @@ library(dplyr)
 
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
 
-    The data was collected and cleansed using Spotify\'s web API and Python by the original data curator.
+    The data was collected and cleansed using Spotify's web API and Python by the original data curator.
 
 -   Write a brief description of the observations.
 
@@ -44,7 +44,7 @@ library(dplyr)
 
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 
-    Music is an integral enterprise to our daily life. Whether it be listening to the radio or attending a concert, we experience different types of music at frequent rates. Thus, it\'s interesting to explore what makes different songs popular; we are especially interested in danceability, duration, and genre. Currently, we hypothesize that the most popular songs on Spotify are highly danceable, short, pop songs.
+    Music is an integral enterprise to our daily life. Whether it be listening to the radio or attending a concert, we experience different types of music at frequent rates. Thus, it's interesting to explore what makes different songs popular; we are especially interested in danceability, duration, and genre. Currently, we hypothesize that the most popular songs on Spotify are highly danceable, short, pop songs.
 
 -   Identify the types of variables in your research question. Categorical? Quantitative?
 
@@ -81,9 +81,17 @@ glimpse(spotify)
 
 -   Identify the source of the data.
 
+    -   Kaggle: \"TV shows on Netflix, Prime Video, Hulu, and Disney+\"
+
+    -   <https://www.kaggle.com/datasets/ruchi798/tv-shows-on-netflix-prime-video-hulu-and-disney>
+
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
 
+    -   The data was collected and uploaded in 2021. The curator scraped the available television shows during that time from Netflix, Prime Video, Hulu, and Disney+ and uploaded them to this data set.
+
 -   Write a brief description of the observations.
+
+    -   We have 12 columns and 5368 observations. The columns are the titles of the show (string), whether the show is streamed on Hulu, Disney+, Prime Video, or Netflix, the ranking of the show (integer out of 100), the year it was produced, the target age group (string). We have 1 if the show is streamed on a specific platform, and 0 otherwise. All the shows have a unique identifier.
 
 ## Research question
 
@@ -128,4 +136,3 @@ ds_salary <- read.csv("data/ds_salaries.csv")
 glimpse(ds_salary)
 
 ```
-
