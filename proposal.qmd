@@ -98,7 +98,7 @@ glimpse(spotify)
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
     -   What platform presents the best-quality television shows for each age-group?
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
-    -   As streaming platforms continue to grow in popularity, discourse about which platform is best seems to be taking place at an increasingly frequent rate. As such, we\'re interested in learning about platforms\' television offerings per age group (especially ours!). In order to address this interest, we\'re intending on looking at the IMDb and/or Rotten Tomatoes scores (indicating TV quality), age group, and platform for each TV show; we can analyze the research question with these particular variables. Currently, we hypothesize that Netflix will have the highest-quality TV shows for most age groups.
+    -   As streaming platforms continue to grow in popularity, discourse about which platform is best seems to be taking place at an increasingly frequent rate. As such, we're interested in learning about platforms' television offerings per age group (especially ours!). In order to address this interest, we're intending on looking at the IMDb and/or Rotten Tomatoes scores (indicating TV quality), age group, and platform for each TV show; we can analyze the research question with these particular variables. Currently, we hypothesize that Netflix will have the highest-quality TV shows for most age groups.
 -   Identify the types of variables in your research question. Categorical? Quantitative?
     -   **Row ID:** Quantitative 
 
@@ -143,15 +143,42 @@ glimpse(tvshows)
 
 -   Identify the source of the data.
 
+    -   Kaggle: \"Data Science Job Salaries\"
+
+    -   <https://www.kaggle.com/datasets/ruchi798/data-science-job-salaries>
+
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
 
+    -   The data was collected and uploaded in 2022.
+
 -   Write a brief description of the observations.
+
+    -   The data has 606 observations with 12 columns. The columns represent the work year, experience level, employment type, job title, salary, salary currency, salary in USD, employee\'s place of residence, company size, company location, and the remote ratio. Each observation represents an employee with the information about their job on those columns above.
 
 ## Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
 -   Identify the types of variables in your research question. Categorical? Quantitative?
+    -   **Employee_ID:** Quantitative
+
+    -   **Work_year:** Quantitative
+
+    -   **Experience_level:** Categorical
+
+    -   **Employment_type:** Categorical
+
+    -   **Job_title:** Categorical
+
+    -   **Salary:** Quantitative
+
+    -   **Salary_in_usd:** Quantitative
+
+    -   **Remote_ratio:** Quantitative
+
+    -   **Company_location:** Categorical
+
+    -   **Company_size:** Categorical
 
 ## Glimpse of data
 
