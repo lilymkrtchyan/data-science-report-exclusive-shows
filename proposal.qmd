@@ -20,15 +20,49 @@ library(dplyr)
 
 -   Identify the source of the data.
 
+    Kaggle: Spotify Tracks Dataset
+
+    Source: <https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset?resource=download>
+
 -   State when and how it was originally collected (by the original data curator, not necessarily how you found the data).
 
+    The data was collected and cleansed using Spotify\'s web API and Python by the original data curator.
+
 -   Write a brief description of the observations.
+
+    Each observation is a song. Each row contains the id, artist, album name, song name, popularity, duration, explicitness, rating of danceability, and rating of energy of the song on Spotify.
 
 ## Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
+
+    -   Are the most popular songs on Spotify more danceable? 
+
+    -   Are the most popular songs on Spotify longer in duration?
+
+    -   What genre are the most popular songs on Spotify?
+
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
+
+    Music is an integral enterprise to our daily life. Whether it be listening to the radio or attending a concert, we experience different types of music at frequent rates. Thus, it\'s interesting to explore what makes different songs popular; we are especially interested in danceability, duration, and genre. Currently, we hypothesize that the most popular songs on Spotify are highly danceable, short, pop songs.
+
 -   Identify the types of variables in your research question. Categorical? Quantitative?
+
+    -   **Track_id:** Qualitative - description
+
+    -   **Artists: Qualitative - descriptive**
+
+    -   **Duration:** Quantitative
+
+    -   **Album_name: Qualitative - descriptive**
+
+    -   **Track_name: Qualitative- descriptive**
+
+    -   **Popularity: Quantitative**
+
+    -   **Danceability: Quantitative**
+
+    -   **Track_genre:** Categorical
 
 ## Glimpse of data
 
@@ -94,3 +128,4 @@ ds_salary <- read.csv("data/ds_salaries.csv")
 glimpse(ds_salary)
 
 ```
+
