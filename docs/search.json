@@ -1,5 +1,40 @@
 [
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This project was developed by [Phenomenal Eevee] For INFO 2950: Introduction to Data Science at Cornell University. The team is comprised of the following team members.\n\nTeam member 1: Kayla is a Junior studying Information Science and Communication.\nTeam member 2: Joyce is a sophomore studying Information Science and Psychology.\nTeam member 3: Pinxian is a info-sci major junior at CAS.\nTeam member 4: Uyen is a Sophomore majoring in Information Science.\nTeam member 5: Lili Mkrtchyan is a sophomore majoring in cognitive science and information"
+  },
+  {
+    "objectID": "appendicies.html",
+    "href": "appendicies.html",
+    "title": "Project title",
+    "section": "",
+    "text": "Data cleaning\n\n\nOther appendicies (as necessary)"
+  },
+  {
+    "objectID": "eda.html",
+    "href": "eda.html",
+    "title": "Project title",
+    "section": "",
+    "text": "Research question(s)\nResearch question(s). State your research question (s) clearly.\n\n\nData collection and cleaning\nHave an initial draft of your data cleaning appendix. Document every step that takes your raw data file(s) and turns it into the analysis-ready data set that you would submit with your final project. Include text narrative describing your data collection (downloading, scraping, surveys, etc) and any additional data curation/cleaning (merging data frames, filtering, transformations of variables, etc). Include code for data curation/cleaning, but not collection.\n\n\nData description\nHave an initial draft of your data description section. Your data description should be about your analysis-ready data.\n\n\nData limitations\nIdentify any potential problems with your dataset.\n\n\nExploratory data analysis\nPerform an (initial) exploratory data analysis.\n\n\nQuestions for reviewers\nList specific questions for your peer reviewers and project mentor to answer in giving you feedback on this phase."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "TEAM NAME",
+    "section": "",
+    "text": "Add project abstract here."
+  },
+  {
+    "objectID": "pre-registration.html",
+    "href": "pre-registration.html",
+    "title": "Project title",
+    "section": "",
+    "text": "Analysis #1\nDescribe your first analysis here.\n\n\nAnalysis #2\nDescribe your second analysis here."
+  },
+  {
     "objectID": "presentation.html#introduce-the-topic-and-motivation",
     "href": "presentation.html#introduce-the-topic-and-motivation",
     "title": "Presentation title",
@@ -42,36 +77,74 @@
     "text": "Conclusions + future work"
   },
   {
-    "objectID": "eda.html",
-    "href": "eda.html",
+    "objectID": "proposal.html",
+    "href": "proposal.html",
     "title": "Project title",
     "section": "",
-    "text": "Research question(s)\nResearch question(s). State your research question (s) clearly.\n\n\nData collection and cleaning\nHave an initial draft of your data cleaning appendix. Document every step that takes your raw data file(s) and turns it into the analysis-ready data set that you would submit with your final project. Include text narrative describing your data collection (downloading, scraping, surveys, etc) and any additional data curation/cleaning (merging data frames, filtering, transformations of variables, etc). Include code for data curation/cleaning, but not collection.\n\n\nData description\nHave an initial draft of your data description section. Your data description should be about your analysis-ready data.\n\n\nData limitations\nIdentify any potential problems with your dataset.\n\n\nExploratory data analysis\nPerform an (initial) exploratory data analysis.\n\n\nQuestions for reviewers\nList specific questions for your peer reviewers and project mentor to answer in giving you feedback on this phase."
+    "text": "library(tidyverse)\nlibrary(skimr)\nlibrary(dplyr)"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "TEAM NAME",
-    "section": "",
-    "text": "Add project abstract here."
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-<<<<<<< HEAD
-    "text": "This project was developed by oiwehfeqoihfqoehfoquhf For INFO 2950: Introduction to Data Science at Cornell University. The team is comprised of the following team members.\n\nTeam member 1: One sentence description of Team member 1 (e.g., year, major, etc.).\nTeam member 2: One sentence description of Team member 2 (e.g., year, major, etc.).\nTeam member 3: One sentence description of Team member 3 (e.g., year, major, etc.).\nTeam member 4: One sentence description of Team member 4 (e.g., year, major, etc.).\n…"
-=======
-    "text": "This project was developed by [Phenomenal Eevee] For INFO 2950: Introduction to Data Science at Cornell University. The team is comprised of the following team members.\n\nTeam member 1: Kayla is a Junior studying Information Science and Communication.\nTeam member 2: Joyce is a sophomore studying Information Science and Psychology.\nTeam member 3: Pinxian is a info-sci major junior at CAS.\nTeam member 4: Uyen is a Sophomore majoring in Information Science.\nTeam member 5: Lili is a sophomore majoring in cognitive science and information"
->>>>>>> 8aae1a48ce0b4ad4d492e63154e5f6ad5292a216
-  },
-  {
-    "objectID": "pre-registration.html",
-    "href": "pre-registration.html",
+    "objectID": "proposal.html#introduction-and-data",
+    "href": "proposal.html#introduction-and-data",
     "title": "Project title",
-    "section": "",
-    "text": "Analysis #1\nDescribe your first analysis here.\n\n\nAnalysis #2\nDescribe your second analysis here."
+    "section": "Introduction and data",
+    "text": "Introduction and data\n\nIdentify the source of the data.\nKaggle: Spotify Tracks Dataset\nSource: https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset?resource=download\nState when and how it was originally collected (by the original data curator, not necessarily how you found the data).\nThe data was collected and cleansed using Spotify’s web API and Python by the original data curator.\nWrite a brief description of the observations.\nEach observation is a song. Each row contains the id, artist, album name, song name, popularity, duration, explicitness, rating of danceability, rating of energy, key, loudness, mode, speechness, acousticness, instrumentalness, liveness, valence, tempo, time signature, and track genre of the song on Spotify. There are 114000 observations and 21 columns in the dataset."
+  },
+  {
+    "objectID": "proposal.html#research-question",
+    "href": "proposal.html#research-question",
+    "title": "Project title",
+    "section": "Research question",
+    "text": "Research question\n\nA well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)\n\nAre the most popular songs on Spotify more danceable?\nAre the most popular songs on Spotify longer in duration?\nWhat genre are the most popular songs on Spotify?\n\nA description of the research topic along with a concise statement of your hypotheses on this topic.\nMusic is an integral enterprise to our daily life. Whether it be listening to the radio or attending a concert, we experience different types of music at frequent rates. Thus, it’s interesting to explore what makes different songs popular; we are especially interested in danceability, duration, and genre. Currently, we hypothesize that the most popular songs on Spotify are highly danceable, short, pop songs.\nIdentify the types of variables in your research question. Categorical? Quantitative?\n\nTrack_id: Qualitative - description\nArtists: Qualitative- descriptive\nDuration: Quantitative\nAlbum_name: Qualitative - descriptive\nTrack_name: Qualitative- descriptive\nPopularity: Quantitative\nDanceability: Quantitative\nTrack_genre: Categorical"
+  },
+  {
+    "objectID": "proposal.html#glimpse-of-data",
+    "href": "proposal.html#glimpse-of-data",
+    "title": "Project title",
+    "section": "Glimpse of data",
+    "text": "Glimpse of data\n\nspotify <- read.csv(\"data/dataset.csv\")\n\nglimpse(spotify)\n\nRows: 114,000\nColumns: 21\n$ X                <int> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,…\n$ track_id         <chr> \"5SuOikwiRyPMVoIQDJUgSV\", \"4qPNDBW1i3p13qLCt0Ki3A\", \"…\n$ artists          <chr> \"Gen Hoshino\", \"Ben Woodward\", \"Ingrid Michaelson;ZAY…\n$ album_name       <chr> \"Comedy\", \"Ghost (Acoustic)\", \"To Begin Again\", \"Craz…\n$ track_name       <chr> \"Comedy\", \"Ghost - Acoustic\", \"To Begin Again\", \"Can'…\n$ popularity       <int> 73, 55, 57, 71, 82, 58, 74, 80, 74, 56, 74, 69, 52, 6…\n$ duration_ms      <int> 230666, 149610, 210826, 201933, 198853, 214240, 22940…\n$ explicit         <chr> \"False\", \"False\", \"False\", \"False\", \"False\", \"False\",…\n$ danceability     <dbl> 0.676, 0.420, 0.438, 0.266, 0.618, 0.688, 0.407, 0.70…\n$ energy           <dbl> 0.4610, 0.1660, 0.3590, 0.0596, 0.4430, 0.4810, 0.147…\n$ key              <int> 1, 1, 0, 0, 2, 6, 2, 11, 0, 1, 8, 4, 7, 3, 2, 4, 2, 1…\n$ loudness         <dbl> -6.746, -17.235, -9.734, -18.515, -9.681, -8.807, -8.…\n$ mode             <int> 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0,…\n$ speechiness      <dbl> 0.1430, 0.0763, 0.0557, 0.0363, 0.0526, 0.1050, 0.035…\n$ acousticness     <dbl> 0.0322, 0.9240, 0.2100, 0.9050, 0.4690, 0.2890, 0.857…\n$ instrumentalness <dbl> 1.01e-06, 5.56e-06, 0.00e+00, 7.07e-05, 0.00e+00, 0.0…\n$ liveness         <dbl> 0.3580, 0.1010, 0.1170, 0.1320, 0.0829, 0.1890, 0.091…\n$ valence          <dbl> 0.7150, 0.2670, 0.1200, 0.1430, 0.1670, 0.6660, 0.076…\n$ tempo            <dbl> 87.917, 77.489, 76.332, 181.740, 119.949, 98.017, 141…\n$ time_signature   <int> 4, 4, 4, 3, 4, 4, 3, 4, 4, 4, 4, 3, 4, 4, 4, 3, 4, 4,…\n$ track_genre      <chr> \"acoustic\", \"acoustic\", \"acoustic\", \"acoustic\", \"acou…"
+  },
+  {
+    "objectID": "proposal.html#introduction-and-data-1",
+    "href": "proposal.html#introduction-and-data-1",
+    "title": "Project title",
+    "section": "Introduction and data",
+    "text": "Introduction and data\n\nIdentify the source of the data.\n\nKaggle: “TV shows on Netflix, Prime Video, Hulu, and Disney+”\nhttps://www.kaggle.com/datasets/ruchi798/tv-shows-on-netflix-prime-video-hulu-and-disney\n\nState when and how it was originally collected (by the original data curator, not necessarily how you found the data).\n\nThe data was collected and uploaded in 2021. The curator scraped the available television shows during that time from Netflix, Prime Video, Hulu, and Disney+ and uploaded them to this data set.\n\nWrite a brief description of the observations.\n\nWe have 12 columns and 5368 observations. The columns are the titles of the show (string), whether the show is streamed on Hulu, Disney+, Prime Video, or Netflix, the ranking of the show (integer out of 100), the year it was produced, the target age group (string). We have 1 if the show is streamed on a specific platform, and 0 otherwise. All the shows have a unique identifier."
+  },
+  {
+    "objectID": "proposal.html#research-question-1",
+    "href": "proposal.html#research-question-1",
+    "title": "Project title",
+    "section": "Research question",
+    "text": "Research question\n\nA well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)\n\nWhat platform presents the best-quality television shows for each age-group?\n\nA description of the research topic along with a concise statement of your hypotheses on this topic.\n\nAs streaming platforms continue to grow in popularity, discourse about which platform is best seems to be taking place at an increasingly frequent rate. As such, we’re interested in learning about platforms’ television offerings per age group (especially ours!). In order to address this interest, we’re intending on looking at the IMDb and/or Rotten Tomatoes scores (indicating TV quality), age group, and platform for each TV show; we can analyze the research question with these particular variables. Currently, we hypothesize that Netflix will have the highest-quality TV shows for most age groups.\n\nIdentify the types of variables in your research question. Categorical? Quantitative?\n\nRow ID: Quantitative\nUnique TV ID: Quantitative\nTitle: Qualitative - Descriptive\nYear: Quantitative\nAge: Categorical\nIMDb Rating: Quantitative\nRotten Tomatoes Rating: Quantitative\nNetflix: Categorical\nHulu: Categorical\nPrime Video: Categorical\nDisney+: Categorical\nType: Categorical\nNOTE: Some of these variables might be filtered out/manipulated in our cleaned data set; the above list represents the variables in their original form."
+  },
+  {
+    "objectID": "proposal.html#glimpse-of-data-1",
+    "href": "proposal.html#glimpse-of-data-1",
+    "title": "Project title",
+    "section": "Glimpse of data",
+    "text": "Glimpse of data\n\ntvshows <- read.csv(\"data/tv_shows.csv\")\n\nglimpse(tvshows)\n\nRows: 5,368\nColumns: 12\n$ X               <int> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, …\n$ ID              <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,…\n$ Title           <chr> \"Breaking Bad\", \"Stranger Things\", \"Attack on Titan\", …\n$ Year            <int> 2008, 2016, 2013, 2015, 2017, 2005, 2013, 2010, 2011, …\n$ Age             <chr> \"18+\", \"16+\", \"18+\", \"18+\", \"16+\", \"7+\", \"18+\", \"18+\",…\n$ IMDb            <chr> \"9.4/10\", \"8.7/10\", \"9.0/10\", \"8.8/10\", \"8.8/10\", \"9.3…\n$ Rotten.Tomatoes <chr> \"100/100\", \"96/100\", \"95/100\", \"94/100\", \"93/100\", \"93…\n$ Netflix         <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\n$ Hulu            <int> 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, …\n$ Prime.Video     <int> 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, …\n$ Disney.         <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ Type            <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …"
+  },
+  {
+    "objectID": "proposal.html#introduction-and-data-2",
+    "href": "proposal.html#introduction-and-data-2",
+    "title": "Project title",
+    "section": "Introduction and data",
+    "text": "Introduction and data\n\nIdentify the source of the data.\n\nKaggle: “Data Science Job Salaries”\nhttps://www.kaggle.com/datasets/ruchi798/data-science-job-salaries\n\nState when and how it was originally collected (by the original data curator, not necessarily how you found the data).\n\nThe data was collected and uploaded in 2022.\n\nWrite a brief description of the observations.\n\nThe data has 606 observations with 12 columns. The columns represent the work year, experience level, employment type, job title, salary, salary currency, salary in USD, employee’s place of residence, company size, company location, and the remote ratio. Each observation represents an employee with the information about their job on those columns above."
+  },
+  {
+    "objectID": "proposal.html#research-question-2",
+    "href": "proposal.html#research-question-2",
+    "title": "Project title",
+    "section": "Research question",
+    "text": "Research question\n\nA well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)\n\nWhich job title/industry has the highest average salary from 2020-2022?\nWhat is the average salary for all (or specific) experience levels in small, medium, and large companies?\n\nPotential Question to explore: What is the highest average salary that an EN (entry level/junior level) employee can expect to earn (based on small, medium, or large company)?\n\nWhat are the most popular job titles in the data science industry?\nWhich experience level is most common in the industry?\nWhich region is where most employees come from (sorted based on experience level)?\nWhich experience level is most common among employees in each job title?\n\nA description of the research topic along with a concise statement of your hypotheses on this topic.\n\nAs budding Information Science majors, we look at data science to be a promising field to base our future careers in. We’re interested to learn more about how the average salary has changed over the last couple of years within the industry and how experience levels influence the salary within popular data science job titles. To explore this in greater detail, we plan to analyze salary trends over time based on varying experience levels and company sizes. Other variables can also be used to explore the host of questions mentioned above. (For the first question on the list) We hypothesize that data science in the tech industry will likely have the highest average salary. (For the second question on the list) We hypothesize that the average salary for EX (executive level/director) experienced employees at large companies will be the highest.\n\nIdentify the types of variables in your research question. Categorical? Quantitative?\n\nEmployee_ID: Quantitative\nWork_year: Quantitative\nExperience_level: Categorical\nEmployment_type: Categorical\nJob_title: Categorical\nSalary: Quantitative\nSalary_in_usd: Quantitative\nRemote_ratio: Quantitative\nCompany_location: Categorical\nCompany_size: Categorical"
+  },
+  {
+    "objectID": "proposal.html#glimpse-of-data-2",
+    "href": "proposal.html#glimpse-of-data-2",
+    "title": "Project title",
+    "section": "Glimpse of data",
+    "text": "Glimpse of data\n\nds_salary <- read.csv(\"data/ds_salaries.csv\") \n\nglimpse(ds_salary)\n\nRows: 607\nColumns: 12\n$ X                  <int> 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1…\n$ work_year          <int> 2020, 2020, 2020, 2020, 2020, 2020, 2020, 2020, 202…\n$ experience_level   <chr> \"MI\", \"SE\", \"SE\", \"MI\", \"SE\", \"EN\", \"SE\", \"MI\", \"MI…\n$ employment_type    <chr> \"FT\", \"FT\", \"FT\", \"FT\", \"FT\", \"FT\", \"FT\", \"FT\", \"FT…\n$ job_title          <chr> \"Data Scientist\", \"Machine Learning Scientist\", \"Bi…\n$ salary             <int> 70000, 260000, 85000, 20000, 150000, 72000, 190000,…\n$ salary_currency    <chr> \"EUR\", \"USD\", \"GBP\", \"USD\", \"USD\", \"USD\", \"USD\", \"H…\n$ salary_in_usd      <int> 79833, 260000, 109024, 20000, 150000, 72000, 190000…\n$ employee_residence <chr> \"DE\", \"JP\", \"GB\", \"HN\", \"US\", \"US\", \"US\", \"HU\", \"US…\n$ remote_ratio       <int> 0, 0, 50, 0, 50, 100, 100, 50, 100, 50, 0, 0, 0, 10…\n$ company_location   <chr> \"DE\", \"JP\", \"GB\", \"HN\", \"US\", \"US\", \"US\", \"HU\", \"US…\n$ company_size       <chr> \"L\", \"S\", \"M\", \"S\", \"L\", \"L\", \"S\", \"L\", \"L\", \"S\", \"…"
   },
   {
     "objectID": "report.html",
@@ -79,89 +152,5 @@
     "title": "Project title",
     "section": "",
     "text": "Introduction\n\n\nData description\n\n\nData analysis\n\n\nEvaluation of significance\n\n\nInterpretation and conclusions\n\n\nLimitations\n\n\nAcknowledgments"
-  },
-  {
-    "objectID": "appendicies.html",
-    "href": "appendicies.html",
-    "title": "Project title",
-    "section": "",
-    "text": "Data cleaning\n\n\nOther appendicies (as necessary)"
-  },
-  {
-    "objectID": "proposal.html",
-    "href": "proposal.html",
-    "title": "Project title",
-    "section": "",
-    "text": "library(tidyverse)\nlibrary(skimr)"
-  },
-  {
-    "objectID": "proposal.html#introduction-and-data",
-    "href": "proposal.html#introduction-and-data",
-    "title": "Project title",
-    "section": "Introduction and data",
-    "text": "Introduction and data\n\nIdentify the source of the data.\nState when and how it was originally collected (by the original data curator, not necessarily how you found the data).\nWrite a brief description of the observations."
-  },
-  {
-    "objectID": "proposal.html#research-question",
-    "href": "proposal.html#research-question",
-    "title": "Project title",
-    "section": "Research question",
-    "text": "Research question\n\nA well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)\nA description of the research topic along with a concise statement of your hypotheses on this topic.\nIdentify the types of variables in your research question. Categorical? Quantitative?"
-  },
-  {
-    "objectID": "proposal.html#glimpse-of-data",
-    "href": "proposal.html#glimpse-of-data",
-    "title": "Project title",
-    "section": "Glimpse of data",
-    "text": "Glimpse of data\n\n# add code here"
-  },
-  {
-    "objectID": "proposal.html#introduction-and-data-1",
-    "href": "proposal.html#introduction-and-data-1",
-    "title": "Project title",
-    "section": "Introduction and data",
-    "text": "Introduction and data\n\nIdentify the source of the data.\nState when and how it was originally collected (by the original data curator, not necessarily how you found the data).\nWrite a brief description of the observations."
-  },
-  {
-    "objectID": "proposal.html#research-question-1",
-    "href": "proposal.html#research-question-1",
-    "title": "Project title",
-    "section": "Research question",
-    "text": "Research question\n\nA well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)\nA description of the research topic along with a concise statement of your hypotheses on this topic.\nIdentify the types of variables in your research question. Categorical? Quantitative?"
-  },
-  {
-    "objectID": "proposal.html#glimpse-of-data-1",
-    "href": "proposal.html#glimpse-of-data-1",
-    "title": "Project title",
-    "section": "Glimpse of data",
-    "text": "Glimpse of data\n\n# add code here"
-  },
-  {
-    "objectID": "proposal.html#introduction-and-data-2",
-    "href": "proposal.html#introduction-and-data-2",
-    "title": "Project title",
-    "section": "Introduction and data",
-    "text": "Introduction and data\n\nIdentify the source of the data.\nState when and how it was originally collected (by the original data curator, not necessarily how you found the data).\nWrite a brief description of the observations."
-  },
-  {
-    "objectID": "proposal.html#research-question-2",
-    "href": "proposal.html#research-question-2",
-    "title": "Project title",
-    "section": "Research question",
-    "text": "Research question\n\nA well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)\nA description of the research topic along with a concise statement of your hypotheses on this topic.\nIdentify the types of variables in your research question. Categorical? Quantitative?"
-  },
-  {
-    "objectID": "proposal.html#glimpse-of-data-2",
-    "href": "proposal.html#glimpse-of-data-2",
-    "title": "Project title",
-    "section": "Glimpse of data",
-    "text": "Glimpse of data\n\n# add code here"
-  },
-  {
-    "objectID": "presentation.html",
-    "href": "presentation.html",
-    "title": "Presentation title",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see https://quarto.org/docs/presentations/."
   }
 ]

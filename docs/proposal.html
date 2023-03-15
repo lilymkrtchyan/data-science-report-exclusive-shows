@@ -241,7 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p>
 <p>The data was collected and cleansed using Spotify’s web API and Python by the original data curator.</p></li>
 <li><p>Write a brief description of the observations.</p>
-<p>Each observation is a song. Each row contains the id, artist, album name, song name, popularity, duration, explicitness, rating of danceability, and rating of energy of the song on Spotify.</p></li>
+<p>Each observation is a song. Each row contains the id, artist, album name, song name, popularity, duration, explicitness, rating of danceability, rating of energy, key, loudness, mode, speechness, acousticness, instrumentalness, liveness, valence, tempo, time signature, and track genre of the song on Spotify. There are 114000 observations and 21 columns in the dataset.</p></li>
 </ul>
 </section>
 <section id="research-question" class="level2">
@@ -249,7 +249,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><p>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</p>
 <ul>
-<li><p>Are the most popular songs on Spotify more danceable?&nbsp;</p></li>
+<li><p>Are the most popular songs on Spotify more danceable?</p></li>
 <li><p>Are the most popular songs on Spotify longer in duration?</p></li>
 <li><p>What genre are the most popular songs on Spotify?</p></li>
 </ul></li>
@@ -258,12 +258,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Identify the types of variables in your research question. Categorical? Quantitative?</p>
 <ul>
 <li><p><strong>Track_id:</strong> Qualitative - description</p></li>
-<li><p><strong>Artists: Qualitative - descriptive</strong></p></li>
+<li><p><strong>Artists:</strong> Qualitative- descriptive</p></li>
 <li><p><strong>Duration:</strong> Quantitative</p></li>
-<li><p><strong>Album_name: Qualitative - descriptive</strong></p></li>
-<li><p><strong>Track_name: Qualitative- descriptive</strong></p></li>
-<li><p><strong>Popularity: Quantitative</strong></p></li>
-<li><p><strong>Danceability: Quantitative</strong></p></li>
+<li><p><strong>Album_name:</strong> Qualitative - descriptive</p></li>
+<li><p><strong>Track_name:</strong> Qualitative- descriptive</p></li>
+<li><p><strong>Popularity:</strong> Quantitative</p></li>
+<li><p><strong>Danceability:</strong> Quantitative</p></li>
 <li><p><strong>Track_genre:</strong> Categorical</p></li>
 </ul></li>
 </ul>
@@ -309,7 +309,7 @@ $ track_genre      &lt;chr&gt; "acoustic", "acoustic", "acoustic", "acoustic", "
 <ul>
 <li><p>Identify the source of the data.</p>
 <ul>
-<li><p>Kaggle: "TV shows on Netflix, Prime Video, Hulu, and Disney+"</p></li>
+<li><p>Kaggle: “TV shows on Netflix, Prime Video, Hulu, and Disney+”</p></li>
 <li><p><a href="https://www.kaggle.com/datasets/ruchi798/tv-shows-on-netflix-prime-video-hulu-and-disney" class="uri">https://www.kaggle.com/datasets/ruchi798/tv-shows-on-netflix-prime-video-hulu-and-disney</a></p></li>
 </ul></li>
 <li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p>
@@ -325,9 +325,30 @@ $ track_genre      &lt;chr&gt; "acoustic", "acoustic", "acoustic", "acoustic", "
 <section id="research-question-1" class="level2">
 <h2 class="anchored" data-anchor-id="research-question-1">Research question</h2>
 <ul>
-<li>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</li>
-<li>A description of the research topic along with a concise statement of your hypotheses on this topic.</li>
-<li>Identify the types of variables in your research question. Categorical? Quantitative?</li>
+<li>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
+<ul>
+<li>What platform presents the best-quality television shows for each age-group?</li>
+</ul></li>
+<li>A description of the research topic along with a concise statement of your hypotheses on this topic.
+<ul>
+<li>As streaming platforms continue to grow in popularity, discourse about which platform is best seems to be taking place at an increasingly frequent rate. As such, we’re interested in learning about platforms’ television offerings per age group (especially ours!). In order to address this interest, we’re intending on looking at the IMDb and/or Rotten Tomatoes scores (indicating TV quality), age group, and platform for each TV show; we can analyze the research question with these particular variables. Currently, we hypothesize that Netflix will have the highest-quality TV shows for most age groups.</li>
+</ul></li>
+<li>Identify the types of variables in your research question. Categorical? Quantitative?
+<ul>
+<li><p><strong>Row ID:</strong> Quantitative</p></li>
+<li><p><strong>Unique TV ID:</strong> Quantitative</p></li>
+<li><p><strong>Title:</strong> Qualitative - Descriptive</p></li>
+<li><p><strong>Year:</strong> Quantitative</p></li>
+<li><p><strong>Age:</strong> Categorical</p></li>
+<li><p><strong>IMDb Rating</strong>: Quantitative</p></li>
+<li><p><strong>Rotten Tomatoes Rating:</strong> Quantitative</p></li>
+<li><p><strong>Netflix:</strong> Categorical</p></li>
+<li><p><strong>Hulu:</strong> Categorical</p></li>
+<li><p><strong>Prime Video:</strong> Categorical</p></li>
+<li><p><strong>Disney+:</strong> Categorical</p></li>
+<li><p><strong>Type:</strong> Categorical</p></li>
+<li><p>NOTE: Some of these variables might be filtered out/manipulated in our cleaned data set; the above list represents the variables in their original form.</p></li>
+</ul></li>
 </ul>
 </section>
 <section id="glimpse-of-data-1" class="level2">
@@ -360,17 +381,53 @@ $ Type            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 <section id="introduction-and-data-2" class="level2">
 <h2 class="anchored" data-anchor-id="introduction-and-data-2">Introduction and data</h2>
 <ul>
-<li><p>Identify the source of the data.</p></li>
-<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p></li>
-<li><p>Write a brief description of the observations.</p></li>
+<li><p>Identify the source of the data.</p>
+<ul>
+<li><p>Kaggle: “Data Science Job Salaries”</p></li>
+<li><p><a href="https://www.kaggle.com/datasets/ruchi798/data-science-job-salaries" class="uri">https://www.kaggle.com/datasets/ruchi798/data-science-job-salaries</a></p></li>
+</ul></li>
+<li><p>State when and how it was originally collected (by the original data curator, not necessarily how you found the data).</p>
+<ul>
+<li>The data was collected and uploaded in 2022.</li>
+</ul></li>
+<li><p>Write a brief description of the observations.</p>
+<ul>
+<li>The data has 606 observations with 12 columns. The columns represent the work year, experience level, employment type, job title, salary, salary currency, salary in USD, employee’s place of residence, company size, company location, and the remote ratio. Each observation represents an employee with the information about their job on those columns above.</li>
+</ul></li>
 </ul>
 </section>
 <section id="research-question-2" class="level2">
 <h2 class="anchored" data-anchor-id="research-question-2">Research question</h2>
 <ul>
-<li>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</li>
-<li>A description of the research topic along with a concise statement of your hypotheses on this topic.</li>
-<li>Identify the types of variables in your research question. Categorical? Quantitative?</li>
+<li><p>A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)</p>
+<ul>
+<li><p>Which job title/industry has the highest average salary from 2020-2022?</p></li>
+<li><p>What is the average salary for all (or specific) experience levels in small, medium, and large companies?</p>
+<ul>
+<li>Potential Question to explore: What is the highest average salary that an EN (entry level/junior level) employee can expect to earn (based on small, medium, or large company)?</li>
+</ul></li>
+<li><p>What are the most popular job titles in the data science industry?</p></li>
+<li><p>Which experience level is most common in the industry?</p></li>
+<li><p>Which region is where most employees come from (sorted based on experience level)?</p></li>
+<li><p>Which experience level is most common among employees in each job title?</p></li>
+</ul></li>
+<li><p>A description of the research topic along with a concise statement of your hypotheses on this topic.</p>
+<ul>
+<li>As budding Information Science majors, we look at data science to be a promising field to base our future careers in. We’re interested to learn more about how the average salary has changed over the last couple of years within the industry and how experience levels influence the salary within popular data science job titles. To explore this in greater detail, we plan to analyze salary trends over time based on varying experience levels and company sizes. Other variables can also be used to explore the host of questions mentioned above. (For the first question on the list) We hypothesize that data science in the tech industry will likely have the highest average salary. (For the second question on the list) We hypothesize that the average salary for EX (executive level/director) experienced employees at large companies will be the highest.</li>
+</ul></li>
+<li><p>Identify the types of variables in your research question. Categorical? Quantitative?</p>
+<ul>
+<li><p><strong>Employee_ID:</strong> Quantitative</p></li>
+<li><p><strong>Work_year:</strong> Quantitative</p></li>
+<li><p><strong>Experience_level:</strong> Categorical</p></li>
+<li><p><strong>Employment_type:</strong> Categorical</p></li>
+<li><p><strong>Job_title:</strong> Categorical</p></li>
+<li><p><strong>Salary:</strong> Quantitative</p></li>
+<li><p><strong>Salary_in_usd:</strong> Quantitative</p></li>
+<li><p><strong>Remote_ratio:</strong> Quantitative</p></li>
+<li><p><strong>Company_location:</strong> Categorical</p></li>
+<li><p><strong>Company_size:</strong> Categorical</p></li>
+</ul></li>
 </ul>
 </section>
 <section id="glimpse-of-data-2" class="level2">

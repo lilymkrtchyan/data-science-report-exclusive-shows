@@ -30,13 +30,13 @@ library(dplyr)
 
 -   Write a brief description of the observations.
 
-    Each observation is a song. Each row contains the id, artist, album name, song name, popularity, duration, explicitness, rating of danceability, and rating of energy of the song on Spotify.
+    Each observation is a song. Each row contains the id, artist, album name, song name, popularity, duration, explicitness, rating of danceability, rating of energy, key, loudness, mode, speechness, acousticness, instrumentalness, liveness, valence, tempo, time signature, and track genre of the song on Spotify. There are 114000 observations and 21 columns in the dataset. 
 
 ## Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
 
-    -   Are the most popular songs on Spotify more danceable? 
+    -   Are the most popular songs on Spotify more danceable?
 
     -   Are the most popular songs on Spotify longer in duration?
 
@@ -100,7 +100,7 @@ glimpse(spotify)
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
     -   As streaming platforms continue to grow in popularity, discourse about which platform is best seems to be taking place at an increasingly frequent rate. As such, we're interested in learning about platforms' television offerings per age group (especially ours!). In order to address this interest, we're intending on looking at the IMDb and/or Rotten Tomatoes scores (indicating TV quality), age group, and platform for each TV show; we can analyze the research question with these particular variables. Currently, we hypothesize that Netflix will have the highest-quality TV shows for most age groups.
 -   Identify the types of variables in your research question. Categorical? Quantitative?
-    -   **Row ID:** Quantitative 
+    -   **Row ID:** Quantitative
 
     -   **Unique TV ID:** Quantitative
 
@@ -108,7 +108,7 @@ glimpse(spotify)
 
     -   **Year:** Quantitative
 
-    -   **Age:** Categorical 
+    -   **Age:** Categorical
 
     -   **IMDb Rating**: Quantitative
 
@@ -122,7 +122,7 @@ glimpse(spotify)
 
     -   **Disney+:** Categorical
 
-    -   **Type:** Categorical 
+    -   **Type:** Categorical
 
     -   NOTE: Some of these variables might be filtered out/manipulated in our cleaned data set; the above list represents the variables in their original form.
 
@@ -143,7 +143,7 @@ glimpse(tvshows)
 
 -   Identify the source of the data.
 
-    -   Kaggle: \"Data Science Job Salaries\"
+    -   Kaggle: "Data Science Job Salaries"
 
     -   <https://www.kaggle.com/datasets/ruchi798/data-science-job-salaries>
 
@@ -153,13 +153,32 @@ glimpse(tvshows)
 
 -   Write a brief description of the observations.
 
-    -   The data has 606 observations with 12 columns. The columns represent the work year, experience level, employment type, job title, salary, salary currency, salary in USD, employee\'s place of residence, company size, company location, and the remote ratio. Each observation represents an employee with the information about their job on those columns above.
+    -   The data has 606 observations with 12 columns. The columns represent the work year, experience level, employment type, job title, salary, salary currency, salary in USD, employee's place of residence, company size, company location, and the remote ratio. Each observation represents an employee with the information about their job on those columns above.
 
 ## Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
+
+    -   Which job title/industry has the highest average salary from 2020-2022?
+
+    -   What is the average salary for all (or specific) experience levels in small, medium, and large companies?
+
+        -   Potential Question to explore: What is the highest average salary that an EN (entry level/junior level) employee can expect to earn (based on small, medium, or large company)?
+
+    -   What are the most popular job titles in the data science industry?
+
+    -   Which experience level is most common in the industry?
+
+    -   Which region is where most employees come from (sorted based on experience level)?
+
+    -   Which experience level is most common among employees in each job title?
+
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
+
+    -   As budding Information Science majors, we look at data science to be a promising field to base our future careers in. We're interested to learn more about how the average salary has changed over the last couple of years within the industry and how experience levels influence the salary within popular data science job titles. To explore this in greater detail, we plan to analyze salary trends over time based on varying experience levels and company sizes. Other variables can also be used to explore the host of questions mentioned above. (For the first question on the list) We hypothesize that data science in the tech industry will likely have the highest average salary. (For the second question on the list) We hypothesize that the average salary for EX (executive level/director) experienced employees at large companies will be the highest.
+
 -   Identify the types of variables in your research question. Categorical? Quantitative?
+
     -   **Employee_ID:** Quantitative
 
     -   **Work_year:** Quantitative
