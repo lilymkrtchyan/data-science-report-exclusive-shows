@@ -50,17 +50,17 @@ library(dplyr)
 
     -   **Track_id:** Qualitative - description
 
-    -   **Artists: Qualitative - descriptive**
+    -   **Artists:** Qualitative- descriptive
 
     -   **Duration:** Quantitative
 
-    -   **Album_name: Qualitative - descriptive**
+    -   **Album_name:** Qualitative - descriptive
 
-    -   **Track_name: Qualitative- descriptive**
+    -   **Track_name:** Qualitative- descriptive
 
-    -   **Popularity: Quantitative**
+    -   **Popularity:** Quantitative
 
-    -   **Danceability: Quantitative**
+    -   **Danceability:** Quantitative
 
     -   **Track_genre:** Categorical
 
@@ -81,7 +81,7 @@ glimpse(spotify)
 
 -   Identify the source of the data.
 
-    -   Kaggle: \"TV shows on Netflix, Prime Video, Hulu, and Disney+\"
+    -   Kaggle: "TV shows on Netflix, Prime Video, Hulu, and Disney+"
 
     -   <https://www.kaggle.com/datasets/ruchi798/tv-shows-on-netflix-prime-video-hulu-and-disney>
 
@@ -96,8 +96,35 @@ glimpse(spotify)
 ## Research question
 
 -   A well formulated research question. (You may include more than one research question if you want to receive feedback on different ideas for your project. However, one per data set is required.)
+    -   What platform presents the best-quality television shows for each age-group?
 -   A description of the research topic along with a concise statement of your hypotheses on this topic.
+    -   As streaming platforms continue to grow in popularity, discourse about which platform is best seems to be taking place at an increasingly frequent rate. As such, we\'re interested in learning about platforms\' television offerings per age group (especially ours!). In order to address this interest, we\'re intending on looking at the IMDb and/or Rotten Tomatoes scores (indicating TV quality), age group, and platform for each TV show; we can analyze the research question with these particular variables. Currently, we hypothesize that Netflix will have the highest-quality TV shows for most age groups.
 -   Identify the types of variables in your research question. Categorical? Quantitative?
+    -   **Row ID:** Quantitative 
+
+    -   **Unique TV ID:** Quantitative
+
+    -   **Title:** Qualitative - Descriptive
+
+    -   **Year:** Quantitative
+
+    -   **Age:** Categorical 
+
+    -   **IMDb Rating**: Quantitative
+
+    -   **Rotten Tomatoes Rating:** Quantitative
+
+    -   **Netflix:** Categorical
+
+    -   **Hulu:** Categorical
+
+    -   **Prime Video:** Categorical
+
+    -   **Disney+:** Categorical
+
+    -   **Type:** Categorical 
+
+    -   NOTE: Some of these variables might be filtered out/manipulated in our cleaned data set; the above list represents the variables in their original form.
 
 ## Glimpse of data
 
