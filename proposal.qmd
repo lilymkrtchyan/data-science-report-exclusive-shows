@@ -11,6 +11,7 @@ editor: visual
 
 library(tidyverse)
 library(skimr)
+library(dplyr)
 ```
 
 # Data 1
@@ -32,9 +33,12 @@ library(skimr)
 ## Glimpse of data
 
 ```{r}
-#| label: load-data-1
+#| label: load-spotify-dataset
 
-# add code here
+spotify <- read.csv("data/dataset.csv")
+
+glimpse(spotify)
+
 ```
 
 # Data 2
@@ -56,9 +60,12 @@ library(skimr)
 ## Glimpse of data
 
 ```{r}
-#| label: load-data-2
+#| label: load-tvshows-dataset
 
-# add code here
+tvshows <- read.csv("data/tv_shows.csv")
+
+glimpse(tvshows)
+
 ```
 
 # Data 3
@@ -80,7 +87,10 @@ library(skimr)
 ## Glimpse of data
 
 ```{r}
-#| label: load-data-3
+#| label: load-datasci-salary-dataset
 
-# add code here
+ds_salary <- read.csv("data/ds_salaries.csv") 
+
+glimpse(ds_salary)
+
 ```
