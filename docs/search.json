@@ -60,7 +60,11 @@
     "href": "about.html",
     "title": "About",
     "section": "",
+<<<<<<< HEAD
     "text": "This project was developed by oiwehfeqoihfqoehfoquhf For INFO 2950: Introduction to Data Science at Cornell University. The team is comprised of the following team members.\n\nTeam member 1: One sentence description of Team member 1 (e.g., year, major, etc.).\nTeam member 2: One sentence description of Team member 2 (e.g., year, major, etc.).\nTeam member 3: One sentence description of Team member 3 (e.g., year, major, etc.).\nTeam member 4: One sentence description of Team member 4 (e.g., year, major, etc.).\n…"
+=======
+    "text": "This project was developed by [Phenomenal Eevee] For INFO 2950: Introduction to Data Science at Cornell University. The team is comprised of the following team members.\n\nTeam member 1: Kayla is a Junior studying Information Science and Communication.\nTeam member 2: Joyce is a sophomore studying Information Science and Psychology.\nTeam member 3: Pinxian is a info-sci major junior at CAS.\nTeam member 4: Uyen is a Sophomore majoring in Information Science.\nTeam member 5: Lili is a sophomore majoring in cognitive science and information"
+>>>>>>> 8aae1a48ce0b4ad4d492e63154e5f6ad5292a216
   },
   {
     "objectID": "pre-registration.html",
