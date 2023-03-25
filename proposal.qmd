@@ -71,7 +71,7 @@ library(dplyr)
 
 spotify <- read.csv("data/dataset.csv")
 
-glimpse(spotify)
+skimr::skim(spotify)
 
 ```
 
@@ -133,7 +133,7 @@ glimpse(spotify)
 
 tvshows <- read.csv("data/tv_shows.csv")
 
-glimpse(tvshows)
+skimr::skim(tvshows)
 
 ```
 
@@ -206,6 +206,6 @@ glimpse(tvshows)
 
 ds_salary <- read.csv("data/ds_salaries.csv") 
 
-glimpse(ds_salary)
+skimr::skim(ds_salary)
 
 ```
