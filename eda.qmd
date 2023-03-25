@@ -1,5 +1,5 @@
 ---
-title: "Project title"
+title: "Phenomenal Eevee"
 subtitle: "Exploratory data analysis"
 format: html
 editor: visual
@@ -14,6 +14,25 @@ Research question(s). State your research question (s) clearly.
 # Data collection and cleaning
 
 Have an initial draft of your data cleaning appendix. Document every step that takes your raw data file(s) and turns it into the analysis-ready data set that you would submit with your final project. Include text narrative describing your data collection (downloading, scraping, surveys, etc) and any additional data curation/cleaning (merging data frames, filtering, transformations of variables, etc). Include code for data curation/cleaning, but not collection.
+
+```{r}
+#| label: data-collection-cleaning
+
+library(tidyverse)
+library(tidymodels)
+library(dplyr)
+
+tv_shows_cleaned <- tv_shows %>%
+  select(-1:-2, -6, -ncol(.)) %>%
+  mutate(Netflix = if_else(Netflix == 1, "Yes", "No"), 
+         Hulu = if_else(Hulu == 1, "Yes", "No"),
+         `Prime Video` = if_else(`Prime Video` == 1, "Yes", "No"),
+         `Disney+` = if_else(`Disney+` == 1, "Yes", "No"))
+
+tv_shows_cleaned
+
+
+```
 
 # Data description
 
