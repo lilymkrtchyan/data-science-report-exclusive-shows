@@ -30,7 +30,7 @@ library(dplyr)
 
 -   Write a brief description of the observations.
 
-    Each observation is a song. Each row contains the id, artist, album name, song name, popularity, duration, explicitness, rating of danceability, rating of energy, key, loudness, mode, speechness, acousticness, instrumentalness, liveness, valence, tempo, time signature, and track genre of the song on Spotify. There are 114000 observations and 21 columns in the dataset. 
+    Each observation is a song. Each row contains the id, artist, album name, song name, popularity, duration, explicitness, rating of danceability, rating of energy, key, loudness, mode, speechness, acousticness, instrumentalness, liveness, valence, tempo, time signature, and track genre of the song on Spotify. There are 114000 observations and 21 columns in the dataset.
 
 ## Research question
 
