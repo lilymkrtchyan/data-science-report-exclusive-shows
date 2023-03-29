@@ -217,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1>Research question(s)</h1>
 <p>What streaming platform presents the highest-ranked television shows produced in the last century?&nbsp;</p>
 <ul>
-<li><p>We define "highest-ranked" as shows with the highest Rotten Tomatoes ranking&nbsp;</p></li>
+<li><p>We define “highest-ranked” as shows with the highest Rotten Tomatoes ranking&nbsp;</p></li>
 <li><p>The streaming platforms we are analyzing are Disney+, Netflix, Hulu, and Prime Video.</p></li>
 </ul>
 </section>
@@ -252,7 +252,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ✖ dplyr::lag()      masks stats::lag()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Dig deeper into tidy modeling with R at https://www.tmwr.org</code></pre>
+• Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -273,27 +273,37 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Netflix =</span> <span class="fu">if_else</span>(Netflix <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>), </span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">Hulu =</span> <span class="fu">if_else</span>(Hulu <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>),</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Prime Video</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">if_else</span>(<span class="st">`</span><span class="at">Prime Video</span><span class="st">`</span> <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>),</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Disney+</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">if_else</span>(<span class="st">`</span><span class="at">Disney+</span><span class="st">`</span> <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>))</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>tv_shows_cleaned</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Disney+</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">if_else</span>(<span class="st">`</span><span class="at">Disney+</span><span class="st">`</span> <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Rotten Tomatoes</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">str_remove</span>(<span class="st">`</span><span class="at">Rotten Tomatoes</span><span class="st">`</span>, <span class="st">"/100"</span>),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Rotten Tomatoes</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">parse_integer</span>(<span class="st">`</span><span class="at">Rotten Tomatoes</span><span class="st">`</span>)) </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tv_shows_cleaned)[<span class="dv">4</span>] <span class="ot">=</span> <span class="st">'rotten_tomatoes'</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tv_shows_cleaned)[<span class="dv">7</span>] <span class="ot">=</span> <span class="st">'prime_video'</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tv_shows_cleaned)[<span class="dv">8</span>] <span class="ot">=</span> <span class="st">'disney_plus'</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>tv_shows_cleaned</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5,368 × 8
-   Title                       Year Age   Rotten…¹ Netflix Hulu  Prime…² Disne…³
-   &lt;chr&gt;                      &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  
- 1 Breaking Bad                2008 18+   100/100  Yes     No    No      No     
- 2 Stranger Things             2016 16+   96/100   Yes     No    No      No     
- 3 Attack on Titan             2013 18+   95/100   Yes     Yes   No      No     
- 4 Better Call Saul            2015 18+   94/100   Yes     No    No      No     
- 5 Dark                        2017 16+   93/100   Yes     No    No      No     
- 6 Avatar: The Last Airbender  2005 7+    93/100   Yes     No    Yes     No     
- 7 Peaky Blinders              2013 18+   93/100   Yes     No    No      No     
- 8 The Walking Dead            2010 18+   93/100   Yes     No    No      No     
- 9 Black Mirror                2011 18+   92/100   Yes     No    No      No     
-10 The Queen's Gambit          2020 18+   92/100   Yes     No    No      No     
-# … with 5,358 more rows, and abbreviated variable names ¹​`Rotten Tomatoes`,
-#   ²​`Prime Video`, ³​`Disney+`</code></pre>
+   Title                       Year Age   rotten…¹ Netflix Hulu  prime…² disne…³
+   &lt;chr&gt;                      &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;  
+ 1 Breaking Bad                2008 18+        100 Yes     No    No      No     
+ 2 Stranger Things             2016 16+         96 Yes     No    No      No     
+ 3 Attack on Titan             2013 18+         95 Yes     Yes   No      No     
+ 4 Better Call Saul            2015 18+         94 Yes     No    No      No     
+ 5 Dark                        2017 16+         93 Yes     No    No      No     
+ 6 Avatar: The Last Airbender  2005 7+          93 Yes     No    Yes     No     
+ 7 Peaky Blinders              2013 18+         93 Yes     No    No      No     
+ 8 The Walking Dead            2010 18+         93 Yes     No    No      No     
+ 9 Black Mirror                2011 18+         92 Yes     No    No      No     
+10 The Queen's Gambit          2020 18+         92 Yes     No    No      No     
+# … with 5,358 more rows, and abbreviated variable names ¹​rotten_tomatoes,
+#   ²​prime_video, ³​disney_plus</code></pre>
 </div>
 </div>
+<p>The first step is to load required packages: <code>tidyverse</code>, <code>tidymodels</code>, and <code>dplyr</code>.</p>
+<p>After loading the packages, the <code>tv_shows.csv</code> file is read into a data frame <code>tv_shows</code> using the <code>read_csv</code> function from the <code>tidyverse</code> package. The next step is data cleaning, which involves selecting columns and renaming them. The select function from <code>dplyr</code> package is used to remove columns that are not needed, specifically the first two columns (<code>-1:-2</code>), the sixth column (<code>-6</code>), and the last column (<code>-ncol(.)</code>). Then for <code>Rotten Tomatoes</code> we remove the string <code>%</code> symbol by the using <code>str_remove</code> and convert the values to integers by using <code>parse_integer</code>.The column names are also renamed to make them more readable by replacing spaces with underscores and lowercase.</p>
+<p>The third step is to convert binary variables (0/1) to Yes/No.&nbsp;This is done using the <code>if_else</code> function from <code>dplyr</code>. For each of the four streaming platforms (Netflix, Hulu, Prime Video, Disney+), if the value is 1, the platform is available (<code>"Yes"</code>) and if the value is 0, the platform is not available (<code>"No"</code>).</p>
+<p>The final cleaned data frame is stored in a new data frame called <code>tv_shows_cleaned</code>.</p>
 </section>
 <section id="data-description" class="level1">
 <h1>Data description</h1>
@@ -301,7 +311,11 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 </section>
 <section id="data-limitations" class="level1">
 <h1>Data limitations</h1>
-<p>Identify any potential problems with your dataset.</p>
+<p>Identify any potential problems with your dataset.<br>
+The first limitation is that the data contains many null values in the "ages" and "IMDb" columns. It is possible that the shows with missing IMDb scores are shows that aren't popular and didn't receive enough ratings to show a score. If we remove the null values, we might miss some interesting discoveries or unintentionally create some biases.<br>
+The second limitation is the lack of some interesting variables. For example, there is no "genre" column. If we have some kind of variable to describe the type or genre of the show, we could have discovered some platforms where shows of a particular genre are higher rated than others. In addition, if there is a variable "language", we could look at which platform provides the most diverse range of highly rated shows.<br>
+The third limitation is the TV show platforms included in the data. Some other popular streaming services, such as Paramount + and HBO +, are not included. Missing those platforms could limit the scale of discoveries.<br>
+The fourth limitation is the age of the dataset. According to Kaggle, the dataset was created 2 years ago. This is reflected by the latest year of show, 2021, in the data.</p>
 </section>
 <section id="exploratory-data-analysis" class="level1">
 <h1>Exploratory data analysis</h1>
@@ -365,6 +379,15 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <section id="questions-for-reviewers" class="level1">
 <h1>Questions for reviewers</h1>
 <p>List specific questions for your peer reviewers and project mentor to answer in giving you feedback on this phase.</p>
+<p>1. Is the research question clearly stated and does it align with the data collected and analyzed? Is it interesting and relevant?</p>
+<p>2. Are the data collection methods and sources clearly describes? Are there any gaps or limitations in the data?</p>
+<p>3. Is the data cleaning process clearly explained and well-documented? Are there any concerns or issues with the data cleaning? Are there any missing outliers or inconsistencies? How were they handled?</p>
+<p>4. Are the summary statistics and plots relevant to the research question? Are they clearly presented and explained?</p>
+<p>5. Are there any potential confounding variables or biases that should be considered in the analysis?</p>
+<p>6. Are there any additional analyses or visualizations that could be helpful in exploring the data further?</p>
+<p>7. Is the exploration data analysis comprehensive and well-organized?</p>
+<p>8. Are there any areas where more explainations or detail would be helpful in understanding the analysis?</p>
+<p>9. Are the plots informative and well-designed? Do they represent any insights or relationships in the data? Are they appropriate for the type of data and the research questions?</p>
 
 
 </section>

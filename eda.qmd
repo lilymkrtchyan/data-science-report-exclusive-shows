@@ -60,7 +60,11 @@ Have an initial draft of your data description section. Your data description sh
 
 # Data limitations
 
-Identify any potential problems with your dataset.
+Identify any potential problems with your dataset. \
+The first limitation is that the data contains many null values in the \"ages\" and \"IMDb\" columns. It is possible that the shows with missing IMDb scores are shows that aren\'t popular and didn\'t receive enough ratings to show a score. If we remove the null values, we might miss some interesting discoveries or unintentionally create some biases.\
+The second limitation is the lack of some interesting variables. For example, there is no \"genre\" column. If we have some kind of variable to describe the type or genre of the show, we could have discovered some platforms where shows of a particular genre are higher rated than others. In addition, if there is a variable \"language\", we could look at which platform provides the most diverse range of highly rated shows.\
+The third limitation is the TV show platforms included in the data. Some other popular streaming services, such as Paramount + and HBO +, are not included. Missing those platforms could limit the scale of discoveries.\
+The fourth limitation is the age of the dataset. According to Kaggle, the dataset was created 2 years ago. This is reflected by the latest year of show, 2021, in the data.
 
 # Exploratory data analysis
 
