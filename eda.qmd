@@ -94,14 +94,17 @@ total <- rbind(total,disney)
 
 mean_rankings <- data.frame(platform = c('Netflix','Hulu','Amazon Prime','Disney'), mean=c(netflix[[3]][1], hulu[[3]][1],prime[[3]][1], disney[[3]][1]))
 
+total |>
+  ggplot(aes(x = platform, y = rotten_tomatoes)) + 
+  geom_boxplot() +
+  labs(title = "Ratings of Streamed Shows by Platform", x = "Platforms", y = "Show Ratings")
+
 mean_rankings |>
   ggplot(aes(x = platform, y = mean)) + ylim(c(0, 100)) +
   geom_bar(stat = "identity") +
   labs(title = "Ratings of Streamed Shows by Platform", x = "Platforms", y = "Mean Ratings")
 
-total |>
-  ggplot(aes(x = platform, y = rotten_tomatoes)) + 
-  geom_boxplot()
+
 
 
 ```
