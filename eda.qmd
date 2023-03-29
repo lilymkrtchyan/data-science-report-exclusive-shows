@@ -186,7 +186,9 @@ total_per_platform <- total |>
   summarize(number = n())
 
 
-mean_rankings <- data.frame(platform = c('Netflix','Hulu','Amazon Prime','Disney'),
+mean_rankings <- data.frame(platform = c('Netflix',
+                                         'Hulu','Amazon Prime',
+                                         'Disney'),
                             mean=c(netflix[[3]][1], hulu[[3]][1],
                                    prime[[3]][1],  disney[[3]][1]))
 
@@ -198,9 +200,12 @@ total_per_platform |>
   geom_bar(position = "fill", stat = "identity") +
   scale_color_viridis_d(option = "D", end = 0.8) +
   theme_minimal() +
-  labs(title = "Percent of shows that fall under a given decile for each platform",
-      x = "Decile", y = "Fraction of shows", fill = "Platforms", disnay = "Disney+") +
-  scale_fill_discrete(labels = c("Disney+", "Hulu", "Netflix", "Prime Video"))
+  labs(
+    title = "Percent of shows that fall under a given decile for each platform",
+      x = "Decile", y = "Fraction of shows", 
+    fill = "Platforms", disnay = "Disney+") +
+  scale_fill_discrete(labels = c("Disney+", "Hulu",
+                                 "Netflix", "Prime Video"))
   
 
 
