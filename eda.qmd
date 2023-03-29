@@ -46,6 +46,14 @@ tv_shows_cleaned
 
 ```
 
+The first step is to load required packages: `tidyverse`, `tidymodels`, and `dplyr`.
+
+After loading the packages, the `tv_shows.csv` file is read into a data frame `tv_shows` using the `read_csv` function from the `tidyverse` package. The next step is data cleaning, which involves selecting columns and renaming them. The select function from `dplyr` package is used to remove columns that are not needed, specifically the first two columns (`-1:-2`), the sixth column (`-6`), and the last column (`-ncol(.)`). The column names are also renamed to make them more readable by replacing spaces with underscores.
+
+The third step is to convert binary variables (0/1) to Yes/No. This is done using the `if_else` function from `dplyr`. For each of the four streaming platforms (Netflix, Hulu, Prime Video, Disney+), if the value is 1, the platform is available (`"Yes"`) and if the value is 0, the platform is not available (`"No"`).
+
+The final cleaned data frame is stored in a new data frame called `tv_shows_cleaned`.
+
 # Data description
 
 Have an initial draft of your data description section. Your data description should be about your analysis-ready data.
