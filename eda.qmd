@@ -11,7 +11,7 @@ execute:
 
 What streaming platform presents the highest-ranked television shows produced in the last century? 
 
--   We define \"highest-ranked\" as shows with the highest Rotten Tomatoes ranking 
+-   We define "highest-ranked" as shows with the highest Rotten Tomatoes ranking 
 
 -   The streaming platforms we are analyzing are Disney+, Netflix, Hulu, and Prime Video.
 
@@ -112,3 +112,21 @@ mean_rankings |>
 # Questions for reviewers
 
 List specific questions for your peer reviewers and project mentor to answer in giving you feedback on this phase.
+
+1\. Is the research question clearly stated and does it align with the data collected and analyzed? Is it interesting and relevant?
+
+2\. Are the data collection methods and sources clearly describes? Are there any gaps or limitations in the data?
+
+3\. Is the data cleaning process clearly explained and well-documented? Are there any concerns or issues with the data cleaning? Are there any missing outliers or inconsistencies? How were they handled?
+
+4\. Are the summary statistics and plots relevant to the research question? Are they clearly presented and explained?
+
+5\. Are there any potential confounding variables or biases that should be considered in the analysis?
+
+6\. Are there any additional analyses or visualizations that could be helpful in exploring the data further?
+
+7\. Is the exploration data analysis comprehensive and well-organized?
+
+8\. Are there any areas where more explainations or detail would be helpful in understanding the analysis?
+
+9\. Are the plots informative and well-designed? Do they represent any insights or relationships in the data? Are they appropriate for the type of data and the research questions?
