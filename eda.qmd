@@ -33,8 +33,14 @@ tv_shows_cleaned <- tv_shows %>%
   mutate(Netflix = if_else(Netflix == 1, "Yes", "No"), 
          Hulu = if_else(Hulu == 1, "Yes", "No"),
          `Prime Video` = if_else(`Prime Video` == 1, "Yes", "No"),
-         `Disney+` = if_else(`Disney+` == 1, "Yes", "No"))
+         `Disney+` = if_else(`Disney+` == 1, "Yes", "No"),
+         `Rotten Tomatoes` = str_remove(`Rotten Tomatoes`, "/100"),
+         `Rotten Tomatoes` = parse_integer(`Rotten Tomatoes`)) 
 
+names(tv_shows_cleaned)[4] = 'rotten_tomatoes'
+names(tv_shows_cleaned)[7] = 'prime_video'
+names(tv_shows_cleaned)[8] = 'disney_plus'
+        
 tv_shows_cleaned
 
 
