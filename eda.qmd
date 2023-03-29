@@ -60,9 +60,9 @@ Have an initial draft of your data description section. Your data description sh
 
 # Data limitations
 
-Identify any potential problems with your dataset. \
-The first limitation is that the data contains many null values in the \"ages\" and \"IMDb\" columns. It is possible that the shows with missing IMDb scores are shows that aren\'t popular and didn\'t receive enough ratings to show a score. If we remove the null values, we might miss some interesting discoveries or unintentionally create some biases.\
-The second limitation is the lack of some interesting variables. For example, there is no \"genre\" column. If we have some kind of variable to describe the type or genre of the show, we could have discovered some platforms where shows of a particular genre are higher rated than others. In addition, if there is a variable \"language\", we could look at which platform provides the most diverse range of highly rated shows.\
+Identify any potential problems with your dataset.\
+The first limitation is that the data contains many null values in the "ages" and "IMDb" columns. It is possible that the shows with missing IMDb scores are shows that aren't popular and didn't receive enough ratings to show a score. If we remove the null values, we might miss some interesting discoveries or unintentionally create some biases.\
+The second limitation is the lack of some interesting variables. For example, there is no "genre" column. If we have some kind of variable to describe the type or genre of the show, we could have discovered some platforms where shows of a particular genre are higher rated than others. In addition, if there is a variable "language", we could look at which platform provides the most diverse range of highly rated shows.\
 The third limitation is the TV show platforms included in the data. Some other popular streaming services, such as Paramount + and HBO +, are not included. Missing those platforms could limit the scale of discoveries.\
 The fourth limitation is the age of the dataset. According to Kaggle, the dataset was created 2 years ago. This is reflected by the latest year of show, 2021, in the data.
 
@@ -85,42 +85,141 @@ netflix <- filter(tv_shows_cleaned, Netflix == "Yes")
 netflix <- netflix |>
   select(Title, rotten_tomatoes) |>
   mutate(mean = mean(rotten_tomatoes)) |>
-  mutate(platform = 'netflix')
+  mutate(platform = 'netflix') |>
+  mutate(decile = 100) |>
+  mutate(decile = ifelse(0<=rotten_tomatoes & rotten_tomatoes <=10, 
+                         '1-10', decile)) |>
+  mutate(decile = ifelse(10<rotten_tomatoes & rotten_tomatoes <=20, 
+                         '11-20', decile)) |>
+  mutate(decile = ifelse(20<rotten_tomatoes & rotten_tomatoes <=30, 
+                         '21-30', decile)) |>
+  mutate(decile = ifelse(30<rotten_tomatoes & rotten_tomatoes <=40, 
+                         '31-40', decile)) |>
+  mutate(decile = ifelse(50<rotten_tomatoes & rotten_tomatoes <=60, 
+                         '51-60', decile)) |>
+  mutate(decile = ifelse(60<rotten_tomatoes & rotten_tomatoes <=70, 
+                         '61-70', decile)) |>
+  mutate(decile = ifelse(70<rotten_tomatoes & rotten_tomatoes <=80, 
+                         '71-80', decile)) |>
+  mutate(decile = ifelse(80<rotten_tomatoes & rotten_tomatoes <=90, 
+                         '81-90', decile)) |>
+  mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
+                         '91-100', decile))
+  
 
 hulu <- filter(tv_shows_cleaned, Hulu == "Yes")
 hulu <- hulu |>
   select(Title, rotten_tomatoes) |>
   mutate(mean = mean(rotten_tomatoes)) |>
-  mutate(platform = 'hulu')
+  mutate(platform = 'hulu') |>
+  mutate(decile = 100) |>
+  mutate(decile = ifelse(0<=rotten_tomatoes & rotten_tomatoes <=10, 
+                         '1-10', decile)) |>
+  mutate(decile = ifelse(10<rotten_tomatoes & rotten_tomatoes <=20, 
+                         '11-20', decile)) |>
+  mutate(decile = ifelse(20<rotten_tomatoes & rotten_tomatoes <=30, 
+                         '21-30', decile)) |>
+  mutate(decile = ifelse(30<rotten_tomatoes & rotten_tomatoes <=40, 
+                         '31-40', decile)) |>
+  mutate(decile = ifelse(50<rotten_tomatoes & rotten_tomatoes <=60, 
+                         '51-60', decile)) |>
+  mutate(decile = ifelse(60<rotten_tomatoes & rotten_tomatoes <=70, 
+                         '61-70', decile)) |>
+  mutate(decile = ifelse(70<rotten_tomatoes & rotten_tomatoes <=80, 
+                         '71-80', decile)) |>
+  mutate(decile = ifelse(80<rotten_tomatoes & rotten_tomatoes <=90, 
+                         '81-90', decile)) |>
+  mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
+                         '91-100', decile))
 
 prime <- filter(tv_shows_cleaned, prime_video == "Yes")
 prime <- prime |>
   select(Title, rotten_tomatoes) |>
   mutate(mean = mean(rotten_tomatoes)) |>
-  mutate(platform = 'prime')
+  mutate(platform = 'prime') |>
+  mutate(decile = 100) |>
+  mutate(decile = ifelse(0<=rotten_tomatoes & rotten_tomatoes <=10, 
+                         '1-10', decile)) |>
+  mutate(decile = ifelse(10<rotten_tomatoes & rotten_tomatoes <=20, 
+                         '11-20', decile)) |>
+  mutate(decile = ifelse(20<rotten_tomatoes & rotten_tomatoes <=30, 
+                         '21-30', decile)) |>
+  mutate(decile = ifelse(30<rotten_tomatoes & rotten_tomatoes <=40, 
+                         '31-40', decile)) |>
+  mutate(decile = ifelse(50<rotten_tomatoes & rotten_tomatoes <=60, 
+                         '51-60', decile)) |>
+  mutate(decile = ifelse(60<rotten_tomatoes & rotten_tomatoes <=70, 
+                         '61-70', decile)) |>
+  mutate(decile = ifelse(70<rotten_tomatoes & rotten_tomatoes <=80, 
+                         '71-80', decile)) |>
+  mutate(decile = ifelse(80<rotten_tomatoes & rotten_tomatoes <=90, 
+                         '81-90', decile)) |>
+  mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
+                         '91-100', decile))
 
 disney <- filter(tv_shows_cleaned, disney_plus == "Yes")
 disney <- disney |>
   select(Title, rotten_tomatoes) |>
   mutate(mean = mean(rotten_tomatoes)) |>
-  mutate(platform = 'disney')
+  mutate(platform = 'disney') |>
+  mutate(decile = 100) |>
+  mutate(decile = ifelse(0<=rotten_tomatoes & rotten_tomatoes <=10, 
+                         '1-10', decile)) |>
+  mutate(decile = ifelse(10<rotten_tomatoes & rotten_tomatoes <=20, 
+                         '11-20', decile)) |>
+  mutate(decile = ifelse(20<rotten_tomatoes & rotten_tomatoes <=30, 
+                         '21-30', decile)) |>
+  mutate(decile = ifelse(30<rotten_tomatoes & rotten_tomatoes <=40, 
+                         '31-40', decile)) |>
+  mutate(decile = ifelse(50<rotten_tomatoes & rotten_tomatoes <=60, 
+                         '51-60', decile)) |>
+  mutate(decile = ifelse(60<rotten_tomatoes & rotten_tomatoes <=70, 
+                         '61-70', decile)) |>
+  mutate(decile = ifelse(70<rotten_tomatoes & rotten_tomatoes <=80, 
+                         '71-80', decile)) |>
+  mutate(decile = ifelse(80<rotten_tomatoes & rotten_tomatoes <=90, 
+                         '81-90', decile)) |>
+  mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
+                         '91-100', decile))
 
 total <- rbind(netflix, hulu)
 total <- rbind(total,prime)
 total <- rbind(total,disney)
 
 
-mean_rankings <- data.frame(platform = c('Netflix','Hulu','Amazon Prime','Disney'), mean=c(netflix[[3]][1], hulu[[3]][1],prime[[3]][1], disney[[3]][1]))
+total_per_platform <- total |>
+  group_by(decile, platform) |>
+  summarize(number = n())
+
+
+mean_rankings <- data.frame(platform = c('Netflix','Hulu','Amazon Prime','Disney'),
+                            mean=c(netflix[[3]][1], hulu[[3]][1],
+                                   prime[[3]][1],  disney[[3]][1]))
+
+
+
+
+total_per_platform |>
+  ggplot(aes(x = decile, y = number, fill = platform)) +
+  geom_bar(position = "fill", stat = "identity") +
+  scale_color_viridis_d(option = "D", end = 0.8) +
+  theme_minimal()
+  
+
 
 total |>
   ggplot(aes(x = platform, y = rotten_tomatoes)) + 
   geom_boxplot() +
-  labs(title = "Ratings of Streamed Shows by Platform", x = "Platforms", y = "Show Ratings")
+  labs(title = "Ratings of Streamed Shows by Platform", 
+       x = "Platforms", y = "Show Ratings")
+
+
 
 mean_rankings |>
   ggplot(aes(x = platform, y = mean)) + ylim(c(0, 100)) +
   geom_bar(stat = "identity") +
-  labs(title = "Ratings of Streamed Shows by Platform", x = "Platforms", y = "Mean Ratings")
+  labs(title = "Ratings of Streamed Shows by Platform",
+       x = "Platforms", y = "Mean Ratings")
 
 
 
