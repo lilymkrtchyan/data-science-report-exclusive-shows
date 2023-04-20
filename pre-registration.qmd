@@ -1,5 +1,5 @@
 ---
-title: "Project title"
+title: "Phenomenal Eevee"
 subtitle: "Preregistration of analyses"
 format: html
 editor: visual
@@ -7,11 +7,24 @@ execute:
   echo: true
 ---
 
-# Analysis \#1
+# Analysis #1
 
-Describe your first analysis here.
+For our first analysis we will conduct hypothesis testing to examine the quality of exclusive versus non-exclusive shows to a specific platform for each platform separately.
 
-# Analysis \#2
+RQ: Is the quality of exclusive shows different from non-exclusive shows in a specific platform, for each platform separately?
 
-Describe your second analysis here.
+More specifically, we will conduct hypothesis testing to compare the quality (rotten tomato ranking) of Netflix's exclusive shows versus shows non-exclusive to Netflix only, Hulu's exclusive shows versus the shows on Hulu that are not exclusive to Hulu, Disney's exclusive shows versus shows that are not exclusive to Disney, and Prime Video's exclusive shows versus the shows on Prime Video that are not exclusive to Prime Video, separately.
 
+Our null hypothesis is that on each platform we will observe that the exclusive shows outperform the non-exclusive shows on that specific platform. Our alternative hypothesis is that the non-exclusive shows outperform the exclusive shows on a given platform, for each platform separately. These are one-sided directional hypotheses that would allow us to explore the relationship between the exclusivity of the shows to a given platform and their rankings on rotten tomatoes (based on which we define our measures of quality). If our null hypothesis is indeed true, that would give us a basis to justify that choosing exclusive shows to compare across all four platforms is objectively a better measure to analyze which streaming platform has the highest quality shows.
+
+# Analysis #2
+
+RQ: Are exclusive shows' ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?
+
+Our second analysis will be two-fold. To begin, we will conduct a hypothesis test in which we will examine the differences (or lack thereof) in exclusive shows' ratings between all four platforms (Netflix, Hulu, Disney+, and Prime Video). As such, we propose two hypotheses: our null hypothesis is that there is no difference in quality (indicated by the shows' Rotten Tomatoes score) between the platforms, and our alternative hypothesis is that there is a difference between the platforms. If we reject our null hypothesis, we will perform a two-sided directionality test to determine which platform outperforms the others (based on Rotten Tomato scores). This will ultimately help us answer the research question that we put forward: What platform presents the best-quality, exclusive television shows?
+
+Exclusive show rating comparison between all 4 platforms
+
+Null : there is no difference in quality between the 4 platforms
+
+Alternative: there is some sort of difference between the 4 platforms
