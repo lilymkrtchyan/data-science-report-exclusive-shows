@@ -259,7 +259,7 @@ print(ci)
 get_p_value(
   x = null_fits,
   obs_stat = observed_fit,
-  direction = "greater"
+  direction = "less"
 )
 
 ```
