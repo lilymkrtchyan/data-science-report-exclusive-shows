@@ -343,4 +343,10 @@ get_p_value(
 
 # Limitations
 
+The first limitation is that our study right now just focuses on the quality of exclusive shows based on their rating scores (Rotten Tomatoes), which may not be a comprehensive measure of the quality of exclusive shows or non-exclusive shows on each platform. The analysis's focus on Rotten Tomatoes ratings alone may not fully capture the perceived quality of exclusive shows on each platform. Moreover, considering the ratings of exclusive shows and not non-exclusive shows could limit the overall understanding of the quality of each platform's content.
+
+The second limitation is that we could not find any reliable and consistent dataset for the popularity, preferences, viewerships, viewing rates, or the number of subscribers of each platform, which could also affect the audiences' perceived quality and critical reception, limiting our study to find the relationship between the quality of exclusive shows or non-exclusive shows and the preference of platforms. This is a result of the competitiveness in the streaming industry. Companies' revenue almost entirely depends on subscriptions, and some of them are less active in publishing them. Additionally, some of the viewership data we find are using different metrics and, therefore, cannot be used to generate inferences.
+
+The third limitation of our study is that there are unbalanced amounts of exclusive shows on each platform; for example, Netflix has significantly larger data of exclusive shows compared to the other platforms, which may affect the overall quality comparison between platforms. Disney Plus is a relatively new platform and has a smaller library of exclusive shows, which may limit the analysis. These unbalanced amounts of exclusive shows on each platform may introduce bias and affect the conclusions we can draw from our analyses.
+
 # Acknowledgments
