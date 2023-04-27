@@ -37,6 +37,8 @@ tv_shows_cleaned <- tv_shows |>
          exclusive_prime_video = `Prime Video` == "Yes" & Netflix == "No" & Hulu == "No" & `Disney+` == "No",
          exclusive_disney_plus = `Disney+` == "Yes" & Netflix == "No" & Hulu == "No" & `Prime Video` == "No")
 
+tv_shows_cleaned
+
 
 num_netflix_exclusive <- sum(tv_shows_cleaned$exclusive_netflix == TRUE)
 num_hulu_exclusive <- sum(tv_shows_cleaned$exclusive_hulu == TRUE)
@@ -305,16 +307,23 @@ $$
 ```{r}
 #| label: multivariate-hypothesis
 
+library(forcats)
+
+tv_shows_exclusive <- tv_shows_cleaned |>
+  pivot_longer(cols = c(exclusive_netflix, exclusive_hulu, exclusive_disney_plus, exclusive_prime_video), values_to = "bool", names_to = "shows") |>
+  filter(bool == TRUE) |>
+  mutate(shows = fct_relevel(.f = shows, "exclusive_netflix"))
+
 set.seed(123)
-observed_fit <- tv_shows_cleaned |>
-  specify(`Rotten Tomatoes` ~ exclusive_netflix + exclusive_hulu + exclusive_prime_video + exclusive_disney_plus) |>
+observed_fit <- tv_shows_exclusive |>
+  specify(`Rotten Tomatoes` ~ shows) |>
   fit()
 
-null_fits <- tv_shows_cleaned |>
-  specify(`Rotten Tomatoes` ~ exclusive_netflix + exclusive_hulu + exclusive_prime_video + exclusive_disney_plus) |>
+null_fits <- tv_shows_exclusive |>
+  specify(`Rotten Tomatoes` ~ shows) |>
   hypothesize(null = "independence") |>
   generate(reps = 1000, type = "permute") |>
-    fit()
+  fit()
 
 get_confidence_interval(
   x = null_fits,
@@ -326,7 +335,6 @@ get_p_value(
   obs_stat = observed_fit,
   direction = "two sided"
 )
-
 ```
 
 # Evaluation of significance
