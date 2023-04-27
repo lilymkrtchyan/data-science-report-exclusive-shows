@@ -349,4 +349,14 @@ The second limitation is that we could not find any reliable and consistent data
 
 The third limitation of our study is that there are unbalanced amounts of exclusive shows on each platform; for example, Netflix has significantly larger data of exclusive shows compared to the other platforms, which may affect the overall quality comparison between platforms. Disney Plus is a relatively new platform and has a smaller library of exclusive shows, which may limit the analysis. These unbalanced amounts of exclusive shows on each platform may introduce bias and affect the conclusions we can draw from our analyses.
 
+The fourth limitation is that our analysis plan uses tomato scores to represent quality. This definition could have some biases. Firstly, the tomato score is a critics rating rather than an audience rating. Many movies and shows have a target audience that is better or worse represented than the other. Critics might inadvertently bring bias into their rating, and subsequently, our definition of quality could be biased as well. In addition, some shows that are watched by fewer people are less rated with tomato score, making the score easily influenced by a few critics, and therefore create bias in the definition of quality.
+
+The fifth limitation is that our analysis does not account for the different types or genres of exclusive shows on each platform, such as comedies, documentaries, actions, etc., which may have different average ratings. We would have better insights if we had more data about the genres to compare shows of similar types across platforms rather than just looking at the overall average ratings.
+
 # Acknowledgments
+
+Thanks to this user who published the dataset we are using on Kraggle:
+
+<https://www.kaggle.com/datasets/ruchi798/tv-shows-on-netflix-prime-video-hulu-and-disney>
+
+\
