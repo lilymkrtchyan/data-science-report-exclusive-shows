@@ -165,14 +165,14 @@
     "href": "presentation.html#introduce-the-data-joyce",
     "title": "Streaming Wars",
     "section": "Introduce the data [Joyce]",
-    "text": "Introduce the data [Joyce]\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code"
+    "text": "Introduce the data [Joyce]\nWhen you click the Render button a document will be generated that includes:\n\nContent authored with markdown\nOutput from executable code\n\n\n\n# A tibble: 5,368 × 16\n    ...1    ID Title            Year Age   IMDb  `Rotten Tomatoes` Netflix Hulu \n   <dbl> <dbl> <chr>           <dbl> <chr> <chr>             <int> <chr>   <chr>\n 1     0     1 Breaking Bad     2008 18+   9.4/…               100 Yes     No   \n 2     1     2 Stranger Things  2016 16+   8.7/…                96 Yes     No   \n 3     2     3 Attack on Titan  2013 18+   9.0/…                95 Yes     Yes  \n 4     3     4 Better Call Sa…  2015 18+   8.8/…                94 Yes     No   \n 5     4     5 Dark             2017 16+   8.8/…                93 Yes     No   \n 6     5     6 Avatar: The La…  2005 7+    9.3/…                93 Yes     No   \n 7     6     7 Peaky Blinders   2013 18+   8.8/…                93 Yes     No   \n 8     7     8 The Walking De…  2010 18+   8.2/…                93 Yes     No   \n 9     8     9 Black Mirror     2011 18+   8.8/…                92 Yes     No   \n10     9    10 The Queen's Ga…  2020 18+   8.6/…                92 Yes     No   \n# ℹ 5,358 more rows\n# ℹ 7 more variables: `Prime Video` <chr>, `Disney+` <chr>, Type <dbl>,\n#   exclusive_netflix <lgl>, exclusive_hulu <lgl>, exclusive_prime_video <lgl>,\n#   exclusive_disney_plus <lgl>"
   },
   {
     "objectID": "presentation.html#highlights-from-eda-lili",
     "href": "presentation.html#highlights-from-eda-lili",
     "title": "Streaming Wars",
     "section": "Highlights from EDA [Lili]",
-    "text": "Highlights from EDA [Lili]\nWhen you click the Render button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\n[1] 2"
+    "text": "Highlights from EDA [Lili]"
   },
   {
     "objectID": "presentation.html#inferencemodelingother-analysis-uyen-patrick",
