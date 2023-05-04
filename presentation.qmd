@@ -1,26 +1,26 @@
 ---
-title: Presentation title
-subtitle: Presentation subtitle (if any)
-author: Team name <br> Names of team members
-date: Your date
+title: Streaming Wars
+subtitle: A Data-Driven Comparison of Exclusive and Non-Exclusive Shows on Popular Streaming Platforms
+author: Phenomenal Eevee <br> Kayla Riggs, Uyen Hoang, Pinxian Lu, Lili Mkrtchyan, Joyce Chen 
+date: 05/05/2023
 format: revealjs
 editor: visual
 execute:
   echo: false
 ---
 
-## Introduce the topic and motivation
+## Introduce the topic and motivation \[Kayla\]
 
 Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
 
-## Introduce the data
+## Introduce the data \[Joyce\]
 
 When you click the **Render** button a document will be generated that includes:
 
 -   Content authored with markdown
 -   Output from executable code
 
-## Highlights from EDA
+## Highlights from EDA \[Lili\]
 
 When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
 
@@ -28,12 +28,24 @@ When you click the **Render** button a presentation will be generated that inclu
 1 + 1
 ```
 
-## Inference/modeling/other analysis
+## Inference/modeling/other analysis \[Uyen, Patrick\]
+
+Research Question #1 (hypothesis test #1)
+
+Tentative: Look into regression model and understand how to interpret confidence intervals
+
+Show p value visualization (aka shade_p\_value)
 
 Your results here
 
-## Inference/modeling/other analysis
+## Inference/modeling/other analysis \[Kayla, Joyce\]
+
+Research Question #2 (hypothesis test #2)
+
+Tentative: Look into regression model and understand how to interpret confidence intervals
+
+Show p value visualization (aka shade_p\_value)
 
 Your results here
 
-## Conclusions + future work
+## Conclusions + future work \[Uyen, Patrick\]

@@ -352,13 +352,13 @@ The 95% confidence interval \[45.36, 49.26\] for the intercept shows that we can
 
 **Hypothesis #1: p-values**
 
-The intercept p-value is 0.001 which represents the p-value for non-exclusive shows of all 4 platforms. For exclusive shows on Hulu, Netflix, and Disney Plus, we calculated a p-value of 1 whereas exclusive shows on Prime Video had a p-value of 0.466. Since the p-values for exclusive shows on all 4 platforms is greater than the significance level indicated by $\alpha$ = 0.05, we fail to reject the null hypothesis (the mean Rotten Tomatoes score of exclusive shows is less than the mean Rotten Tomatoes score of high-rated non-exclusive shows across all four platforms). This means that there wasn't convincing evidence that would favor the alternative hypothesis. 
+The intercept p-value is 0.001 which represents the p-value for non-exclusive shows of all 4 platforms. For exclusive shows on Hulu, Netflix, and Disney Plus, we calculated a p-value of 1 whereas exclusive shows on Prime Video had a p-value of 0.466. Since the p-values for exclusive shows on all 4 platforms is greater than the significance level indicated by $\alpha$ = 0.05, we fail to reject the null hypothesis (the mean Rotten Tomatoes score of exclusive shows is less than the mean Rotten Tomatoes score of high-rated non-exclusive shows across all four platforms). This means that there wasn't convincing evidence that would favor the alternative hypothesis.
 
 **Hypothesis #2: point estimate**
 
-The intercept 52.747303	represents, on average, the Rotten Tomatoes score for exclusive Netflix shows.
+The intercept 52.747303 represents, on average, the Rotten Tomatoes score for exclusive Netflix shows.
 
-The estimated Rotten Tomatoes score for exclusive Disney plus shows, on average, will be 4.600244 less than the exclusive Netflix shows Rotten Tomatoes score. The estimated Rotten Tomatoes score for exclusive Hulu shows, on average, will be 1.556898 less than the exclusive Netflix shows Rotten Tomatoes score. The estimated Rotten Tomatoes score for exclusive Prime video shows, on average, will be 17.856883 less than the exclusive Netflix shows Rotten Tomatoes score	 
+The estimated Rotten Tomatoes score for exclusive Disney plus shows, on average, will be 4.600244 less than the exclusive Netflix shows Rotten Tomatoes score. The estimated Rotten Tomatoes score for exclusive Hulu shows, on average, will be 1.556898 less than the exclusive Netflix shows Rotten Tomatoes score. The estimated Rotten Tomatoes score for exclusive Prime video shows, on average, will be 17.856883 less than the exclusive Netflix shows Rotten Tomatoes score
 
 **Hypothesis #2: confidence intervals**
 
@@ -372,11 +372,11 @@ The 95% confidence intervals for observing the estimated Rotten Tomatoes scores 
 
 Since all the above confidence intervals include 0 within their interval, we cannot confidently rule out the possibility that shows exclusive to either Hulu, Disney+, or Prime Video do not have a significant influence on Rotten Tomatoes ratings.
 
-The 95% confidence interval \[45.603521, 47.071124\] for the intercept shows that we can be confident that the estimated Rotten Tomato score for exclusive Netflix shows is within the given confidence interval range. 
+The 95% confidence interval \[45.603521, 47.071124\] for the intercept shows that we can be confident that the estimated Rotten Tomato score for exclusive Netflix shows is within the given confidence interval range.
 
 **Hypothesis #2: p-values**
 
-The intercept p-value is 0.001 which represents the p-value for exclusive Netflix shows. For exclusive shows on Prime Video and Disney Plus, we calculated a p-value of 0.001 whereas exclusive shows on Hulu had a p-value of 0.02. Since the p-values for exclusive shows on all 4 platforms are less than the significance level indicated by $\alpha$ = 0.05, we are able to reject the null hypothesis (there is no difference in quality of the exclusive shows between the four platforms). This means that there was convincing evidence that would favor the alternative hypothesis which indicates that there is a difference in quality of the exclusive shows between the four platforms (measured through Rotten Tomatoes scores). 
+The intercept p-value is 0.001 which represents the p-value for exclusive Netflix shows. For exclusive shows on Prime Video and Disney Plus, we calculated a p-value of 0.001 whereas exclusive shows on Hulu had a p-value of 0.02. Since the p-values for exclusive shows on all 4 platforms are less than the significance level indicated by $\alpha$ = 0.05, we are able to reject the null hypothesis (there is no difference in quality of the exclusive shows between the four platforms). This means that there was convincing evidence that would favor the alternative hypothesis which indicates that there is a difference in quality of the exclusive shows between the four platforms (measured through Rotten Tomatoes scores).
 
 # Limitations
 
