@@ -46,6 +46,22 @@ Show p value visualization (aka shade_p\_value)
 
 Your results here
 
+:::::: {.columns}
+
+::: {.column}
+
+Null Hypo
+
+:::
+
+::: {.column}
+
+Not nuldsuhggoedguo
+
+:::
+
+::::::
+
 :::
 
 :::
