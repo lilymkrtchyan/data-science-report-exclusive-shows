@@ -30,7 +30,11 @@ When you click the **Render** button a presentation will be generated that inclu
 
 ## Inference/modeling/other analysis \[Uyen, Patrick\]
 
-Research Question #1 (hypothesis test #1)
+Research Question #1
+
+**Is the quality of exclusive shows different from non-exclusive shows in a specific platform, for each platform separately?**
+
+(hypothesis test #1)
 
 Tentative: Look into regression model and understand how to interpret confidence intervals
 
@@ -48,4 +52,16 @@ Show p value visualization (aka shade_p\_value)
 
 Your results here
 
-## Conclusions + future work \[Uyen, Patrick\]
+## Conclusions & Future Work \[Uyen, Patrick\]
+
+**Conclusion:**
+
+1.  To sum it up, the research indicates that exclusive shows on Hulu, Netflix, and Disney Plus tend to have higher Rotten Tomatoes ratings than non-exclusive shows on those platforms, with the exception of Prime Video.
+
+2.  According to the study, there appears to be a difference in the quality of exclusive programs offered by the four platforms, as evidenced by their Rotten Tomatoes ratings.
+
+**Future work:**
+
+-   Explore other measures of quality for exclusive shows and non-exclusive shows on each platform.
+
+-   Consider other factors that may influence the perceived quality of content, such as viewership, preferences, and number of subscribers.
