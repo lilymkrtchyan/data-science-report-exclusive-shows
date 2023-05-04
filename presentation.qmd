@@ -50,13 +50,21 @@ Your results here
 
 ::: {.column}
 
-Null Hypo
+**Null Hypothesis**: There is no difference in quality of the exclusive shows between the four platforms.
+
+$$
+H_0: μ1 = μ2 = μ3 = μ4
+$$
 
 :::
 
 ::: {.column}
 
-Not nuldsuhggoedguo
+**Alternate Hypothesis:** There is a difference in quality of the exclusive shows between the four platforms.
+
+$$
+H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4
+$$
 
 :::
 
@@ -76,7 +84,7 @@ Show p value visualization (aka shade_p\_value)
 
 Your results here
 
-## Conclusions & Future Work \[Uyen, Patrick\]
+## Conclusions & Future Work \[UP\]
 
 ::: r-fit-text
 ::: {style="margin: 1px; padding: 10px;"}
@@ -84,12 +92,14 @@ Your results here
 
 1.  To sum it up, the research indicates that exclusive shows on Hulu, Netflix, and Disney Plus tend to have higher Rotten Tomatoes ratings than non-exclusive shows on those platforms, with the exception of Prime Video.
 
-2.  According to the study, there appears to be a difference in the quality of exclusive programs offered by the four platforms, as evidenced by their Rotten Tomatoes ratings.
+2.  According to the study, there appears to be a difference in the quality of exclusive programs offered by the four platforms, as evidenced by their Rotten Tomatoes ratings. Netflix, Hulu, and Disney Plus has similar average exclusive show quality, while Prime Video's are significantly lower.
 
 **Future work:**
 
--   Explore other measures of quality for exclusive shows and non-exclusive shows on each platform.
+-   Explore other measures of quality for exclusive shows and non-exclusive shows on each platform, potentailly combining ratings from multiple website to form a more objective measurement of quality.
 
 -   Consider other factors that may influence the perceived quality of content, such as viewership, preferences, and number of subscribers.
+
+-   Include more variables in the dataset by joining, in order to rule out confounding variables that might create biases.
 :::
 :::
