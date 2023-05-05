@@ -337,7 +337,7 @@ $$
 **Alternate Hypothesis:** The average Rotten Tomatoes score of exclusive shows is greater than the average Rotten Tomatoes score of non-exclusive shows across all four platforms.
 
 $$
-H_0: \mu_{exclusive} > \mu_{non-exclusive}
+H_A: \mu_{exclusive} > \mu_{non-exclusive}
 $$
 :::
 :::
