@@ -10,8 +10,10 @@ execute:
 ---
 
 ## Our Topic: Streaming Wars
+
 ::: r-fit-text
 ::: {style="margin: 1px; padding: 6px;"}
+
 **Our Motivation:**
 
 Streaming platforms have taken the world by storm due to their convenience and ability to house innumerable popular television shows and movies. As these mediums continue to grow in popularity, discourse about them is also developing and is often centered around one primary question: Which platform is best?
@@ -90,7 +92,7 @@ tv_shows_cleaned1
   
 ```
 
-## Highlights from EDA 
+## Highlights from EDA
 
 ```{r fig.margin, fig.margin = TRUE}
 
@@ -299,8 +301,10 @@ $$
 :::
 
 ## Hypothesis Test #2
-::: r-fit-text
-::: {style="margin: 1px; padding: 10px;"}
+
+::: r-fit-text 
+::: {style="margin: 1px; padding: 10px;"} 
+
 Research Question #2: **Are exclusive shows' ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?**
 
 **Mode:** Hypothesis Test
@@ -372,7 +376,7 @@ visualize(null_fits) +
   
 ```
 
-## Conclusions & Future Work 
+## Conclusions & Future Work
 
 ::: r-fit-text
 ::: {style="margin: 1px; padding: 10px;"}
