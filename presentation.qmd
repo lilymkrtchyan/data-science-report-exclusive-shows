@@ -93,6 +93,7 @@ tv_shows_cleaned1
 ```
 
 ## Highlights from EDA
+::: {style="margin: 1px; padding: 3px;"}
 
 ```{r fig.margin, fig.margin = TRUE}
 
@@ -236,7 +237,9 @@ plot1 <- total_per_platform |>
   scale_color_viridis_d(option = "D", end = 0.8) +
   theme_minimal() +
   labs(
-    title = "Percent of shows that fall under a given decile for each platform",
+    title = "Percent of shows that 
+    fall under a given 
+    decile for each platform",
       x = "Decile", y = "Fraction of shows", 
     fill = "Platforms", disnay = "Disney+") +
   scale_fill_discrete(labels = c("Disney+", "Hulu",
@@ -248,7 +251,8 @@ plot1 <- total_per_platform |>
 plot2 <- total |>
   ggplot(aes(x = platform, y = rotten_tomatoes)) + 
   geom_boxplot() +
-  labs(title = "Ratings of Streamed Shows by Platform", 
+  labs(title = "Ratings of Streamed
+       Shows by Platform", 
        x = "Platforms", y = "Show Ratings")
 
 
@@ -256,22 +260,24 @@ plot2 <- total |>
 plot3 <- mean_rankings |>
   ggplot(aes(x = platform, y = mean)) + ylim(c(0, 100)) +
   geom_bar(stat = "identity") +
-  labs(title = "Ratings of Streamed Shows by Platform",
+  labs(title = "Ratings of Streamed
+       Shows by Platform",
        x = "Platforms", y = "Mean Ratings")
 
 
 grid.arrange(plot1, plot2, plot3, ncol = 3)
 
 ```
+::: 
+
 
 ## Hypothesis Test #1
 
 ::: r-fit-text
 ::: {style="margin: 1px; padding: 10px;"}
-Research Question 1: **Is the quality of exclusive shows in the four platforms different from non-exclusive shows?**
+RQ #1: **Is the quality of exclusive shows in the four platforms different from non-exclusive shows?**
 
 ::: {style="width: 500px; height: 300px; margin-left: 300px"}
-
 ```{r}
 
 tv_shows_cleaned_copy1 <- tv_shows_cleaned_copy |>
@@ -301,14 +307,14 @@ p_value <- get_p_value(
 
 #Confidence Intervals
 
-null_fits1 <- tv_shows_cleaned_copy1 |>
+null_fits2 <- tv_shows_cleaned_copy1 |>
   specify(rotten_tomatoes ~ exclusivity) |>
   hypothesize(null = "independence") |>
   generate(reps = 1000, type = "bootstrap") |>
   calculate(stat = "diff in means", order = c(TRUE, FALSE))
 
 ci1 <- get_confidence_interval(
-  x = null_fits1,
+  x = null_fits2,
   point_estimate = observed_fit1,
   level = 0.95
 )
@@ -335,17 +341,16 @@ H_0: \mu_{exclusive} > \mu_{non-exclusive}
 $$
 :::
 :::
+
 Result: p-value = 0.01, we reject the null hypothesis.
 :::
-
 :::
 
 ## Hypothesis Test #2
 
 ::: r-fit-text
 ::: {style="margin: 1px; padding: 10px;"}
-
-Research Question #2: **Are exclusive shows' ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?**
+RQ #2: **Are exclusive shows' ratings different between the four platforms?**
 
 ::: columns
 ::: column
@@ -366,7 +371,6 @@ $$
 :::
 
 ::: {style="width: 500px; height: 300px; margin-left: 300px"}
-
 ```{r}
 library(tidyverse)
 library(tidymodels)
@@ -415,12 +419,9 @@ visualize(null_fits) +
 ```
 :::
 
-**Results: **
-*Point Estimates:* Intercept (52.75), Exclusive: Disney+ (-4.60), Hulu (-1.56), Prime Video (-17.86)
-*P-Values:* Intercept (0.001), Exclusive: Disney+ (0.001), Hulu (0.02), Prime Video (0.001)
+**Results:** *Point Estimates:* Intercept (52.75), Exclusive: Disney+ (-4.60), Hulu (-1.56), Prime Video (-17.86) *P-Values:* Intercept (0.001), Exclusive: Disney+ (0.001), Hulu (0.02), Prime Video (0.001)
 :::
 :::
-
 
 ## Conclusions & Future Work
 
