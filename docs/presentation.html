@@ -343,30 +343,40 @@ Phenomenal Eevee <br> Kayla Riggs, Uyen Hoang, Pinxian Lu, Lili Mkrtchyan, Joyce
 </section>
 <section id="introduce-the-data-joyce" class="slide level2">
 <h2>Introduce the data [Joyce]</h2>
-<p>When you click the <strong>Render</strong> button a document will be generated that includes:</p>
+<div class="r-fit-text">
+<div style="margin: 1px; padding: 6px;">
+<p><strong>Original Dataset Characteristics</strong></p>
 <ul>
-<li>Content authored with markdown</li>
-<li>Output from executable code</li>
+<li>The original dataset contains 12 columns and 5368 observations.</li>
+<li>The observations (rows) represents each individual TV show readily watched and broadcasted on at least one of the four top ranking broadcasting platforms (Hulu, Disney+, Prime Video and Netflix).</li>
+<li>The attributes (columns) categorizes each individual TV show based on the streaming platform it’s being broadcasted on and reveals additional information. This includes revealing the year the TV show was produced, target age group, whether show is streamed on a specific platfom, and rating of the show (Rotten Tomatoes and IMDB metrics).</li>
 </ul>
+<p><strong>Data Cleaning</strong></p>
+<ul>
+<li>Removed ‘%’ in the Rotten Tomatoes and converted the values to integers</li>
+<li>Column Names were renamed following best practices</li>
+<li>Converted binary variables Netflix, Hulu, Prime Video, Disney+ into “Yes” and “No”</li>
+<li>Mutated to add logical (bool) data columns that specifies (non)exclusive tv shows on each of the 4 streaming platforms.</li>
+</ul>
+</div>
+</div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5,368 × 16
-    ...1    ID Title            Year Age   IMDb  `Rotten Tomatoes` Netflix Hulu 
-   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;             &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;
- 1     0     1 Breaking Bad     2008 18+   9.4/…               100 Yes     No   
- 2     1     2 Stranger Things  2016 16+   8.7/…                96 Yes     No   
- 3     2     3 Attack on Titan  2013 18+   9.0/…                95 Yes     Yes  
- 4     3     4 Better Call Sa…  2015 18+   8.8/…                94 Yes     No   
- 5     4     5 Dark             2017 16+   8.8/…                93 Yes     No   
- 6     5     6 Avatar: The La…  2005 7+    9.3/…                93 Yes     No   
- 7     6     7 Peaky Blinders   2013 18+   8.8/…                93 Yes     No   
- 8     7     8 The Walking De…  2010 18+   8.2/…                93 Yes     No   
- 9     8     9 Black Mirror     2011 18+   8.8/…                92 Yes     No   
-10     9    10 The Queen's Ga…  2020 18+   8.6/…                92 Yes     No   
-# ℹ 5,358 more rows
-# ℹ 7 more variables: `Prime Video` &lt;chr&gt;, `Disney+` &lt;chr&gt;, Type &lt;dbl&gt;,
-#   exclusive_netflix &lt;lgl&gt;, exclusive_hulu &lt;lgl&gt;, exclusive_prime_video &lt;lgl&gt;,
-#   exclusive_disney_plus &lt;lgl&gt;</code></pre>
+<pre><code># A tibble: 10 × 10
+   Title                 `Rotten Tomatoes` Netflix Hulu  `Prime Video` `Disney+`
+   &lt;chr&gt;                             &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;         &lt;chr&gt;    
+ 1 Breaking Bad                        100 Yes     No    No            No       
+ 2 Stranger Things                      96 Yes     No    No            No       
+ 3 Attack on Titan                      95 Yes     Yes   No            No       
+ 4 Better Call Saul                     94 Yes     No    No            No       
+ 5 Dark                                 93 Yes     No    No            No       
+ 6 Avatar: The Last Air…                93 Yes     No    Yes           No       
+ 7 Peaky Blinders                       93 Yes     No    No            No       
+ 8 The Walking Dead                     93 Yes     No    No            No       
+ 9 Black Mirror                         92 Yes     No    No            No       
+10 The Queen's Gambit                   92 Yes     No    No            No       
+# ℹ 4 more variables: exclusive_netflix &lt;lgl&gt;, exclusive_hulu &lt;lgl&gt;,
+#   exclusive_prime_video &lt;lgl&gt;, exclusive_disney_plus &lt;lgl&gt;</code></pre>
 </div>
 </div>
 </section>
