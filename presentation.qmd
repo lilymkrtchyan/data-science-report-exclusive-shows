@@ -14,9 +14,7 @@ execute:
 **Our Motivation:**
 
 ::: r-fit-text
-
 ::: {style="margin: 1px; padding: 6px;"}
-
 Streaming platforms have taken the world by storm due to their convenience and ability to house innumerable popular television shows and movies. As these mediums continue to grow in popularity, discourse about them is also developing and is often centered around one primary question: Which platform is best?
 
 We have taken an in-depth look at four mainstream services ---- Netflix, Amazon Prime Video, Hulu, and Disney+ ---- the quality of their programs, measured in Rotten Tomatoes scores.
@@ -26,9 +24,7 @@ We have taken an in-depth look at four mainstream services ---- Netflix, Amazon 
 RQ1: "Is the quality of exclusive shows different from non-exclusive shows in each respective platform?"
 
 RQ2: "Are exclusive shows' ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?"
-
 :::
-
 :::
 
 ## Introducing the Data
@@ -272,36 +268,70 @@ grid.arrange(plot1, plot2, plot3, ncol = 3)
 
 ::: r-fit-text
 ::: {style="margin: 1px; padding: 10px;"}
-Research Question #1
+Research Question 1: **Is the quality of exclusive shows different from non-exclusive shows in a specific platform, for each platform separately?**
 
-**Is the quality of exclusive shows different from non-exclusive shows in a specific platform, for each platform separately?**
+::: {style="width: 500px; height: 250px; margin-left: 200px"}
 
-(hypothesis test #1)
+```{r}
+#|fig-height: 15
+#|fig-width: 30
 
-Tentative: Look into regression model and understand how to interpret confidence intervals
+tv_shows_cleaned_copy1 <- tv_shows_cleaned_copy |>
+  pivot_longer(
+    cols = exclusive_netflix:exclusive_disney_plus,
+    names_to = "all_platforms",
+    values_to = "exclusivity"
+  )
 
-Show p value visualization (aka shade_p\_value)
+names(tv_shows_cleaned_copy1)[7] <- "rotten_tomatoes"
 
-Your results here
+observed_fit1 <- tv_shows_cleaned_copy1 |>
+  specify(rotten_tomatoes ~ exclusivity) |>
+  calculate(stat = "diff in means", order = c(TRUE, FALSE))
+
+null_fits1 <- tv_shows_cleaned_copy1 |>
+  specify(rotten_tomatoes ~ exclusivity) |>
+  hypothesize(null = "independence") |>
+  generate(reps = 1000, type = "permute") |>
+  calculate(stat = "diff in means", order = c(TRUE, FALSE))
+
+#Confidence Intervals
+
+null_fits1 <- tv_shows_cleaned_copy1 |>
+  specify(rotten_tomatoes ~ exclusivity) |>
+  hypothesize(null = "independence") |>
+  generate(reps = 1000, type = "bootstrap") |>
+  calculate(stat = "diff in means", order = c(TRUE, FALSE))
+
+ci1 <- get_confidence_interval(
+  x = null_fits1,
+  point_estimate = observed_fit1,
+  level = .95)
+
+visualize(null_fits1) +
+  shade_p_value(obs_stat = observed_fit1, direction="less")
+```
+:::
 
 ::: columns
 ::: column
-**Null Hypothesis**: There is no difference in quality of the exclusive shows between the four platforms.
+**Null Hypothesis**: The average Rotten Tomatoes score of exclusive shows is less than the average Rotten Tomatoes score of non-exclusive shows across all four platforms.
 
 $$
-H_0: μ1 = μ2 = μ3 = μ4
+H_0: \mu_{exclusive} < \mu_{non-exclusive}
 $$
 :::
 
 ::: column
-**Alternate Hypothesis:** There is a difference in quality of the exclusive shows between the four platforms.
+**Alternate Hypothesis:** The average Rotten Tomatoes score of exclusive shows is greater than the average Rotten Tomatoes score of non-exclusive shows across all four platforms.
 
 $$
-H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4
+H_0: \mu_{exclusive} > \mu_{non-exclusive}
 $$
 :::
 :::
 :::
+
 :::
 
 ## Hypothesis Test #2
@@ -397,4 +427,3 @@ visualize(null_fits) +
 -   Include more variables in the dataset by joining, in order to rule out confounding variables that might create biases.
 :::
 :::
-

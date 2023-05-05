@@ -53,7 +53,7 @@
     "href": "presentation.html#highlights-from-eda",
     "title": "Streaming Wars",
     "section": "Highlights from EDA",
-    "text": "Highlights from EDA\nWhen you click the Render button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\n[1] 2"
+    "text": "Highlights from EDA"
   },
   {
     "objectID": "presentation.html#inferencemodelingother-analysis",
@@ -73,8 +73,8 @@
     "objectID": "presentation.html#conclusions-future-work",
     "href": "presentation.html#conclusions-future-work",
     "title": "Streaming Wars",
-    "section": "Conclusions + future work",
-    "text": "Conclusions + future work"
+    "section": "Conclusions & Future Work",
+    "text": "Conclusions & Future Work\n\n\nConclusion:\n\nTo sum it up, the research indicates that exclusive shows on Hulu, Netflix, and Disney Plus tend to have higher Rotten Tomatoes ratings than non-exclusive shows on those platforms, with the exception of Prime Video.\nAccording to the study, there appears to be a difference in the quality of exclusive programs offered by the four platforms, as evidenced by their Rotten Tomatoes ratings. Netflix, Hulu, and Disney Plus has similar average exclusive show quality, while Prime Video’s are significantly lower.\n\nFuture work:\n\nExplore other measures of quality for exclusive shows and non-exclusive shows on each platform, potentailly combining ratings from multiple website to form a more objective measurement of quality.\nConsider other factors that may influence the perceived quality of content, such as viewership, preferences, and number of subscribers.\nInclude more variables in the dataset by joining, in order to rule out confounding variables that might create biases."
   },
   {
     "objectID": "proposal.html",
@@ -207,6 +207,27 @@
     "href": "presentation.html#our-topic-streaming-wars",
     "title": "Streaming Wars",
     "section": "Our Topic: Streaming Wars",
-    "text": "Our Topic: Streaming Wars\n\nOur Motivation:\nStreaming platforms have taken the world by storm due to their convenience and ability to house innumerable popular television shows and movies. As these mediums continue to grow in popularity, discourse about them is also developing and is often centered around one primary question: Which platform is best?\nWe have taken an in-depth look at four mainstream services —- Netflix, Amazon Prime Video, Hulu, and Disney+ —- the quality of their programs, measured in Rotten Tomatoes scores.\nOur Research Questions:\nRQ1: “Is the quality of exclusive shows different from non-exclusive shows in each respective platform?”\nRQ2: “Are exclusive shows’ ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?”"
+    "text": "Our Topic: Streaming Wars\nOur Motivation:\n\n\nStreaming platforms have taken the world by storm due to their convenience and ability to house innumerable popular television shows and movies. As these mediums continue to grow in popularity, discourse about them is also developing and is often centered around one primary question: Which platform is best?\nWe have taken an in-depth look at four mainstream services —- Netflix, Amazon Prime Video, Hulu, and Disney+ —- the quality of their programs, measured in Rotten Tomatoes scores.\nOur Research Questions:\nRQ1: “Is the quality of exclusive shows different from non-exclusive shows in each respective platform?”\nRQ2: “Are exclusive shows’ ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?”"
+  },
+  {
+    "objectID": "presentation.html#introducing-the-data",
+    "href": "presentation.html#introducing-the-data",
+    "title": "Streaming Wars",
+    "section": "Introducing the Data",
+    "text": "Introducing the Data\n\n\nOriginal Dataset Characteristics\n\nThe original dataset contains 12 columns and 5368 observations.\nThe observations (rows) represents each individual TV show readily watched and broadcasted on at least one of the four top ranking broadcasting platforms (Hulu, Disney+, Prime Video and Netflix).\nThe attributes (columns) categorizes each individual TV show based on the streaming platform it’s being broadcasted on and reveals additional information. This includes revealing the year the TV show was produced, target age group, whether show is streamed on a specific platfom, and rating of the show (Rotten Tomatoes and IMDB metrics).\n\nData Cleaning\n\nRemoved ‘%’ in the Rotten Tomatoes and converted the values to integers\nColumn Names were renamed following best practices\nConverted binary variables Netflix, Hulu, Prime Video, Disney+ into “Yes” and “No”\nMutated to add logical (bool) data columns that specifies (non)exclusive tv shows on each of the 4 streaming platforms.\n\n\n\n\n\n# A tibble: 10 × 10\n   Title                 `Rotten Tomatoes` Netflix Hulu  `Prime Video` `Disney+`\n   <chr>                             <int> <chr>   <chr> <chr>         <chr>    \n 1 Breaking Bad                        100 Yes     No    No            No       \n 2 Stranger Things                      96 Yes     No    No            No       \n 3 Attack on Titan                      95 Yes     Yes   No            No       \n 4 Better Call Saul                     94 Yes     No    No            No       \n 5 Dark                                 93 Yes     No    No            No       \n 6 Avatar: The Last Air…                93 Yes     No    Yes           No       \n 7 Peaky Blinders                       93 Yes     No    No            No       \n 8 The Walking Dead                     93 Yes     No    No            No       \n 9 Black Mirror                         92 Yes     No    No            No       \n10 The Queen's Gambit                   92 Yes     No    No            No       \n# ℹ 4 more variables: exclusive_netflix <lgl>, exclusive_hulu <lgl>,\n#   exclusive_prime_video <lgl>, exclusive_disney_plus <lgl>"
+  },
+  {
+    "objectID": "presentation.html#hypothesis-test-1",
+    "href": "presentation.html#hypothesis-test-1",
+    "title": "Streaming Wars",
+    "section": "Hypothesis Test #1",
+    "text": "Hypothesis Test #1\n\n\nResearch Question 1: Is the quality of exclusive shows different from non-exclusive shows in a specific platform, for each platform separately?\n\n\n\n\n\n\n\n\n\nNull Hypothesis: The average Rotten Tomatoes score of exclusive shows is less than the average Rotten Tomatoes score of non-exclusive shows across all four platforms.\n\\[\nH_0: \\mu_{exclusive} < \\mu_{non-exclusive}\n\\]\n\nAlternate Hypothesis: The average Rotten Tomatoes score of exclusive shows is greater than the average Rotten Tomatoes score of non-exclusive shows across all four platforms.\n\\[\nH_0: \\mu_{exclusive} > \\mu_{non-exclusive}\n\\]"
+  },
+  {
+    "objectID": "presentation.html#hypothesis-test-2",
+    "href": "presentation.html#hypothesis-test-2",
+    "title": "Streaming Wars",
+    "section": "Hypothesis Test #2",
+    "text": "Hypothesis Test #2\n::: r-fit-text ::: {style=“margin: 1px; padding: 10px;”}\nResearch Question #2: Are exclusive shows’ ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?\nMode: Hypothesis Test\n\nNull Hypothesis: There is no difference in quality of the exclusive shows between the four platforms.\n\\[\nH_0: μ1 = μ2 = μ3 = μ4\n\\]\n\n\nAlternate Hypothesis: There is a difference in quality of the exclusive shows between the four platforms.\n\\[\nH_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4\n\\]\n\nVisualizations: :::\n\n\n# A tibble: 4 × 2\n  term                       estimate\n  <chr>                         <dbl>\n1 intercept                     52.7 \n2 showsexclusive_disney_plus    -4.60\n3 showsexclusive_hulu           -1.56\n4 showsexclusive_prime_video   -17.9 \n\n\n# A tibble: 4 × 2\n  term                       p_value\n  <chr>                        <dbl>\n1 intercept                     0   \n2 showsexclusive_disney_plus    0   \n3 showsexclusive_hulu           0.02\n4 showsexclusive_prime_video    0   \n\n\n# A tibble: 4 × 3\n  term                       lower_ci upper_ci\n  <chr>                         <dbl>    <dbl>\n1 intercept                     52.0    53.5  \n2 showsexclusive_disney_plus    -6.41   -2.77 \n3 showsexclusive_hulu           -2.81   -0.310\n4 showsexclusive_prime_video   -19.0   -16.6"
   }
 ]

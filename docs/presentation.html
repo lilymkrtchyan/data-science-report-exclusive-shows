@@ -339,17 +339,19 @@ Phenomenal Eevee <br> Kayla Riggs, Uyen Hoang, Pinxian Lu, Lili Mkrtchyan, Joyce
 </section>
 <section id="our-topic-streaming-wars" class="slide level2">
 <h2>Our Topic: Streaming Wars</h2>
-<div style="margin: 1px; padding: 6px;">
 <p><strong>Our Motivation:</strong></p>
+<div class="r-fit-text">
+<div style="margin: 1px; padding: 6px;">
 <p>Streaming platforms have taken the world by storm due to their convenience and ability to house innumerable popular television shows and movies. As these mediums continue to grow in popularity, discourse about them is also developing and is often centered around one primary question: Which platform is best?</p>
 <p>We have taken an in-depth look at four mainstream services —- Netflix, Amazon Prime Video, Hulu, and Disney+ —- the quality of their programs, measured in Rotten Tomatoes scores.</p>
 <p><strong>Our Research Questions:</strong></p>
 <p>RQ1: “Is the quality of exclusive shows different from non-exclusive shows in each respective platform?”</p>
 <p>RQ2: “Are exclusive shows’ ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?”</p>
 </div>
+</div>
 </section>
-<section id="introduce-the-data-joyce" class="slide level2">
-<h2>Introduce the data [Joyce]</h2>
+<section id="introducing-the-data" class="slide level2">
+<h2>Introducing the Data</h2>
 <div class="r-fit-text">
 <div style="margin: 1px; padding: 6px;">
 <p><strong>Original Dataset Characteristics</strong></p>
@@ -387,47 +389,56 @@ Phenomenal Eevee <br> Kayla Riggs, Uyen Hoang, Pinxian Lu, Lili Mkrtchyan, Joyce
 </div>
 </div>
 </section>
-<section id="highlights-from-eda-lili" class="slide level2">
-<h2>Highlights from EDA [Lili]</h2>
+<section id="highlights-from-eda" class="slide level2">
+<h2>Highlights from EDA</h2>
 
 <img data-src="presentation_files/figure-revealjs/fig.margin-1.png" width="960" class="r-stretch"></section>
-<section id="inferencemodelingother-analysis-uyen-patrick" class="slide level2">
-<h2>Inference/modeling/other analysis [Uyen, Patrick]</h2>
+<section id="hypothesis-test-1" class="slide level2">
+<h2>Hypothesis Test #1</h2>
 <div class="r-fit-text">
 <div style="margin: 1px; padding: 10px;">
-<p>Research Question #1</p>
-<p><strong>Is the quality of exclusive shows different from non-exclusive shows in a specific platform, for each platform separately?</strong></p>
-<p>(hypothesis test #1)</p>
-<p>Tentative: Look into regression model and understand how to interpret confidence intervals</p>
-<p>Show p value visualization (aka shade_p_value)</p>
-<p>Your results here</p>
+<p>Research Question 1: <strong>Is the quality of exclusive shows different from non-exclusive shows in a specific platform, for each platform separately?</strong></p>
+<div style="width: 500px; height: 250px; margin-left: 200px">
+<div class="cell">
+<div class="cell-output-display">
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+</div>
+</div>
+</div>
 <div class="columns">
 <div class="column">
-<p><strong>Null Hypothesis</strong>: There is no difference in quality of the exclusive shows between the four platforms.</p>
+<p><strong>Null Hypothesis</strong>: The average Rotten Tomatoes score of exclusive shows is less than the average Rotten Tomatoes score of non-exclusive shows across all four platforms.</p>
 <p><span class="math display">\[
-H_0: μ1 = μ2 = μ3 = μ4
+H_0: \mu_{exclusive} &lt; \mu_{non-exclusive}
 \]</span></p>
 </div><div class="column">
-<p><strong>Alternate Hypothesis:</strong> There is a difference in quality of the exclusive shows between the four platforms.</p>
+<p><strong>Alternate Hypothesis:</strong> The average Rotten Tomatoes score of exclusive shows is greater than the average Rotten Tomatoes score of non-exclusive shows across all four platforms.</p>
 <p><span class="math display">\[
-H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4
+H_0: \mu_{exclusive} &gt; \mu_{non-exclusive}
 \]</span></p>
 </div>
 </div>
 </div>
 </div>
 </section>
-<section id="inferencemodelingother-analysis-kayla-joyce" class="slide level2">
-<h2>Inference/modeling/other analysis [Kayla, Joyce]</h2>
-<div style="margin: 1px; padding: 10px;">
+<section id="hypothesis-test-2" class="slide level2">
+<h2>Hypothesis Test #2</h2>
+<p>::: r-fit-text ::: {style=“margin: 1px; padding: 10px;”}</p>
 <p>Research Question #2: <strong>Are exclusive shows’ ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?</strong></p>
 <p><strong>Mode:</strong> Hypothesis Test</p>
+<div class="column">
 <p><strong>Null Hypothesis</strong>: There is no difference in quality of the exclusive shows between the four platforms.</p>
-<p>$$ H_0: μ1 = μ2 = μ3 = μ4 $$</p>
-<p><strong>Alternate Hypothesis:</strong> There is a difference in quality of the exclusive shows between the four platforms.</p>
-<p>$$ H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4 $$</p>
-<p><strong>Visualizations:</strong></p>
+<p><span class="math display">\[
+H_0: μ1 = μ2 = μ3 = μ4
+\]</span></p>
 </div>
+<div class="column">
+<p><strong>Alternate Hypothesis:</strong> There is a difference in quality of the exclusive shows between the four platforms.</p>
+<p><span class="math display">\[
+H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4
+\]</span></p>
+</div>
+<p><strong>Visualizations:</strong> :::</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
@@ -458,9 +469,9 @@ H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4
 </div>
 
 </div>
-<img data-src="presentation_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
-<section id="conclusions-future-work-up" class="slide level2">
-<h2>Conclusions &amp; Future Work [UP]</h2>
+<img data-src="presentation_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="conclusions-future-work" class="slide level2">
+<h2>Conclusions &amp; Future Work</h2>
 <div class="r-fit-text">
 <div style="margin: 1px; padding: 10px;">
 <p><strong>Conclusion:</strong></p>
