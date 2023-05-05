@@ -10,7 +10,7 @@ execute:
 ---
 
 ## Our Topic: Streaming Wars
-
+::: r-fit-text
 ::: {style="margin: 1px; padding: 6px;"}
 **Our Motivation:**
 
@@ -25,7 +25,7 @@ RQ1: "Is the quality of exclusive shows different from non-exclusive shows in ea
 RQ2: "Are exclusive shows' ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?"
 :::
 
-## Introduce the data \[Joyce\]
+## Introducing the Data
 
 ::: r-fit-text
 ::: {style="margin: 1px; padding: 6px;"}
@@ -90,7 +90,7 @@ tv_shows_cleaned1
   
 ```
 
-## Highlights from EDA \[Lili\]
+## Highlights from EDA 
 
 ```{r fig.margin, fig.margin = TRUE}
 
@@ -262,7 +262,7 @@ grid.arrange(plot1, plot2, plot3, ncol = 3)
 
 ```
 
-## Inference/modeling/other analysis \[Uyen, Patrick\]
+## Hypothesis Test #1
 
 ::: r-fit-text
 ::: {style="margin: 1px; padding: 10px;"}
@@ -298,20 +298,28 @@ $$
 :::
 :::
 
-## Inference/modeling/other analysis \[Kayla, Joyce\]
-
+## Hypothesis Test #2
+::: r-fit-text
 ::: {style="margin: 1px; padding: 10px;"}
 Research Question #2: **Are exclusive shows' ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?**
 
 **Mode:** Hypothesis Test
 
+::: column
 **Null Hypothesis**: There is no difference in quality of the exclusive shows between the four platforms.
 
-\$\$ H_0: μ1 = μ2 = μ3 = μ4 \$\$
+$$
+H_0: μ1 = μ2 = μ3 = μ4
+$$
+:::
 
+::: column
 **Alternate Hypothesis:** There is a difference in quality of the exclusive shows between the four platforms.
 
-\$\$ H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4 \$\$
+$$
+H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4
+$$
+:::
 
 **Visualizations:**
 :::
@@ -363,7 +371,8 @@ visualize(null_fits) +
   shade_p_value(obs_stat = observed_fit, direction = "two-sided")
   
 ```
-## Conclusions & Future Work \[UP\]
+
+## Conclusions & Future Work 
 
 ::: r-fit-text
 ::: {style="margin: 1px; padding: 10px;"}
