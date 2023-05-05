@@ -423,53 +423,34 @@ H_0: \mu_{exclusive} &gt; \mu_{non-exclusive}
 </section>
 <section id="hypothesis-test-2" class="slide level2">
 <h2>Hypothesis Test #2</h2>
-<p>::: r-fit-text ::: {style=“margin: 1px; padding: 10px;”}</p>
+<div class="r-fit-text">
+<div style="margin: 1px; padding: 10px;">
 <p>Research Question #2: <strong>Are exclusive shows’ ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?</strong></p>
 <p><strong>Mode:</strong> Hypothesis Test</p>
+<div class="columns">
 <div class="column">
 <p><strong>Null Hypothesis</strong>: There is no difference in quality of the exclusive shows between the four platforms.</p>
 <p><span class="math display">\[
 H_0: μ1 = μ2 = μ3 = μ4
 \]</span></p>
-</div>
-<div class="column">
+</div><div class="column">
 <p><strong>Alternate Hypothesis:</strong> There is a difference in quality of the exclusive shows between the four platforms.</p>
 <p><span class="math display">\[
 H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4
 \]</span></p>
 </div>
-<p><strong>Visualizations:</strong> :::</p>
+</div>
+<div style="width: 500px; height: 300px; margin-left: 300px">
 <div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 2
-  term                       estimate
-  &lt;chr&gt;                         &lt;dbl&gt;
-1 intercept                     52.7 
-2 showsexclusive_disney_plus    -4.60
-3 showsexclusive_hulu           -1.56
-4 showsexclusive_prime_video   -17.9 </code></pre>
+<div class="cell-output-display">
+<p><img data-src="presentation_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 2
-  term                       p_value
-  &lt;chr&gt;                        &lt;dbl&gt;
-1 intercept                     0   
-2 showsexclusive_disney_plus    0   
-3 showsexclusive_hulu           0.02
-4 showsexclusive_prime_video    0   </code></pre>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 3
-  term                       lower_ci upper_ci
-  &lt;chr&gt;                         &lt;dbl&gt;    &lt;dbl&gt;
-1 intercept                     52.0    53.5  
-2 showsexclusive_disney_plus    -6.41   -2.77 
-3 showsexclusive_hulu           -2.81   -0.310
-4 showsexclusive_prime_video   -19.0   -16.6  </code></pre>
 </div>
-
+<p><strong>Results: </strong> <em>Point Estimates:</em> Intercept (52.75), Exclusive: Disney+ (-4.60), Hulu (-1.56), Prime Video (-17.86) <em>P-Values:</em> Intercept (0.001), Exclusive: Disney+ (0.001), Hulu (0.02), Prime Video (0.001)</p>
 </div>
-<img data-src="presentation_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+</div>
+</section>
 <section id="conclusions-future-work" class="slide level2">
 <h2>Conclusions &amp; Future Work</h2>
 <div class="r-fit-text">
