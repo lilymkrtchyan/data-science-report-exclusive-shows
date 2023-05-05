@@ -11,10 +11,11 @@ execute:
 
 ## Our Topic: Streaming Wars
 
-::: r-fit-text
-::: {style="margin: 1px; padding: 6px;"}
-
 **Our Motivation:**
+
+::: r-fit-text
+
+::: {style="margin: 1px; padding: 6px;"}
 
 Streaming platforms have taken the world by storm due to their convenience and ability to house innumerable popular television shows and movies. As these mediums continue to grow in popularity, discourse about them is also developing and is often centered around one primary question: Which platform is best?
 
@@ -25,6 +26,9 @@ We have taken an in-depth look at four mainstream services ---- Netflix, Amazon 
 RQ1: "Is the quality of exclusive shows different from non-exclusive shows in each respective platform?"
 
 RQ2: "Are exclusive shows' ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?"
+
+:::
+
 :::
 
 ## Introducing the Data
@@ -302,8 +306,7 @@ $$
 
 ## Hypothesis Test #2
 
-::: r-fit-text 
-::: {style="margin: 1px; padding: 10px;"} 
+::: r-fit-text ::: {style="margin: 1px; padding: 10px;"}
 
 Research Question #2: **Are exclusive shows' ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?**
 
@@ -325,8 +328,7 @@ H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4
 $$
 :::
 
-**Visualizations:**
-:::
+**Visualizations:** :::
 
 ```{r}
 
@@ -395,3 +397,4 @@ visualize(null_fits) +
 -   Include more variables in the dataset by joining, in order to rule out confounding variables that might create biases.
 :::
 :::
+
