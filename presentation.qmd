@@ -9,9 +9,21 @@ execute:
   echo: false
 ---
 
-## Introduce the topic and motivation \[Kayla\]
+## Our Topic: Streaming Wars
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+::: {style="margin: 1px; padding: 6px;"}
+**Our Motivation:**
+
+Streaming platforms have taken the world by storm due to their convenience and ability to house innumerable popular television shows and movies. As these mediums continue to grow in popularity, discourse about them is also developing and is often centered around one primary question: Which platform is best?
+
+We have taken an in-depth look at four mainstream services ---- Netflix, Amazon Prime Video, Hulu, and Disney+ ---- the quality of their programs, measured in Rotten Tomatoes scores.
+
+**Our Research Questions:**
+
+RQ1: "Is the quality of exclusive shows different from non-exclusive shows in each respective platform?"
+
+RQ2: "Are exclusive shows' ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?"
+:::
 
 ## Introduce the data \[Joyce\]
 
@@ -288,14 +300,69 @@ $$
 
 ## Inference/modeling/other analysis \[Kayla, Joyce\]
 
-Research Question #2 (hypothesis test #2)
+::: {style="margin: 1px; padding: 10px;"}
+Research Question #2: **Are exclusive shows' ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?**
 
-Tentative: Look into regression model and understand how to interpret confidence intervals
+**Mode:** Hypothesis Test
 
-Show p value visualization (aka shade_p\_value)
+**Null Hypothesis**: There is no difference in quality of the exclusive shows between the four platforms.
 
-Your results here
+\$\$ H_0: μ1 = μ2 = μ3 = μ4 \$\$
 
+**Alternate Hypothesis:** There is a difference in quality of the exclusive shows between the four platforms.
+
+\$\$ H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4 \$\$
+
+**Visualizations:**
+:::
+
+```{r}
+
+library(forcats)
+
+tv_shows_exclusive <- tv_shows_cleaned |>
+  pivot_longer(cols = c(exclusive_netflix, exclusive_hulu, exclusive_disney_plus, exclusive_prime_video), values_to = "bool", names_to = "shows") |>
+  filter(bool == TRUE) |>
+  mutate(shows = fct_relevel(.f = shows, "exclusive_netflix"))
+
+set.seed(123)
+observed_fit <- tv_shows_exclusive |>
+  specify(`Rotten Tomatoes` ~ shows) |>
+  fit()
+
+observed_fit
+
+
+# Permuting to compute p values
+null_fits <- tv_shows_exclusive |>
+  specify(`Rotten Tomatoes` ~ shows) |>
+  hypothesize(null = "independence") |>
+  generate(reps = 1000, type = "permute") |>
+  fit()
+
+get_p_value(
+  x = null_fits,
+  obs_stat = observed_fit,
+  direction = "two sided"
+)
+
+# Bootstrapping to compute confidence interval
+h2_bootstrap <- tv_shows_exclusive |>
+  specify(`Rotten Tomatoes` ~ shows) |>
+  hypothesize(null = "independence") |>
+  generate(reps = 1000, type = "bootstrap") |>
+  fit()
+
+get_confidence_interval(
+  x = h2_bootstrap,
+  point_estimate = observed_fit,
+  level = .95)
+
+#Conducting Visualization
+visualize(null_fits) +
+  shade_p_value(obs_stat = observed_fit, direction = "two-sided")
+  
+```
 ## Conclusions & Future Work \[UP\]
 
 ::: r-fit-text

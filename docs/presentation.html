@@ -337,9 +337,16 @@ Phenomenal Eevee <br> Kayla Riggs, Uyen Hoang, Pinxian Lu, Lili Mkrtchyan, Joyce
 
   <p class="date">5/5/23</p>
 </section>
-<section id="introduce-the-topic-and-motivation-kayla" class="slide level2">
-<h2>Introduce the topic and motivation [Kayla]</h2>
-<p>Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <a href="https://quarto.org/docs/presentations/" class="uri">https://quarto.org/docs/presentations/</a>.</p>
+<section id="our-topic-streaming-wars" class="slide level2">
+<h2>Our Topic: Streaming Wars</h2>
+<div style="margin: 1px; padding: 6px;">
+<p><strong>Our Motivation:</strong></p>
+<p>Streaming platforms have taken the world by storm due to their convenience and ability to house innumerable popular television shows and movies. As these mediums continue to grow in popularity, discourse about them is also developing and is often centered around one primary question: Which platform is best?</p>
+<p>We have taken an in-depth look at four mainstream services —- Netflix, Amazon Prime Video, Hulu, and Disney+ —- the quality of their programs, measured in Rotten Tomatoes scores.</p>
+<p><strong>Our Research Questions:</strong></p>
+<p>RQ1: “Is the quality of exclusive shows different from non-exclusive shows in each respective platform?”</p>
+<p>RQ2: “Are exclusive shows’ ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?”</p>
+</div>
 </section>
 <section id="introduce-the-data-joyce" class="slide level2">
 <h2>Introduce the data [Joyce]</h2>
@@ -412,11 +419,46 @@ H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4
 </section>
 <section id="inferencemodelingother-analysis-kayla-joyce" class="slide level2">
 <h2>Inference/modeling/other analysis [Kayla, Joyce]</h2>
-<p>Research Question #2 (hypothesis test #2)</p>
-<p>Tentative: Look into regression model and understand how to interpret confidence intervals</p>
-<p>Show p value visualization (aka shade_p_value)</p>
-<p>Your results here</p>
-</section>
+<div style="margin: 1px; padding: 10px;">
+<p>Research Question #2: <strong>Are exclusive shows’ ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?</strong></p>
+<p><strong>Mode:</strong> Hypothesis Test</p>
+<p><strong>Null Hypothesis</strong>: There is no difference in quality of the exclusive shows between the four platforms.</p>
+<p>$$ H_0: μ1 = μ2 = μ3 = μ4 $$</p>
+<p><strong>Alternate Hypothesis:</strong> There is a difference in quality of the exclusive shows between the four platforms.</p>
+<p>$$ H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4 $$</p>
+<p><strong>Visualizations:</strong></p>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  term                       estimate
+  &lt;chr&gt;                         &lt;dbl&gt;
+1 intercept                     52.7 
+2 showsexclusive_disney_plus    -4.60
+3 showsexclusive_hulu           -1.56
+4 showsexclusive_prime_video   -17.9 </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  term                       p_value
+  &lt;chr&gt;                        &lt;dbl&gt;
+1 intercept                     0   
+2 showsexclusive_disney_plus    0   
+3 showsexclusive_hulu           0.02
+4 showsexclusive_prime_video    0   </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 3
+  term                       lower_ci upper_ci
+  &lt;chr&gt;                         &lt;dbl&gt;    &lt;dbl&gt;
+1 intercept                     52.0    53.5  
+2 showsexclusive_disney_plus    -6.41   -2.77 
+3 showsexclusive_hulu           -2.81   -0.310
+4 showsexclusive_prime_video   -19.0   -16.6  </code></pre>
+</div>
+
+</div>
+<img data-src="presentation_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section>
 <section id="conclusions-future-work-up" class="slide level2">
 <h2>Conclusions &amp; Future Work [UP]</h2>
 <div class="r-fit-text">

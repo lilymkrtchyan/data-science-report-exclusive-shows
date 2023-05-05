@@ -186,7 +186,7 @@
     "href": "presentation.html#inferencemodelingother-analysis-kayla-joyce",
     "title": "Streaming Wars",
     "section": "Inference/modeling/other analysis [Kayla, Joyce]",
-    "text": "Inference/modeling/other analysis [Kayla, Joyce]\nResearch Question #2 (hypothesis test #2)\nTentative: Look into regression model and understand how to interpret confidence intervals\nShow p value visualization (aka shade_p_value)\nYour results here"
+    "text": "Inference/modeling/other analysis [Kayla, Joyce]\n\nResearch Question #2: Are exclusive shows’ ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?\nMode: Hypothesis Test\nNull Hypothesis: There is no difference in quality of the exclusive shows between the four platforms.\n$$ H_0: μ1 = μ2 = μ3 = μ4 $$\nAlternate Hypothesis: There is a difference in quality of the exclusive shows between the four platforms.\n$$ H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4 $$\nVisualizations:\n\n\n\n# A tibble: 4 × 2\n  term                       estimate\n  <chr>                         <dbl>\n1 intercept                     52.7 \n2 showsexclusive_disney_plus    -4.60\n3 showsexclusive_hulu           -1.56\n4 showsexclusive_prime_video   -17.9 \n\n\n# A tibble: 4 × 2\n  term                       p_value\n  <chr>                        <dbl>\n1 intercept                     0   \n2 showsexclusive_disney_plus    0   \n3 showsexclusive_hulu           0.02\n4 showsexclusive_prime_video    0   \n\n\n# A tibble: 4 × 3\n  term                       lower_ci upper_ci\n  <chr>                         <dbl>    <dbl>\n1 intercept                     52.0    53.5  \n2 showsexclusive_disney_plus    -6.41   -2.77 \n3 showsexclusive_hulu           -2.81   -0.310\n4 showsexclusive_prime_video   -19.0   -16.6"
   },
   {
     "objectID": "presentation.html#conclusions-future-work-uyen-patrick",
@@ -201,5 +201,12 @@
     "title": "Streaming Wars",
     "section": "Conclusions & Future Work [UP]",
     "text": "Conclusions & Future Work [UP]\n\n\nConclusion:\n\nTo sum it up, the research indicates that exclusive shows on Hulu, Netflix, and Disney Plus tend to have higher Rotten Tomatoes ratings than non-exclusive shows on those platforms, with the exception of Prime Video.\nAccording to the study, there appears to be a difference in the quality of exclusive programs offered by the four platforms, as evidenced by their Rotten Tomatoes ratings. Netflix, Hulu, and Disney Plus has similar average exclusive show quality, while Prime Video’s are significantly lower.\n\nFuture work:\n\nExplore other measures of quality for exclusive shows and non-exclusive shows on each platform, potentailly combining ratings from multiple website to form a more objective measurement of quality.\nConsider other factors that may influence the perceived quality of content, such as viewership, preferences, and number of subscribers.\nInclude more variables in the dataset by joining, in order to rule out confounding variables that might create biases."
+  },
+  {
+    "objectID": "presentation.html#our-topic-streaming-wars",
+    "href": "presentation.html#our-topic-streaming-wars",
+    "title": "Streaming Wars",
+    "section": "Our Topic: Streaming Wars",
+    "text": "Our Topic: Streaming Wars\n\nOur Motivation:\nStreaming platforms have taken the world by storm due to their convenience and ability to house innumerable popular television shows and movies. As these mediums continue to grow in popularity, discourse about them is also developing and is often centered around one primary question: Which platform is best?\nWe have taken an in-depth look at four mainstream services —- Netflix, Amazon Prime Video, Hulu, and Disney+ —- the quality of their programs, measured in Rotten Tomatoes scores.\nOur Research Questions:\nRQ1: “Is the quality of exclusive shows different from non-exclusive shows in each respective platform?”\nRQ2: “Are exclusive shows’ ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?”"
   }
 ]
