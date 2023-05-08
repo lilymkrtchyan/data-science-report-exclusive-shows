@@ -9,17 +9,21 @@ execute:
 
 # Introduction
 
-Streaming platforms have taken the world by storm due to their convenience and ability to house innumerable popular television shows and movies. As these mediums continue to grow in popularity, discourse about them is also developing and is often centered around one primary question: Which platform is best? Throughout our data analysis, our team seeks to answer this aforementioned question to the best of our ability, taking an in-depth look at four mainstream services ---- Netflix, Amazon Prime Video, Hulu, and Disney+ ---- and the programs that have been present on the site throughout roughly the past two decades. Specifically, we use rankings developed by Rotten Tomatoes and hypothesis testing to approach two research questions: "Is the quality of exclusive shows different from non-exclusive shows in each respective platform?" and "Are exclusive shows' ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?"
+Streaming platforms have taken the world by storm due to their convenience and ability to house innumerable popular television shows and movies. As these mediums continue to grow in popularity, discourse about them is also developing and is often centered around one primary question: Which platform is best? Throughout our data analysis, our team seeks to answer this aforementioned question to the best of our ability, taking an in-depth look at four mainstream services ---- Netflix, Amazon Prime Video, Hulu, and Disney+ ---- and the programs that have been present on the site throughout roughly the past two decades. Specifically, we use rankings developed by Rotten Tomatoes and hypothesis testing to approach two research questions:
 
-Regarding the first hypothesis, we were unable to reject the null hypothesis: Rotten Tomatoes score of exclusive shows are less than the Rotten Tomatoes score of non-exclusive shows across all four platforms. In terms of the second research question, our findings were in favor of the alternate hypothesis: there is a difference in ratings between the exclusive shows on each of the four platforms.
+**RQ1: "Is the quality of exclusive shows different from non-exclusive shows in each respective platform?"**
+
+**RQ2: "Are exclusive shows' ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?"**
+
+Regarding the first hypothesis, we were unable to reject the null hypothesis: the quality of exclusive shows (measured by Rotten Tomatoes scores) do not appear to be different from that of non-exclusive shows on each respective platform. In terms of the second research question, our findings were in favor of the alternate hypothesis: there is some sort of difference in ratings between the exclusive shows on each of the four platforms. Specifically,
 
 # Data description
 
-The observations (rows) of the `tvshows` dataset represent each individual TV show that is readily watched and broadcasted on at least one of the four top ranking broadcasting platforms (we are focusing on Hulu, Disney+, Prime Video and Netflix). The attributes (columns) of the `tvshows` dataset categorizes each individual TV show based on the streaming platform it's being broadcasted on and reveals additional information. This includes revealing the year the TV show was produced, target age group of audience, and the rating of the show (by the Rotten Tomatoes metric).
+The observations (rows) of the `tvshows` dataset represent each individual TV show that is readily watched and broadcasted on at least one of the four top ranking broadcasting platforms (we are focusing on Hulu, Disney+, Prime Video and Netflix). The attributes (columns) of the `tvshows` data set categorizes each individual TV show based on the streaming platform it's being broadcasted on and reveals additional information. This includes revealing the year the TV show was produced, target age group of audience, and the rating of the show (by the Rotten Tomatoes metric).
 
-This dataset was created by the curator after being inspired by personal experiences of wanting to know more about which streaming platform(s) a particular TV show can be found on. Furthermore, the curator wished to explore potential relationships between target age group of audience, year of production, and the streaming platform the show can be found on. The creation of the `tvshows` dataset was not funded by anyone and was curated solely with the desire to learn more about tv shows readily broadcasted on top streaming platforms. Specifically, the curator likely looked at TV shows broadcasted on each streaming platform to determine which Rotten Tomatoes ratings to include within the dataset and determine which year of production data as well as target age of audience should be included.
+This data set was created by the curator after being inspired by personal experiences of wanting to know more about which streaming platform(s) a particular TV show can be found on. Furthermore, the curator wished to explore potential relationships between target age group of audience, year of production, and the streaming platform the show can be found on. The creation of the `tvshows` dataset was not funded by anyone and was curated solely with the desire to learn more about tv shows readily broadcasted on top streaming platforms. Specifically, the curator likely looked at TV shows broadcasted on each streaming platform to determine which Rotten Tomatoes ratings to include within the dataset and determine which year of production data as well as target age of audience should be included.
 
-In regards to the preprocessing of the data, the Rotten Tomatoes score itself needed to undergo specific calculations before the curator is able to scrape the Rotten Tomatoes score for the corresponding TV shows. To summarize, the Rotten Tomatoes score is calculated only when the show receives at least 5 reviews. Then, the critic's rating of "Fresh" (positive) or "Rotten" bad is collected and the Rotten Tomatoes percentage is calculated by dividing the number of "Fresh" scores by the total number of "Fresh" and "Rotten" scores times 100. In addition, the curator then used a binary system (0 for "no" and 1 for "yes") to classify which streaming platform(s) each TV show can be found on.
+In regards to the pre-processing of the data, the Rotten Tomatoes score itself needed to undergo specific calculations before the curator is able to scrape the Rotten Tomatoes score for the corresponding TV shows. To summarize, the Rotten Tomatoes score is calculated only when the show receives at least 5 reviews. Then, the critic's rating of "Fresh" (positive) or "Rotten" bad is collected and the Rotten Tomatoes percentage is calculated by dividing the number of "Fresh" scores by the total number of "Fresh" and "Rotten" scores times 100. In addition, the curator then used a binary system (0 for "no" and 1 for "yes") to classify which streaming platform(s) each TV show can be found on.
 
 The curator did not involve any other people during the data collection and likely collected the data from official sites that reported the taken corresponding data values. At the same time, the Rotten Tomatoes data values inherently involve people as the score is reliant on people's opinions and rating of the show. From this perspective, the people are likely aware of this data collection as they are displaying their ratings of the tv shows in a public domain. They likely expected their data to be used to contribute to the overall rating of the TV show and used to inform others on whether they should watch the respective TV show.
 
@@ -191,34 +195,26 @@ mean_rankings <- data.frame(platform = c('Netflix',
                             mean=c(netflix[[3]][1], hulu[[3]][1],
                                    prime[[3]][1],  disney[[3]][1]))
 
-
-
-
 total_per_platform |>
   ggplot(aes(x = decile, y = number, fill = platform)) +
   geom_bar(position = "fill", stat = "identity") +
-  scale_color_viridis_d(option = "D", end = 0.8) +
   theme_minimal() +
   labs(
     title = "Percent of shows that fall under a given decile for each platform",
-      x = "Decile", y = "Fraction of shows", 
-    fill = "Platforms", disnay = "Disney+") +
-  scale_fill_discrete(labels = c("Disney+", "Hulu",
-                                 "Netflix", "Prime Video"))
-  
+    x = "Decile", y = "Fraction of shows", 
+    fill = "Platforms", disney = "Disney+")
 
 
-total |>
-  ggplot(aes(x = platform, y = rotten_tomatoes)) + 
-  geom_boxplot() +
+total |> 
+  ggplot(aes(x = platform, y = rotten_tomatoes, fill = platform)) + 
+  geom_boxplot(show.legend =  FALSE) +
   labs(title = "Ratings of Streamed Shows by Platform", 
-       x = "Platforms", y = "Show Ratings")
-
+     x = "Platforms", y = "Show Ratings")
 
 
 mean_rankings |>
-  ggplot(aes(x = platform, y = mean)) + ylim(c(0, 100)) +
-  geom_bar(stat = "identity") +
+  ggplot(aes(x = platform, y = mean, fill = platform)) + ylim(c(0, 100)) +
+  geom_bar(stat = "identity", show.legend =  FALSE) +
   labs(title = "Ratings of Streamed Shows by Platform",
        x = "Platforms", y = "Mean Ratings")
 
@@ -389,6 +385,9 @@ get_confidence_interval(
   x = h2_bootstrap,
   point_estimate = observed_fit,
   level = .95)
+
+visualize(null_fits) +
+  shade_p_value(obs_stat = observed_fit, direction="two sided")
 ```
 
 # Interpretation and conclusions
