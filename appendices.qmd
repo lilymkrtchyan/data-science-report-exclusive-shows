@@ -192,3 +192,8 @@ mean_rankings <- data.frame(platform = c('Netflix',
                                    prime[[3]][1],  disney[[3]][1]))
 
 ```
+
+```{r}
+write_csv(x = tv_shows_cleaned, file = "~/project-phenomenal-evee/appendices.qmd")
+```
+
