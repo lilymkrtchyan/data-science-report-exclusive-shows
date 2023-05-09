@@ -4,7 +4,7 @@ subtitle: "Report"
 format: html
 editor: visual
 execute:
-  echo: true
+  echo: false
 ---
 
 # Introduction
@@ -89,7 +89,7 @@ Overall, these exploratory data visualizations show that there is a difference b
 
 #### ***First Analysis: Hypothesis Test***
 
-**Research Question:** Is the quality of exclusive shows different from non-exclusive shows in a specific platform, for each platform separately?
+**Research Question:** Is the quality of exclusive shows different from non-exclusive shows across all streaming platforms?
 
 **Null Hypothesis**: The average Rotten Tomatoes score of exclusive shows is less than the average Rotten Tomatoes score of non-exclusive shows across all four platforms.
 
@@ -107,55 +107,61 @@ $$
 #|label: hypothesis-testing-analysis-1-multivariable
 #|fig-height: 20
 
-names(tv_shows_cleaned_copy)[7] <- "rotten_tomatoes"
-
-observed_fit <- tv_shows_cleaned_copy |>
-  specify(rotten_tomatoes ~ Netflix + Hulu + disney_plus + prime_video) |>
-  fit()
-
-observed_fit
-
-null_fits <- tv_shows_cleaned_copy |>
-  specify(rotten_tomatoes ~ Netflix + Hulu + disney_plus + prime_video) |>
-  hypothesize(null = "independence") |>
-  generate(reps = 1000, type = "permute") |>
-  fit()
-
-ci <- get_confidence_interval(
-  x = null_fits,
-  point_estimate = observed_fit,
-  level = 0.95
-)
-
-print(ci)
-
-get_p_value(
-  x = null_fits,
-  obs_stat = observed_fit,
-  direction = "less"
-)
-
-visualize(null_fits) +
-  shade_p_value(obs_stat = observed_fit, direction="two sided")
+# names(tv_shows_cleaned_copy)[7] <- "rotten_tomatoes"
+# 
+# observed_fit <- tv_shows_cleaned_copy |>
+#   specify(rotten_tomatoes ~ Netflix + Hulu + disney_plus + prime_video) |>
+#   fit()
+# 
+# observed_fit
+# 
+# null_fits <- tv_shows_cleaned_copy |>
+#   specify(rotten_tomatoes ~ Netflix + Hulu + disney_plus + prime_video) |>
+#   hypothesize(null = "independence") |>
+#   generate(reps = 1000, type = "permute") |>
+#   fit()
+# 
+# ci <- get_confidence_interval(
+#   x = null_fits,
+#   point_estimate = observed_fit,
+#   level = 0.95
+# )
+# 
+# print(ci)
+# 
+# get_p_value(
+#   x = null_fits,
+#   obs_stat = observed_fit,
+#   direction = "less"
+# )
+# 
+# visualize(null_fits) +
+#   shade_p_value(obs_stat = observed_fit, direction="less")
 
 ```
 
 ```{r}
+#|label: hypothesis-testing-analysis-1
+#|fig-height: 20
 
 tv_shows_cleaned_copy1 <- tv_shows_cleaned_copy |>
   pivot_longer(
     cols = exclusive_netflix:exclusive_disney_plus,
     names_to = "all_platforms",
     values_to = "exclusivity"
+  ) |>
+  mutate(
+    exclusivity = case_when(
+      exclusivity == TRUE ~ "yes",
+      exclusivity == FALSE ~ "no"
+    )
   )
-
-tv_shows_cleaned_copy1
 
 names(tv_shows_cleaned_copy1)[7] <- "rotten_tomatoes"
 
 observed_fit1 <- tv_shows_cleaned_copy1 |>
   specify(rotten_tomatoes ~ exclusivity) |>
-  calculate(stat = "diff in means", order = c(TRUE, FALSE))
+  calculate(stat = "diff in means", order = c("yes","no"))
 
 observed_fit1
 
@@ -163,32 +169,36 @@ null_fits1 <- tv_shows_cleaned_copy1 |>
   specify(rotten_tomatoes ~ exclusivity) |>
   hypothesize(null = "independence") |>
   generate(reps = 1000, type = "permute") |>
-  calculate(stat = "diff in means", order = c(TRUE, FALSE))
+  calculate(stat = "diff in means", order = c("yes", "no"))
 
-get_p_value(
+p_value <- get_p_value(
   x = null_fits1,
   obs_stat = observed_fit1,
   direction = "less"
 )
 
-#Confidence Intervals
+p_value
 
-null_fits1 <- tv_shows_cleaned_copy1 |>
+visualize(null_fits1) +
+  shade_p_value(obs_stat = observed_fit1, direction="less") + 
+  theme_minimal()
+
+#Confidence Intervals by bootstrapping
+
+null_fits2 <- tv_shows_cleaned_copy1 |>
   specify(rotten_tomatoes ~ exclusivity) |>
   hypothesize(null = "independence") |>
   generate(reps = 1000, type = "bootstrap") |>
-  calculate(stat = "diff in means", order = c(TRUE, FALSE))
+  calculate(stat = "diff in means", order = c("yes", "no"))
 
 ci1 <- get_confidence_interval(
-  x = null_fits1,
+  x = null_fits2,
   point_estimate = observed_fit1,
   level = 0.95
 )
 
-print(ci1)
+ci1
 
-visualize(null_fits1) +
-  shade_p_value(obs_stat = observed_fit1, direction="less")
 
 ```
 
@@ -257,7 +267,7 @@ visualize(null_fits) +
 
 # Interpretation and conclusions
 
-**Hypothesis #1: point-estimate**
+**Hypothesis #1: Point-Estimate**
 
 The intercept of 35.45341513 shows, on average, the estimated Rotten Tomatoes rating for a show that is non-exclusive for any of the four platforms.
 
