@@ -317,11 +317,11 @@ The intercept p-value is 0.001 which represents the p-value for exclusive Netfli
 
 **Hypothesis #2: Simulation-Based Null Distributions Visualization**
 
-The visualizations of `exclusive_disney_plus,` `exclusive_prime_video`, `exclusive_hulu`, and the `intercept`display the null distribution in reference to the p-value (the red line). A null distribution that is far from the p-value (as seen in `exclusive_prime_video,` `exclusive_disney_plus,` and the `intercept`) indicates that the observed difference in ratings between the four platforms is larger than what would be expected under the null hypothesis. Hence, the p-value is small because the observed difference is unlikely to be due to chance.
+The visualizations of `exclusive_disney_plus,` `exclusive_prime_video`, `exclusive_hulu`, and the `intercept` display the null distribution in reference to the p-value (the red line). A null distribution that is far from the p-value (as seen in `exclusive_prime_video,` `exclusive_disney_plus,` and the `intercept`) indicates that the observed difference in ratings between the four platforms is larger than what would be expected under the null hypothesis. Hence, the p-value is small because the observed difference is unlikely to be due to chance. Additionally, we can also reasonably say that, in the case of `exclusive_hulu,` because the red line is on the edge of the graph, it likely means that the p-value is very small; similarly to what was previously mentioned, this thus indicates that the observed difference is unlikely to be due to chance if the null hypothesis were true. Hence, this suggests strong evidence against the null hypothesis in favor of the alternate hypothesis.
 
-**Hypothesis #2: Extra Note:**
+**Extra Note:**
 
-We recognize that, in interpreting our results, a
+We recognize that, in interpreting our results, a post-hoc analysis might\'ve been beneficial to use in addition to an ANOVA test to more accurately draw conclusions from our data. In that case, the ANOVA (Analysis of Variance), would be used to test whether there are statistically significant differences between the means of two or more groups (i.e. between `exclusive_disney_plus,` `exclusive_prime_video`, `exclusive_hulu`, and the `exclusive_netflix`). If a significant difference is found, a post-hoc test like Tukey's HSD (Honestly Significant Difference) would be utilize to determine which groups in particular are significantly different from each other. However, due to the fact that this was not included in the scope of this course, we decided to omit these tests and instead only perform our traditional hypothesis tests, as seen above.
 
 # Limitations
 
