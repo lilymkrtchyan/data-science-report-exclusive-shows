@@ -31,194 +31,59 @@ The curator did not involve any other people during the data collection and like
 
 ```{r}
 #| label: data-cleaning-for-exclusivity
-library(tidyverse)
-library(tidymodels)
-library(dplyr)
-
-tv_shows <- read_csv(file = "data/tv_shows.csv")
-
-tv_shows_cleaned <- tv_shows |>
-  mutate(Netflix = if_else(Netflix == 1, "Yes", "No"), 
-         Hulu = if_else(Hulu == 1, "Yes", "No"),
-         `Prime Video` = if_else(`Prime Video` == 1, "Yes", "No"),
-         `Disney+` = if_else(`Disney+` == 1, "Yes", "No"),
-         `Rotten Tomatoes` = str_remove(`Rotten Tomatoes`, "/100"),
-         `Rotten Tomatoes` = parse_integer(`Rotten Tomatoes`)) |>
-  mutate(exclusive_netflix = Netflix == "Yes" & Hulu == "No" & `Prime Video` == "No" & `Disney+` == "No",
-         exclusive_hulu = Hulu == "Yes" & Netflix == "No" & `Prime Video` == "No" & `Disney+` == "No",
-         exclusive_prime_video = `Prime Video` == "Yes" & Netflix == "No" & Hulu == "No" & `Disney+` == "No",
-         exclusive_disney_plus = `Disney+` == "Yes" & Netflix == "No" & Hulu == "No" & `Prime Video` == "No")
 
 tv_shows_cleaned
 
-
-num_netflix_exclusive <- sum(tv_shows_cleaned$exclusive_netflix == TRUE)
-num_hulu_exclusive <- sum(tv_shows_cleaned$exclusive_hulu == TRUE)
-num_prime_video_exclusive <- sum(tv_shows_cleaned$exclusive_prime_video == TRUE)
-num_disney_plus_exclusive <- sum(tv_shows_cleaned$exclusive_disney_plus == TRUE)
-
-num_netflix_exclusive
-num_hulu_exclusive
-num_prime_video_exclusive
-num_disney_plus_exclusive
 ```
 
 ```{r}
 #| label: explaratory-data-analysis
-
-tv_shows_cleaned_copy <- tv_shows_cleaned
-
-netflix <- filter(tv_shows_cleaned_copy, Netflix == "Yes")
-names(netflix)[7] <- "rotten_tomatoes"
-
-netflix <- netflix |>
-  select(Title, rotten_tomatoes) |>
-  mutate(mean = mean(rotten_tomatoes)) |>
-  mutate(platform = 'netflix') |>
-  mutate(decile = 100) |>
-  mutate(decile = ifelse(0<=rotten_tomatoes & rotten_tomatoes <=10, 
-                         '1-10', decile)) |>
-  mutate(decile = ifelse(10<rotten_tomatoes & rotten_tomatoes <=20, 
-                         '11-20', decile)) |>
-  mutate(decile = ifelse(20<rotten_tomatoes & rotten_tomatoes <=30, 
-                         '21-30', decile)) |>
-  mutate(decile = ifelse(30<rotten_tomatoes & rotten_tomatoes <=40, 
-                         '31-40', decile)) |>
-  mutate(decile = ifelse(50<rotten_tomatoes & rotten_tomatoes <=60, 
-                         '51-60', decile)) |>
-  mutate(decile = ifelse(60<rotten_tomatoes & rotten_tomatoes <=70, 
-                         '61-70', decile)) |>
-  mutate(decile = ifelse(70<rotten_tomatoes & rotten_tomatoes <=80, 
-                         '71-80', decile)) |>
-  mutate(decile = ifelse(80<rotten_tomatoes & rotten_tomatoes <=90, 
-                         '81-90', decile)) |>
-  mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
-                         '91-100', decile))
-  
-
-hulu <- filter(tv_shows_cleaned_copy, Hulu == "Yes")
-names(hulu)[7] <- "rotten_tomatoes"
-
-hulu <- hulu |>
-  select(Title, rotten_tomatoes) |>
-  mutate(mean = mean(rotten_tomatoes)) |>
-  mutate(platform = 'hulu') |>
-  mutate(decile = 100) |>
-  mutate(decile = ifelse(0<=rotten_tomatoes & rotten_tomatoes <=10, 
-                         '1-10', decile)) |>
-  mutate(decile = ifelse(10<rotten_tomatoes & rotten_tomatoes <=20, 
-                         '11-20', decile)) |>
-  mutate(decile = ifelse(20<rotten_tomatoes & rotten_tomatoes <=30, 
-                         '21-30', decile)) |>
-  mutate(decile = ifelse(30<rotten_tomatoes & rotten_tomatoes <=40, 
-                         '31-40', decile)) |>
-  mutate(decile = ifelse(50<rotten_tomatoes & rotten_tomatoes <=60, 
-                         '51-60', decile)) |>
-  mutate(decile = ifelse(60<rotten_tomatoes & rotten_tomatoes <=70, 
-                         '61-70', decile)) |>
-  mutate(decile = ifelse(70<rotten_tomatoes & rotten_tomatoes <=80, 
-                         '71-80', decile)) |>
-  mutate(decile = ifelse(80<rotten_tomatoes & rotten_tomatoes <=90, 
-                         '81-90', decile)) |>
-  mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
-                         '91-100', decile))
-
-names(tv_shows_cleaned_copy)[10] <- "prime_video"
-prime <- filter(tv_shows_cleaned_copy, prime_video == "Yes")
-names(prime)[7] <- "rotten_tomatoes"
-
-prime <- prime |>
-  select(Title, rotten_tomatoes) |>
-  mutate(mean = mean(rotten_tomatoes)) |>
-  mutate(platform = 'prime') |>
-  mutate(decile = 100) |>
-  mutate(decile = ifelse(0<=rotten_tomatoes & rotten_tomatoes <=10, 
-                         '1-10', decile)) |>
-  mutate(decile = ifelse(10<rotten_tomatoes & rotten_tomatoes <=20, 
-                         '11-20', decile)) |>
-  mutate(decile = ifelse(20<rotten_tomatoes & rotten_tomatoes <=30, 
-                         '21-30', decile)) |>
-  mutate(decile = ifelse(30<rotten_tomatoes & rotten_tomatoes <=40, 
-                         '31-40', decile)) |>
-  mutate(decile = ifelse(50<rotten_tomatoes & rotten_tomatoes <=60, 
-                         '51-60', decile)) |>
-  mutate(decile = ifelse(60<rotten_tomatoes & rotten_tomatoes <=70, 
-                         '61-70', decile)) |>
-  mutate(decile = ifelse(70<rotten_tomatoes & rotten_tomatoes <=80, 
-                         '71-80', decile)) |>
-  mutate(decile = ifelse(80<rotten_tomatoes & rotten_tomatoes <=90, 
-                         '81-90', decile)) |>
-  mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
-                         '91-100', decile))
-
-names(tv_shows_cleaned_copy)[11] <- "disney_plus"
-disney <- filter(tv_shows_cleaned_copy, disney_plus == "Yes")
-names(disney)[7] <- "rotten_tomatoes"
-
-disney <- disney |>
-  select(Title, rotten_tomatoes) |>
-  mutate(mean = mean(rotten_tomatoes)) |>
-  mutate(platform = 'disney') |>
-  mutate(decile = 100) |>
-  mutate(decile = ifelse(0<=rotten_tomatoes & rotten_tomatoes <=10, 
-                         '1-10', decile)) |>
-  mutate(decile = ifelse(10<rotten_tomatoes & rotten_tomatoes <=20, 
-                         '11-20', decile)) |>
-  mutate(decile = ifelse(20<rotten_tomatoes & rotten_tomatoes <=30, 
-                         '21-30', decile)) |>
-  mutate(decile = ifelse(30<rotten_tomatoes & rotten_tomatoes <=40, 
-                         '31-40', decile)) |>
-  mutate(decile = ifelse(50<rotten_tomatoes & rotten_tomatoes <=60, 
-                         '51-60', decile)) |>
-  mutate(decile = ifelse(60<rotten_tomatoes & rotten_tomatoes <=70, 
-                         '61-70', decile)) |>
-  mutate(decile = ifelse(70<rotten_tomatoes & rotten_tomatoes <=80, 
-                         '71-80', decile)) |>
-  mutate(decile = ifelse(80<rotten_tomatoes & rotten_tomatoes <=90, 
-                         '81-90', decile)) |>
-  mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
-                         '91-100', decile))
-
-total <- rbind(netflix, hulu)
-total <- rbind(total,prime)
-total <- rbind(total,disney)
-
-
-total_per_platform <- total |>
-  group_by(decile, platform) |>
-  summarize(number = n())
-
-
-mean_rankings <- data.frame(platform = c('Netflix',
-                                         'Hulu','Amazon Prime',
-                                         'Disney'),
-                            mean=c(netflix[[3]][1], hulu[[3]][1],
-                                   prime[[3]][1],  disney[[3]][1]))
 
 total_per_platform |>
   ggplot(aes(x = decile, y = number, fill = platform)) +
   geom_bar(position = "fill", stat = "identity") +
   theme_minimal() +
   labs(
-    title = "Percent of shows that fall under a given decile for each platform",
-    x = "Decile", y = "Fraction of shows", 
-    fill = "Platforms", disney = "Disney+")
-
+    title = "Fraction of shows that are in a given rating interval for each platform",
+    x = "Rating intervals", y = "Fraction of shows", 
+    fill = "Platforms") +
+  scale_fill_manual(
+    values = viridis(4),
+    labels = c("Disney+", "Hulu", "Netflix", "Prime Video")
+  )
 
 total |> 
   ggplot(aes(x = platform, y = rotten_tomatoes, fill = platform)) + 
   geom_boxplot(show.legend =  FALSE) +
   labs(title = "Ratings of Streamed Shows by Platform", 
-     x = "Platforms", y = "Show Ratings")
-
+     x = "Platforms", y = "Show Ratings", disney="Disney+") + 
+  scale_fill_brewer(palette = "Spectral") +
+  scale_x_discrete(labels = c("Disney+", "Hulu", "Netflix", "Prime Video"))
 
 mean_rankings |>
   ggplot(aes(x = platform, y = mean, fill = platform)) + ylim(c(0, 100)) +
   geom_bar(stat = "identity", show.legend =  FALSE) +
-  labs(title = "Ratings of Streamed Shows by Platform",
-       x = "Platforms", y = "Mean Ratings")
+  labs(title = "Mean Ratings of Streamed Shows by Platform",
+       x = "Platforms", y = "Mean Ratings") +
+  scale_fill_brewer(palette = "Dark2")
 
 ```
+
+**Fraction of shows that are in a given rating interval for each platform:**
+
+The graph titled *Fraction of shows that are in a given rating interval for each platform* is a normalized frequency bar chart where every bar has the same height so that each bar represents the proportion of each rating (in our case: rotten tomatoes score) interval for a given platform. This allows us to normalize the number of shows in each platform and reduce the bias of different platforms having different number of shows. In this graph, the y-axis represents the fraction of shows (compared to the overall number of shows) rather than the actual number of shows on each platform. This allows us to compare the rotten tomato scores of shows of each platform as well as across all the platforms. The x-axis represents the rotten tomato score intervals (decided) that we chose to categorize and group the shows based on.
+
+Based on the graph we can deduce that Hulu and Netflix have equally large proportion of shows ranked between 91 and 100 on rotten tomatoes. Prime Video has the third largest proportion of shows in that interval of rotten tomatoes scores, followed by the last platform, which is Disney+. The same tendency is consistent for rotten tomatoes score intervals 51-60, 61-70, 71-80, and 81-90 rotten tomatoes score intervals. The proportion of shows that have the lowest rotten tomatoes score is the largest for Prime Video. Shows ranked within the interval of 1-10 are mostly streamed on Prime Video. In general, it seems like Netflix and Hulu have the largest proportion of shows that are ranked relatively high on rotten tomatoes, meanwhile Prime Video has the largest proportion of shows that are ranked the lowest on rotten tomatoes.
+
+**Ratings of Streamed Shows by Platform:**
+
+This graph shows boxplots that represent the distribution of rotten tomatoes scores of shows on each platform. The heights of the boxplots represent the diversity of data points (in this case rotten tomatoes scores) on each platform. The rotten tomatoes scores of shows in Disney+ are the most consistent across all the shows and are similar to each other with the median rotten tomatoes score being 50 (indicated by the horizontal line). The same is true for scores of shows streaming on Netflix. On the other hand, because the boxplot for shows streaming on Prime Video is well spread out across the y-axis, meaning its IQR is large, the scores for the shows streaming on Prime Video have varying range and are not consistent or similar across all the shows on the platform. This also means that even though there is a mean value of around 40, we cannot make meaningful conclusions about Prime Video show scores that would be relevant and valid for all the shows across the platform. This said, comparatively it seems that Hulu has the highest median score for its shows.
+
+**Mean Ratings of Streamed Shows by Platform**
+
+This graph shows the mean rotten tomatoes score of shows per platform. Netflix and Hulu seem to have almost the same mean rotten tomatoes score with Netflix slightly dominating. On the third place with rotten tomatoes score is Disney+, which is followed by Prime Vide that has the lowest mean score for shows streaming on it.
+
+Overall, these exploratory data visualizations show that there is a difference between rotten tomatoes scores for shows on different platforms. Moving forward we explore the possible factors (exclusivity of the shows to each platform) that might affect these differences.
 
 # Evaluation of significance
 

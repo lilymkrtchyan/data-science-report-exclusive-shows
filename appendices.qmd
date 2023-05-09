@@ -1,0 +1,158 @@
+---
+title: "Phenomenal Eevee"
+subtitle: "Appendices to Report"
+format: html
+editor: visual
+execute:
+  echo: true
+---
+
+# Apendix
+
+```{r}
+#| label: data-cleaning-for-exclusivity
+library(tidyverse)
+library(tidymodels)
+library(dplyr)
+tv_shows <- read_csv(file = "data/tv_shows.csv")
+tv_shows_cleaned <- tv_shows |>
+  mutate(Netflix = if_else(Netflix == 1, "Yes", "No"), 
+         Hulu = if_else(Hulu == 1, "Yes", "No"),
+         `Prime Video` = if_else(`Prime Video` == 1, "Yes", "No"),
+         `Disney+` = if_else(`Disney+` == 1, "Yes", "No"),
+         `Rotten Tomatoes` = str_remove(`Rotten Tomatoes`, "/100"),
+         `Rotten Tomatoes` = parse_integer(`Rotten Tomatoes`)) |>
+  mutate(exclusive_netflix = Netflix == "Yes" & Hulu == "No" & `Prime Video` == "No" & `Disney+` == "No",
+         exclusive_hulu = Hulu == "Yes" & Netflix == "No" & `Prime Video` == "No" & `Disney+` == "No",
+         exclusive_prime_video = `Prime Video` == "Yes" & Netflix == "No" & Hulu == "No" & `Disney+` == "No",
+         exclusive_disney_plus = `Disney+` == "Yes" & Netflix == "No" & Hulu == "No" & `Prime Video` == "No")
+tv_shows_cleaned
+num_netflix_exclusive <- sum(tv_shows_cleaned$exclusive_netflix == TRUE)
+num_hulu_exclusive <- sum(tv_shows_cleaned$exclusive_hulu == TRUE)
+num_prime_video_exclusive <- sum(tv_shows_cleaned$exclusive_prime_video == TRUE)
+num_disney_plus_exclusive <- sum(tv_shows_cleaned$exclusive_disney_plus == TRUE)
+num_netflix_exclusive
+num_hulu_exclusive
+num_prime_video_exclusive
+num_disney_plus_exclusive
+```
+
+```{r}
+#| label: explaratory-data-analysis
+tv_shows_cleaned_copy <- tv_shows_cleaned
+netflix <- filter(tv_shows_cleaned_copy, Netflix == "Yes")
+names(netflix)[7] <- "rotten_tomatoes"
+netflix <- netflix |>
+  select(Title, rotten_tomatoes) |>
+  mutate(mean = mean(rotten_tomatoes)) |>
+  mutate(platform = 'netflix') |>
+  mutate(decile = 100) |>
+  mutate(decile = ifelse(0<=rotten_tomatoes & rotten_tomatoes <=10, 
+                         '1-10', decile)) |>
+  mutate(decile = ifelse(10<rotten_tomatoes & rotten_tomatoes <=20, 
+                         '11-20', decile)) |>
+  mutate(decile = ifelse(20<rotten_tomatoes & rotten_tomatoes <=30, 
+                         '21-30', decile)) |>
+  mutate(decile = ifelse(30<rotten_tomatoes & rotten_tomatoes <=40, 
+                         '31-40', decile)) |>
+  mutate(decile = ifelse(50<rotten_tomatoes & rotten_tomatoes <=60, 
+                         '51-60', decile)) |>
+  mutate(decile = ifelse(60<rotten_tomatoes & rotten_tomatoes <=70, 
+                         '61-70', decile)) |>
+  mutate(decile = ifelse(70<rotten_tomatoes & rotten_tomatoes <=80, 
+                         '71-80', decile)) |>
+  mutate(decile = ifelse(80<rotten_tomatoes & rotten_tomatoes <=90, 
+                         '81-90', decile)) |>
+  mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
+                         '91-100', decile))
+  
+hulu <- filter(tv_shows_cleaned_copy, Hulu == "Yes")
+names(hulu)[7] <- "rotten_tomatoes"
+hulu <- hulu |>
+  select(Title, rotten_tomatoes) |>
+  mutate(mean = mean(rotten_tomatoes)) |>
+  mutate(platform = 'hulu') |>
+  mutate(decile = 100) |>
+  mutate(decile = ifelse(0<=rotten_tomatoes & rotten_tomatoes <=10, 
+                         '1-10', decile)) |>
+  mutate(decile = ifelse(10<rotten_tomatoes & rotten_tomatoes <=20, 
+                         '11-20', decile)) |>
+  mutate(decile = ifelse(20<rotten_tomatoes & rotten_tomatoes <=30, 
+                         '21-30', decile)) |>
+  mutate(decile = ifelse(30<rotten_tomatoes & rotten_tomatoes <=40, 
+                         '31-40', decile)) |>
+  mutate(decile = ifelse(50<rotten_tomatoes & rotten_tomatoes <=60, 
+                         '51-60', decile)) |>
+  mutate(decile = ifelse(60<rotten_tomatoes & rotten_tomatoes <=70, 
+                         '61-70', decile)) |>
+  mutate(decile = ifelse(70<rotten_tomatoes & rotten_tomatoes <=80, 
+                         '71-80', decile)) |>
+  mutate(decile = ifelse(80<rotten_tomatoes & rotten_tomatoes <=90, 
+                         '81-90', decile)) |>
+  mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
+                         '91-100', decile))
+names(tv_shows_cleaned_copy)[10] <- "prime_video"
+prime <- filter(tv_shows_cleaned_copy, prime_video == "Yes")
+names(prime)[7] <- "rotten_tomatoes"
+prime <- prime |>
+  select(Title, rotten_tomatoes) |>
+  mutate(mean = mean(rotten_tomatoes)) |>
+  mutate(platform = 'prime') |>
+  mutate(decile = 100) |>
+  mutate(decile = ifelse(0<=rotten_tomatoes & rotten_tomatoes <=10, 
+                         '1-10', decile)) |>
+  mutate(decile = ifelse(10<rotten_tomatoes & rotten_tomatoes <=20, 
+                         '11-20', decile)) |>
+  mutate(decile = ifelse(20<rotten_tomatoes & rotten_tomatoes <=30, 
+                         '21-30', decile)) |>
+  mutate(decile = ifelse(30<rotten_tomatoes & rotten_tomatoes <=40, 
+                         '31-40', decile)) |>
+  mutate(decile = ifelse(50<rotten_tomatoes & rotten_tomatoes <=60, 
+                         '51-60', decile)) |>
+  mutate(decile = ifelse(60<rotten_tomatoes & rotten_tomatoes <=70, 
+                         '61-70', decile)) |>
+  mutate(decile = ifelse(70<rotten_tomatoes & rotten_tomatoes <=80, 
+                         '71-80', decile)) |>
+  mutate(decile = ifelse(80<rotten_tomatoes & rotten_tomatoes <=90, 
+                         '81-90', decile)) |>
+  mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
+                         '91-100', decile))
+names(tv_shows_cleaned_copy)[11] <- "disney_plus"
+disney <- filter(tv_shows_cleaned_copy, disney_plus == "Yes")
+names(disney)[7] <- "rotten_tomatoes"
+disney <- disney |>
+  select(Title, rotten_tomatoes) |>
+  mutate(mean = mean(rotten_tomatoes)) |>
+  mutate(platform = 'disney') |>
+  mutate(decile = 100) |>
+  mutate(decile = ifelse(0<=rotten_tomatoes & rotten_tomatoes <=10, 
+                         '1-10', decile)) |>
+  mutate(decile = ifelse(10<rotten_tomatoes & rotten_tomatoes <=20, 
+                         '11-20', decile)) |>
+  mutate(decile = ifelse(20<rotten_tomatoes & rotten_tomatoes <=30, 
+                         '21-30', decile)) |>
+  mutate(decile = ifelse(30<rotten_tomatoes & rotten_tomatoes <=40, 
+                         '31-40', decile)) |>
+  mutate(decile = ifelse(50<rotten_tomatoes & rotten_tomatoes <=60, 
+                         '51-60', decile)) |>
+  mutate(decile = ifelse(60<rotten_tomatoes & rotten_tomatoes <=70, 
+                         '61-70', decile)) |>
+  mutate(decile = ifelse(70<rotten_tomatoes & rotten_tomatoes <=80, 
+                         '71-80', decile)) |>
+  mutate(decile = ifelse(80<rotten_tomatoes & rotten_tomatoes <=90, 
+                         '81-90', decile)) |>
+  mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
+                         '91-100', decile))
+total <- rbind(netflix, hulu)
+total <- rbind(total,prime)
+total <- rbind(total,disney)
+total_per_platform <- total |>
+  group_by(decile, platform) |>
+  summarize(number = n())
+mean_rankings <- data.frame(platform = c('Netflix',
+                                         'Hulu','Amazon Prime',
+                                         'Disney'),
+                            mean=c(netflix[[3]][1], hulu[[3]][1],
+                                   prime[[3]][1],  disney[[3]][1]))
+
+```
