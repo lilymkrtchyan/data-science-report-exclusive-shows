@@ -11,26 +11,39 @@ execute:
 
 ```{r}
 #| label: data-cleaning-for-exclusivity
+
+# loading packages
 library(tidyverse)
 library(tidymodels)
 library(dplyr)
 tv_shows <- read_csv(file = "data/tv_shows.csv")
+
+# replacing binary numbers to "yes" if streaming, "no" if not
 tv_shows_cleaned <- tv_shows |>
   mutate(Netflix = if_else(Netflix == 1, "Yes", "No"), 
          Hulu = if_else(Hulu == 1, "Yes", "No"),
          `Prime Video` = if_else(`Prime Video` == 1, "Yes", "No"),
          `Disney+` = if_else(`Disney+` == 1, "Yes", "No"),
          `Rotten Tomatoes` = str_remove(`Rotten Tomatoes`, "/100"),
-         `Rotten Tomatoes` = parse_integer(`Rotten Tomatoes`)) |>
+         `Rotten Tomatoes` = parse_integer(`Rotten Tomatoes`)) 
+
+# marking exclusive shows
+tv_shows_cleaned|>
   mutate(exclusive_netflix = Netflix == "Yes" & Hulu == "No" & `Prime Video` == "No" & `Disney+` == "No",
          exclusive_hulu = Hulu == "Yes" & Netflix == "No" & `Prime Video` == "No" & `Disney+` == "No",
          exclusive_prime_video = `Prime Video` == "Yes" & Netflix == "No" & Hulu == "No" & `Disney+` == "No",
          exclusive_disney_plus = `Disney+` == "Yes" & Netflix == "No" & Hulu == "No" & `Prime Video` == "No")
+
+# print the cleaned data frame
 tv_shows_cleaned
+
+# count exclusive shows to each platform
 num_netflix_exclusive <- sum(tv_shows_cleaned$exclusive_netflix == TRUE)
 num_hulu_exclusive <- sum(tv_shows_cleaned$exclusive_hulu == TRUE)
 num_prime_video_exclusive <- sum(tv_shows_cleaned$exclusive_prime_video == TRUE)
 num_disney_plus_exclusive <- sum(tv_shows_cleaned$exclusive_disney_plus == TRUE)
+
+# print the number of exlusive shows to each platform
 num_netflix_exclusive
 num_hulu_exclusive
 num_prime_video_exclusive
@@ -39,9 +52,15 @@ num_disney_plus_exclusive
 
 ```{r}
 #| label: explaratory-data-analysis
+
+# make a copy of the cleaned data frame
 tv_shows_cleaned_copy <- tv_shows_cleaned
+
+# filter only shows streaming on Netflix
 netflix <- filter(tv_shows_cleaned_copy, Netflix == "Yes")
 names(netflix)[7] <- "rotten_tomatoes"
+
+# categorize score intervals into deciles
 netflix <- netflix |>
   select(Title, rotten_tomatoes) |>
   mutate(mean = mean(rotten_tomatoes)) |>
@@ -65,9 +84,12 @@ netflix <- netflix |>
                          '81-90', decile)) |>
   mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
                          '91-100', decile))
-  
+
+# filter only the Hulu shows  
 hulu <- filter(tv_shows_cleaned_copy, Hulu == "Yes")
 names(hulu)[7] <- "rotten_tomatoes"
+
+# categorize score intervals into deciles
 hulu <- hulu |>
   select(Title, rotten_tomatoes) |>
   mutate(mean = mean(rotten_tomatoes)) |>
@@ -91,9 +113,13 @@ hulu <- hulu |>
                          '81-90', decile)) |>
   mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
                          '91-100', decile))
+
+# filter only shows streaming on Prime Video
 names(tv_shows_cleaned_copy)[10] <- "prime_video"
 prime <- filter(tv_shows_cleaned_copy, prime_video == "Yes")
 names(prime)[7] <- "rotten_tomatoes"
+
+# categorize score intervals into deciles
 prime <- prime |>
   select(Title, rotten_tomatoes) |>
   mutate(mean = mean(rotten_tomatoes)) |>
@@ -117,9 +143,13 @@ prime <- prime |>
                          '81-90', decile)) |>
   mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
                          '91-100', decile))
+
+# filter shows streaming on Netflix
 names(tv_shows_cleaned_copy)[11] <- "disney_plus"
 disney <- filter(tv_shows_cleaned_copy, disney_plus == "Yes")
 names(disney)[7] <- "rotten_tomatoes"
+
+# categorize score intervals into deciles
 disney <- disney |>
   select(Title, rotten_tomatoes) |>
   mutate(mean = mean(rotten_tomatoes)) |>
@@ -143,12 +173,18 @@ disney <- disney |>
                          '81-90', decile)) |>
   mutate(decile = ifelse(90<rotten_tomatoes & rotten_tomatoes <=100, 
                          '91-100', decile))
+
+# add all the shows streaming for all 4 platforms together
 total <- rbind(netflix, hulu)
 total <- rbind(total,prime)
 total <- rbind(total,disney)
+
+# count the number of shows in each decile interval for rotten tomatoes score
 total_per_platform <- total |>
   group_by(decile, platform) |>
   summarize(number = n())
+
+# calculate the mean ranking of shows streaming on each platform
 mean_rankings <- data.frame(platform = c('Netflix',
                                          'Hulu','Amazon Prime',
                                          'Disney'),
@@ -156,3 +192,8 @@ mean_rankings <- data.frame(platform = c('Netflix',
                                    prime[[3]][1],  disney[[3]][1]))
 
 ```
+
+```{r}
+write_csv(x = tv_shows_cleaned, file = "~/project-phenomenal-evee/appendices.qmd")
+```
+
