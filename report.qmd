@@ -17,7 +17,7 @@ Streaming platforms have taken the world by storm due to their convenience and a
 
 Our `tv_shows` dataset was taken from Kaggle and originally contained the following variables: `ID` , `Title`, `Year`, `Age`, `IMDb`, `Rotten Tomatoes`, `Netflix`, `Hulu`, `Prime Video`, `Disney+`, and `Type.`The original dataset contains 12 columns and 5368 observations. Each of the variables above were used to describe an observation of a television show featured on the four platforms we're analyzing. In our data cleaning process, we made some of the variables easier to understand; in the `Netflix`, `Hulu`, `Prime Video`, `Disney+` variables, we changed 0 or 1 binary results to "Yes" or "No" depending on whether a certain show is present on each platform. Additionally, we mutated the data to add four columns: `exclusive_netflix`, `exclusive_prime_video`, `exclusive_disney_plus,` and `exclusive_hulu`, which contains "TRUE" or "FALSE" data to indicate whether an observation is exclusively seen on the platform at hand. Finally, we removed the '%' in the `Rotten Tomatoes` score and converted the values to integers to make them easier to use in our analysis.
 
-After conducting two hypothesis tests and interpreting the results (including the p-value, point-estimate, and confidence interval values), we were able to determine a few conclusions with respect to the research questions above. Regarding the first hypothesis, we were unable to reject the null hypothesis: the quality of exclusive shows (measured by Rotten Tomatoes scores) do not appear to be different from that of non-exclusive shows across the platforms. In terms of the second research question, our findings were in favor of the alternate hypothesis: there is some sort of difference in ratings between the exclusive shows on each of the four platforms.
+After conducting two hypothesis tests and interpreting the results (including the p-value, point-estimate, and confidence interval values), we were able to determine a few conclusions with respect to the research questions above. Regarding the first hypothesis, we were able to reject the null hypothesis and were in favor of the alternative hypothesis. This means that the first hypothesis test provides convincing evidence that the average quality of exclusive shows (measured by Rotten Tomatoes scores) is greater than the average quality of non-exclusive shows (measured by Rotten Tomatoes scores) across all platforms. In terms of the second research question, our findings were in favor of the alternate hypothesis: there is some sort of difference in ratings between the exclusive shows on each of the four platforms.
 
 # Data description
 
@@ -77,6 +77,16 @@ mean_rankings |>
 
 ```
 
+```{r}
+#| label: logistic-regression
+
+lin_reg <- linear_reg() |>
+  fit(rotten_tomatoes ~ Netflix + Hulu + prime_video + disney_plus, data = tv_shows_cleaned_copy) 
+
+tidy(lin_reg)
+```
+
+
 **Fraction of shows that are in a given rating interval for each platform:**
 
 The graph titled *Fraction of shows that are in a given rating interval for each platform* is a normalized frequency bar chart where every bar has the same height so that each bar represents the proportion of each rating (in our case: rotten tomatoes score) interval for a given platform. This allows us to normalize the number of shows in each platform and reduce the bias of different platforms having different number of shows. In this graph, the y-axis represents the fraction of shows (compared to the overall number of shows) rather than the actual number of shows on each platform. This allows us to compare the rotten tomato scores of shows of each platform as well as across all the platforms. The x-axis represents the rotten tomato score intervals (decided) that we chose to categorize and group the shows based on.
@@ -112,43 +122,6 @@ H_0: \mu_{exclusive} > \mu_{non-exclusive}
 $$
 
 ```{r}
-#|label: hypothesis-testing-analysis-1-multivariable
-#|fig-height: 20
-
-# names(tv_shows_cleaned_copy)[7] <- "rotten_tomatoes"
-# 
-# observed_fit <- tv_shows_cleaned_copy |>
-#   specify(rotten_tomatoes ~ Netflix + Hulu + disney_plus + prime_video) |>
-#   fit()
-# 
-# observed_fit
-# 
-# null_fits <- tv_shows_cleaned_copy |>
-#   specify(rotten_tomatoes ~ Netflix + Hulu + disney_plus + prime_video) |>
-#   hypothesize(null = "independence") |>
-#   generate(reps = 1000, type = "permute") |>
-#   fit()
-# 
-# ci <- get_confidence_interval(
-#   x = null_fits,
-#   point_estimate = observed_fit,
-#   level = 0.95
-# )
-# 
-# print(ci)
-# 
-# get_p_value(
-#   x = null_fits,
-#   obs_stat = observed_fit,
-#   direction = "less"
-# )
-# 
-# visualize(null_fits) +
-#   shade_p_value(obs_stat = observed_fit, direction="less")
-
-```
-
-```{r}
 #|label: hypothesis-testing-analysis-1
 #|fig-height: 20
 
@@ -167,18 +140,21 @@ tv_shows_cleaned_copy1 <- tv_shows_cleaned_copy |>
 
 names(tv_shows_cleaned_copy1)[7] <- "rotten_tomatoes"
 
+#Point Estimate
 observed_fit1 <- tv_shows_cleaned_copy1 |>
   specify(rotten_tomatoes ~ exclusivity) |>
   calculate(stat = "diff in means", order = c("yes","no"))
 
 observed_fit1
 
+#Null Distribution by Permute
 null_fits1 <- tv_shows_cleaned_copy1 |>
   specify(rotten_tomatoes ~ exclusivity) |>
   hypothesize(null = "independence") |>
   generate(reps = 1000, type = "permute") |>
   calculate(stat = "diff in means", order = c("yes", "no"))
 
+#Calculate P value
 p_value <- get_p_value(
   x = null_fits1,
   obs_stat = observed_fit1,
@@ -187,6 +163,7 @@ p_value <- get_p_value(
 
 p_value
 
+#Visualizes P-value
 visualize(null_fits1) +
   shade_p_value(obs_stat = observed_fit1, direction="less") + 
   theme_minimal()
@@ -210,7 +187,7 @@ ci1
 
 ```
 
-#### ***Second Analysis: Hypothesis Test***
+***Second Analysis: Hypothesis Test***
 
 **Research Question:** Are exclusive shows' ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?
 
@@ -242,7 +219,6 @@ observed_fit <- tv_shows_exclusive |>
   fit()
 
 observed_fit
-
 
 # Permuting to compute p values
 null_fits <- tv_shows_exclusive |>
@@ -277,37 +253,29 @@ visualize(null_fits) +
 
 **Hypothesis #1: Point-Estimate**
 
-The intercept of 35.45341513 shows, on average, the estimated Rotten Tomatoes rating for a show that is non-exclusive for any of the four platforms.
+The point estimate -1.141822 represents, on average, the estimated difference of mean Rotten Tomatoes ratings between exclusive shows (to only one platform) and non exclusive shows across all four platforms. 
 
-The coefficients for `NetflixYes`, `HuluYes`, `disney_plusYes`, and `prime_videoYes` represent the estimated differences in Rotten Tomatoes ratings that are exclusive to each platform compared to non-exclusive. The 17.02 coefficient for `NetflixYes` shows that shows exclusive to Netflix have an estimated average Rotten Tomato ratings higher by 17.02 points than ratings non-exclusive to Netflix. Similarly, the coefficient of `HuluYes` shows that shows exclusive to Hulu have an average of 15.79 points higher ratings in Rotten Tomatoes than non exclusive shows. The coefficient of `disney_plusYes` shows that shows exclusive to Disney+ have an average of 11.86 points higher Rotten Tomato ratings than non-exclusive shows. Finally, the coefficient of `prime_videoYes` shows that the shows exclusive to Prime Video have an average of 0.07 points lower ratings in Rotten Tomatoes than shows non-exclusive to Prime Video.
+**Hypothesis #1: Confidence Interval**
 
-**Hypothesis #1: confidence intervals**
+The 95% confidence interval \[-1.78, -0.500\] represents that we can be 95% confident that the difference in average Rotten Tomato rating between exclusive and non-exclusive shows across all platforms observed in the real population falls into the observed range of the confidence interval.
 
-The 95% confidence intervals for observing similar results in the population for shows exclusive to either Hulu, Netflix, Disney+, or Prime Video are
+Additionally, since the bootstrapped confidence interval \[-1.78, -0.500\] does not include 0 in its interval, we can confidently rule out the possibility that exclusive shows across all platforms do not have a significant influence on Rotten Tomatoes ratings. In other words, since the confidence interval does not include 0, this suggests that the difference in average Rotten Tomato ratings between exclusive and non-exclusive shows is statistically significant and that exclusive shows has a significant influence on average Rotten Tomatoes ratings.
 
--   \[-2.026, 1.82\] for `HuluYes`
+**Hypothesis #1: P-Values**
 
--   \[-2.01, 1.83\] for `NetflixYes`
+The calculated p-value for the difference in mean Rotten Tomato ratings between exclusive and non-exclusive shows across all 4 platforms is approximately 0.001. Since this calculated p-value is smaller than the significance level indicated by $\alpha$ = 0.05, we are able to reject the null hypothesis (the average Rotten Tomatoes score of exclusive shows is less than the average Rotten Tomatoes score of non-exclusive shows across all four platforms.). In other words, there was convincing evidence that would favor the alternative hypothesis which indicates that the average Rotten Tomatoes score of exclusive shows is greater than the average Rotten Tomatoes score of non-exclusive shows across all four platforms.
 
--   \[-2.56, 2.43\] for `disney_plusYes`
+**Hypothesis #1: Simulation-Based Null Distributions Visualization**
 
--   \[-2.07, 1.89\] for `prime_videoYes`
+The visualization displays the null distribution and the p-value (shown by the red line). Specifically, the null distribution displayed represents the distribution of the difference of mean Rotten Tomatoes scores between exclusive and non-exclusive shows under the assumption that the null hypothesis is true. Based on the visualization, the p-value is found on the left of the null distribution. Since a one-tailed test was conducted, the critical region is found on the left side of the null distribution. This then indicates that the observed test statistic (the difference in mean Rotten Tomatoes scores) falls within the critical region. This means that the difference in mean Rotten Tomatoes scores is smaller than what would be expected under the null hypothesis. This also means the observed data is unlikely to have occurred by chance alone, assuming the null hypothesis is true. Thus, correspondingly, the p-value will be a very small value and would overall provide evidence in support of the alternative hypothesis: the difference in mean Rotten Tomato ratings between exclusive and non-exclusive shows across all platforms is statistically significant in the direction specified by the alternative hypothesis (the average Rotten Tomatoes score of exclusive shows is greater than the average Rotten Tomatoes score of non-exclusive shows across all four platforms).
 
-Because all the above confidence intervals include 0 in their interval we cannot confidently rule out the possibility that shows exclusive the given platform do not have a significant influence on Rotten Tomatoes ratings.
-
-The 95% confidence interval \[45.36, 49.26\] for the intercept shows that we can be confident that the average Rotten Tomato rating observed in real population falls into the observed range.
-
-**Hypothesis #1: p-values**
-
-The intercept p-value is 0.001 which represents the p-value for non-exclusive shows of all 4 platforms. For exclusive shows on Hulu, Netflix, and Disney Plus, we calculated a p-value of 1 whereas exclusive shows on Prime Video had a p-value of 0.466. Since the p-values for exclusive shows on all 4 platforms is greater than the significance level indicated by $\alpha$ = 0.05, we fail to reject the null hypothesis (the mean Rotten Tomatoes score of exclusive shows is less than the mean Rotten Tomatoes score of high-rated non-exclusive shows across all four platforms). This means that there wasn't convincing evidence that would favor the alternative hypothesis.
-
-**Hypothesis #2: point estimate**
+**Hypothesis #2: Point Estimate**
 
 The intercept 52.747303 represents, on average, the Rotten Tomatoes score for exclusive Netflix shows.
 
-The estimated Rotten Tomatoes score for exclusive Disney plus shows, on average, will be 4.600244 less than the exclusive Netflix shows Rotten Tomatoes score. The estimated Rotten Tomatoes score for exclusive Hulu shows, on average, will be 1.556898 less than the exclusive Netflix shows Rotten Tomatoes score. The estimated Rotten Tomatoes score for exclusive Prime video shows, on average, will be 17.856883 less than the exclusive Netflix shows Rotten Tomatoes score
+The estimated Rotten Tomatoes score for exclusive Disney plus shows, on average, will be 4.600244 less than the exclusive Netflix shows Rotten Tomatoes score. The estimated Rotten Tomatoes score for exclusive Hulu shows, on average, will be 1.556898 less than the exclusive Netflix shows Rotten Tomatoes score. The estimated Rotten Tomatoes score for exclusive Prime video shows, on average, will be 17.856883 less than the exclusive Netflix shows Rotten Tomatoes score.
 
-**Hypothesis #2: confidence intervals**
+**Hypothesis #2: Confidence Intervals**
 
 The 95% confidence intervals for observing the estimated Rotten Tomatoes scores for shows exclusive to either Hulu, Disney+, or Prime Video are
 
@@ -321,7 +289,7 @@ Since all the above confidence intervals include 0 within their interval, we can
 
 The 95% confidence interval \[52.019703, 53.415572\] for the intercept (which represents the exclusive_netflix column) shows that we can be confident that the estimated Rotten Tomato score for exclusive Netflix shows is within the given confidence interval range.
 
-**Hypothesis #2: p-values**
+**Hypothesis #2: P-Values**
 
 The intercept p-value is 0.001 which represents the p-value for exclusive Netflix shows. For exclusive shows on Prime Video and Disney Plus, we calculated a p-value of 0.001 whereas exclusive shows on Hulu had a p-value of 0.02. Since the p-values for exclusive shows on all 4 platforms are less than the significance level indicated by $\alpha$ = 0.05, we are able to reject the null hypothesis (there is no difference in quality of the exclusive shows between the four platforms). This means that there was convincing evidence that would favor the alternative hypothesis which indicates that there is a difference in quality of the exclusive shows between the four platforms (measured through Rotten Tomatoes scores).
 
@@ -331,7 +299,11 @@ The visualizations of `exclusive_disney_plus,` `exclusive_prime_video`, `exclusi
 
 **Extra Note:**
 
-We recognize that, in interpreting our results, a post-hoc analysis might've been beneficial to use in addition to an ANOVA test to more accurately draw conclusions from our data. In that case, the ANOVA (Analysis of Variance), would be used to test whether there are statistically significant differences between the means of two or more groups (i.e. between `exclusive_disney_plus,` `exclusive_prime_video`, `exclusive_hulu`, and the `exclusive_netflix`). If a significant difference is found, a post-hoc test like Tukey's HSD (Honestly Significant Difference) would be utilize to determine which groups in particular are significantly different from each other. However, due to the fact that this was not included in the scope of this course, we decided to omit these tests and instead only perform our traditional hypothesis tests, as seen above.
+We recognize that, in interpreting our results, a post-hoc analysis might've been beneficial to use in addition to an ANOVA test to more accurately draw conclusions from our data. In that case, the ANOVA (Analysis of Variance), would be used to test whether there are statistically significant differences between the means of two or more groups (i.e. between `exclusive_disney_plus,` `exclusive_prime_video`, `exclusive_hulu`, and the `exclusive_netflix`). If a significant difference is found, a post-hoc test like Tukey's HSD (Honestly Significant Difference) would be utilized to determine which groups in particular are significantly different from each other. However, due to the fact that this was not included in the scope of this course, we decided to omit these tests and instead only perform our traditional hypothesis tests, as seen above.
+
+**Conclusions**
+
+
 
 # Limitations
 
