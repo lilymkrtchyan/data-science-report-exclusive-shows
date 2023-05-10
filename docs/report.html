@@ -162,32 +162,30 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="data-description" class="level1">
 <h1>Data description</h1>
-<p>The observations (rows) of the <code>tvshows</code> dataset represent each individual TV show that is readily watched and broadcasted on at least one of the four top ranking broadcasting platforms (we are focusing on Hulu, Disney+, Prime Video and Netflix). The attributes (columns) of the <code>tvshows</code> data set categorizes each individual TV show based on the streaming platform it’s being broadcasted on and reveals additional information. This includes revealing the year the TV show was produced, target age group of audience, and the rating of the show (by the Rotten Tomatoes metric).</p>
-<p>This data set was created by the curator after being inspired by personal experiences of wanting to know more about which streaming platform(s) a particular TV show can be found on. Furthermore, the curator wished to explore potential relationships between target age group of audience, year of production, and the streaming platform the show can be found on. The creation of the <code>tvshows</code> dataset was not funded by anyone and was curated solely with the desire to learn more about tv shows readily broadcasted on top streaming platforms. Specifically, the curator likely looked at TV shows broadcasted on each streaming platform to determine which Rotten Tomatoes ratings to include within the dataset and determine which year of production data as well as target age of audience should be included.</p>
-<p>In regards to the pre-processing of the data, the Rotten Tomatoes score itself needed to undergo specific calculations before the curator is able to scrape the Rotten Tomatoes score for the corresponding TV shows. To summarize, the Rotten Tomatoes score is calculated only when the show receives at least 5 reviews. Then, the critic’s rating of “Fresh” (positive) or “Rotten” bad is collected and the Rotten Tomatoes percentage is calculated by dividing the number of “Fresh” scores by the total number of “Fresh” and “Rotten” scores times 100. In addition, the curator then used a binary system (0 for “no” and 1 for “yes”) to classify which streaming platform(s) each TV show can be found on.</p>
+<p>The observations (rows) of the <code>tvshows</code> dataset represent each individual TV show that is readily watched and broadcasted on at least one of the four top ranking broadcasting platforms (we are focusing on Hulu, Disney+, Prime Video and Netflix). The attributes (columns) of the <code>tvshows</code> dataset categorizes each individual TV show based on the streaming platform it’s being streamed on and reveals additional information. This includes revealing the year the TV show was produced, target age group of audience, and the rating of the show (by the Rotten Tomatoes metric). This dataset was created by the curator after being inspired by personal experiences of wanting to know more about which streaming platform(s) a particular TV show can be found on. Furthermore, the curator wished to explore potential relationships between target age group of audience, year of production, and the streaming platform the show can be found on. The creation of the <code>tvshows</code> dataset was not funded by anyone and was curated solely with the desire to learn more about tv shows readily broadcasted on top streaming platforms. Specifically, the curator likely looked at TV shows broadcasted on each streaming platform to determine which Rotten Tomatoes ratings to include within the dataset and determine which year of production data as well as target age of audience should be included.</p>
+<p>As previously mentioned, the processes that might have influenced which TV shows and relevant information that was and wasn’t observed/recorded involved a combination of the curator’s personal experiences with TV shows and the observed streaming platforms. Specifically, the curator must have had some interest, interaction or experience with the streaming platforms or specific TV shows to have wanted to focus the observations of the dataset to include just TV shows from specific streaming platforms ( Netflix, Hulu, Disney Plus and Prime Video). Also, the availability of the TV show on these platforms influenced whether a particular show was included in the dataset as shows not available on the aforementioned platforms wouldn’t be observed or recorded. Finally, the availability of the information about the show (i.e., target age, year of production, Rotten Tomatoes ratings, etc.) would have influenced whether certain shows were included in the dataset or whether the show would be included with NA values in place of where this information is recorded in the dataset.</p>
+<p>In regards to the preprocessing of the data, the Rotten Tomatoes score itself needed to undergo specific calculations before the curator is able to scrape the Rotten Tomatoes score for the corresponding TV shows. To summarize, the Rotten Tomatoes score is calculated only when the show receives at least 5 reviews. Then, the critic’s rating of “Fresh” (positive) or “Rotten” bad is collected and the Rotten Tomatoes percentage is calculated by dividing the number of “Fresh” scores by the total number of “Fresh” and “Rotten” scores times 100. In addition, the curator then used a binary system (0 for “no” and 1 for “yes”) to classify which streaming platform(s) each TV show can be found on.</p>
 <p>The curator did not involve any other people during the data collection and likely collected the data from official sites that reported the taken corresponding data values. At the same time, the Rotten Tomatoes data values inherently involve people as the score is reliant on people’s opinions and rating of the show. From this perspective, the people are likely aware of this data collection as they are displaying their ratings of the tv shows in a public domain. They likely expected their data to be used to contribute to the overall rating of the TV show and used to inform others on whether they should watch the respective TV show.</p>
 </section>
 <section id="data-analysis" class="level1">
 <h1>Data analysis</h1>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.2     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-✔ purrr     1.0.1     
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.4.2     ✔ purrr   1.0.0
+✔ tibble  3.2.1     ✔ dplyr   1.1.2
+✔ tidyr   1.2.1     ✔ stringr 1.5.0
+✔ readr   2.1.3     ✔ forcats 0.5.2
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
 ── Attaching packages ────────────────────────────────────── tidymodels 1.0.0 ──
 
-✔ broom        1.0.4     ✔ rsample      1.1.1
+✔ broom        1.0.2     ✔ rsample      1.1.1
 ✔ dials        1.1.0     ✔ tune         1.1.1
 ✔ infer        1.0.4     ✔ workflows    1.1.2
 ✔ modeldata    1.0.1     ✔ workflowsets 1.0.0
-✔ parsnip      1.0.3     ✔ yardstick    1.2.0
+✔ parsnip      1.0.3     ✔ yardstick    1.1.0
 ✔ recipes      1.0.6     
 
 ── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
@@ -197,7 +195,7 @@ ul.task-list li input[type="checkbox"] {
 ✖ dplyr::lag()      masks stats::lag()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/
+• Dig deeper into tidy modeling with R at https://www.tmwr.org
 
 Loading required package: viridisLite
 
@@ -277,13 +275,13 @@ dbl (8): ...1, ID, Year, Netflix, Hulu, Prime Video, Disney+, Type
 `.groups` argument.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/explaratory-data-analysis-1.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/exploratory-data-analysis-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/explaratory-data-analysis-2.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/exploratory-data-analysis-2.png" class="img-fluid" width="672"></p>
 </div>
 <div class="cell-output-display">
-<p><img src="report_files/figure-html/explaratory-data-analysis-3.png" class="img-fluid" width="672"></p>
+<p><img src="report_files/figure-html/exploratory-data-analysis-3.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -298,6 +296,11 @@ dbl (8): ...1, ID, Year, Netflix, Hulu, Prime Video, Disney+, Type
 5 `Disney+`Yes      11.9        1.26     9.43   5.70e- 21</code></pre>
 </div>
 </div>
+<p><span class="math display">\[
+Rotten Tomatoes = 35.45 + 17.02*NetflixYes + 15.79*HuluYes \\ - 0.08*Prime VideoYes + 11.86*Disney+Yes
+\]</span></p>
+<p><strong>Linear Regression Explanation:</strong></p>
+<p>The intercept of 35.45 represents the expected value of <strong><code>Rotten Tomatoes</code></strong> scores when all of the binary predictor variables (<strong><code>NetflixYes</code></strong>, <strong><code>HuluYes</code></strong>, <strong><code>Prime VideoYes</code></strong>, and <strong><code>Disney+Yes</code></strong>) are equal to zero. Based on these results, we can see that shows on <strong><code>Netflix</code></strong> and <strong><code>Hulu</code></strong> are associated with higher <strong><code>Rotten Tomatoes</code></strong> ratings, as indicated by their positive estimates of 17.02 and 15.79, respectively, and their very small p-values of 1.01e-72 and 2.07e-68, respectively. In contrast, the presence of <strong><code>Prime Video</code></strong> is associated with slightly lower <strong><code>Rotten Tomatoes</code></strong> ratings, as seen by its negative estimate of -0.08 and p-value of 0.933, although this difference is not statistically significant. Finally, the presence of <strong><code>Disney+</code></strong> is associated with higher <strong><code>Rotten Tomatoes</code></strong> ratings; this can be seen by its positive estimate of 11.86 and very small p-value of 5.70e-21.</p>
 <p><strong>Fraction of shows that are in a given rating interval for each platform:</strong></p>
 <p>The graph titled <em>Fraction of shows that are in a given rating interval for each platform</em> is a normalized frequency bar chart where every bar has the same height so that each bar represents the proportion of each rating (in our case: rotten tomatoes score) interval for a given platform. This allows us to normalize the number of shows in each platform and reduce the bias of different platforms having different number of shows. In this graph, the y-axis represents the fraction of shows (compared to the overall number of shows) rather than the actual number of shows on each platform. This allows us to compare the rotten tomato scores of shows of each platform as well as across all the platforms. The x-axis represents the rotten tomato score intervals (decided) that we chose to categorize and group the shows based on.</p>
 <p>Based on the graph we can deduce that Hulu and Netflix have equally large proportion of shows ranked between 91 and 100 on rotten tomatoes. Prime Video has the third largest proportion of shows in that interval of rotten tomatoes scores, followed by the last platform, which is Disney+. The same tendency is consistent for rotten tomatoes score intervals 51-60, 61-70, 71-80, and 81-90 rotten tomatoes score intervals. The proportion of shows that have the lowest rotten tomatoes score is the largest for Prime Video. Shows ranked within the interval of 1-10 are mostly streamed on Prime Video. In general, it seems like Netflix and Hulu have the largest proportion of shows that are ranked relatively high on rotten tomatoes, meanwhile Prime Video has the largest proportion of shows that are ranked the lowest on rotten tomatoes.</p>
@@ -329,11 +332,19 @@ Explanatory: exclusivity (factor)
   &lt;dbl&gt;
 1 -1.14</code></pre>
 </div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Please be cautious in reporting a p-value of 0. This result is an
+approximation based on the number of `reps` chosen in the `generate()` step. See
+`?get_p_value()` for more information.</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   p_value
     &lt;dbl&gt;
-1   0.001</code></pre>
+1       0</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in min(diff(unique_loc)): no non-missing arguments to min; returning Inf</code></pre>
 </div>
 <div class="cell-output-display">
 <p><img src="report_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
@@ -342,7 +353,7 @@ Explanatory: exclusivity (factor)
 <pre><code># A tibble: 1 × 2
   lower_ci upper_ci
      &lt;dbl&gt;    &lt;dbl&gt;
-1    -1.76   -0.540</code></pre>
+1    -1.80   -0.578</code></pre>
 </div>
 </div>
 <p><strong><em>Second Analysis: Hypothesis Test</em></strong></p>
@@ -433,7 +444,9 @@ Warning: F usually corresponds to right-tailed tests. Proceed with caution.</cod
 <li><p>[-2.813665, -0.3103026] for <code>exclusive_hulu</code></p></li>
 <li><p>[-19.043264, -16.124430] for <code>exclusive_prime_video</code></p></li>
 </ul>
-<p>Since all the above confidence intervals include 0 within their interval, we cannot confidently rule out the possibility that shows exclusive to either Hulu, Disney+, or Prime Video do not have a significant influence on Rotten Tomatoes ratings; we cannot be confident that the estimated scores for these streaming platforms are statistically different from 0.</p>
+<p>The 95% confidence interval [-6.406644, -2.7691091] for <code>exclusive_disney_plus</code> means that we can be 95% confident that the estimated difference in Rotten Tomatoes scores between exclusive shows on Disney+ and Netflix (the reference, or intercept, variable) is within the given confidence interval range.</p>
+<p>The 95% confidence interval [-2.813665, -0.3103026] for <code>exclusive_hulu</code> means that we can be 95% confident that the estimated difference in Rotten Tomatoes scores between exclusive shows on Hulu and Netflix (the reference, or intercept, variable) is within the given confidence interval range.</p>
+<p>The 95% confidence interval [-19.043264, -16.124430] for <code>exclusive_prime_video</code> means that we can be 95% confident that the estimated difference in Rotten Tomatoes scores between exclusive shows on Prime Video and Netflix (the reference, or intercept, variable) is within the given confidence interval range.</p>
 <p>The 95% confidence interval [52.019703, 53.415572] for the intercept (which represents the exclusive_netflix column) shows that we can be confident that the estimated Rotten Tomato score for exclusive Netflix shows is within the given confidence interval range.</p>
 <p><strong>Hypothesis #2: P-Values</strong></p>
 <p>The intercept p-value is 0.001 which represents the p-value for exclusive Netflix shows. For exclusive shows on Prime Video and Disney Plus, we calculated a p-value of 0.001 whereas exclusive shows on Hulu had a p-value of 0.02. Since the p-values for exclusive shows on all 4 platforms are less than the significance level indicated by <span class="math inline">\(\alpha\)</span> = 0.05, we are able to reject the null hypothesis (there is no difference in quality of the exclusive shows between the four platforms). This means that there was convincing evidence that would favor the alternative hypothesis which indicates that there is a difference in quality of the exclusive shows between the four platforms (measured through Rotten Tomatoes scores).</p>
@@ -441,7 +454,9 @@ Warning: F usually corresponds to right-tailed tests. Proceed with caution.</cod
 <p>The visualizations of <code>exclusive_disney_plus,</code> <code>exclusive_prime_video</code>, <code>exclusive_hulu</code>, and the <code>intercept</code> display the null distribution in reference to the p-value (the red line). A null distribution that is far from the p-value (as seen in <code>exclusive_prime_video,</code> <code>exclusive_disney_plus,</code> and the <code>intercept</code>) indicates that the observed difference in ratings between the four platforms is larger than what would be expected under the null hypothesis. Hence, the p-value is small because the observed difference is unlikely to be due to chance. Additionally, we can also reasonably say that, in the case of <code>exclusive_hulu,</code> because the red line is on the edge of the graph, it likely means that the p-value is very small; similarly to what was previously mentioned, this thus indicates that the observed difference is unlikely to be due to chance if the null hypothesis were true. Hence, this suggests strong evidence against the null hypothesis in favor of the alternate hypothesis.</p>
 <p><strong>Extra Note:</strong></p>
 <p>We recognize that, in interpreting our results, a post-hoc analysis might’ve been beneficial to use in addition to an ANOVA test to more accurately draw conclusions from our data. In that case, the ANOVA (Analysis of Variance), would be used to test whether there are statistically significant differences between the means of two or more groups (i.e.&nbsp;between <code>exclusive_disney_plus,</code> <code>exclusive_prime_video</code>, <code>exclusive_hulu</code>, and the <code>exclusive_netflix</code>). If a significant difference is found, a post-hoc test like Tukey’s HSD (Honestly Significant Difference) would be utilized to determine which groups in particular are significantly different from each other. However, due to the fact that this was not included in the scope of this course, we decided to omit these tests and instead only perform our traditional hypothesis tests, as seen above.</p>
-<p><strong>Conclusions</strong> In the context of our overall analysis of the streaming wars between the most popular streaming platforms in our current pop culture, our hypothesis testing indicates that there</p>
+<p><strong>Further Conclusions:</strong></p>
+<p>In the context of our overall analysis of the “streaming wars” between the most popular streaming platforms in our current pop culture, our hypothesis testing indicates that there are likely platforms that are of higher quality than the others (looking at the point estimates of the second hypothesis test it indicated a specific order based on Rotten Tomato ratings (from highest to lowest: Netflix, Disney Plus, Hulu, Prime Video)), although we are unable to specifically locate which one due to the scope of our data analysis. Ultimately, we are able to confidently reject both null hypotheses. The average Rotten Tomatoes score of exclusive shows is greater than the average Rotten Tomatoes score of non-exclusive shows across all four platforms. Moreover, there is some sort of difference in ratings between the exclusive shows on each of the four platforms.</p>
+<p>This could suggest that the platforms are investing in exclusive content that is of higher quality than their non-exclusive offerings; they may need to do so in order to remain competitive and retain subscribers. This also implicates the beginning of a new trend in the streaming industry as platforms might turn to exclusively producing their own shows (like a TV network) as a way to maximize profits and appeal to new subscribers to join their platform (as exclusive shows can only be streamed on one specific platform) instead of relying on the popularity of non-exclusive shows that can be accessed on a multitude of platforms.</p>
 </section>
 <section id="limitations" class="level1">
 <h1>Limitations</h1>
@@ -450,17 +465,14 @@ Warning: F usually corresponds to right-tailed tests. Proceed with caution.</cod
 <p>The third limitation of our study is that there are unbalanced amounts of exclusive shows on each platform; for example, Netflix has significantly larger data of exclusive shows compared to the other platforms, which may affect the overall quality comparison between platforms. Disney Plus is a relatively new platform and has a smaller library of exclusive shows, which may limit the analysis. These unbalanced amounts of exclusive shows on each platform may introduce bias and affect the conclusions we can draw from our analyses.</p>
 <p>The fourth limitation is that our analysis plan uses tomato scores to represent quality. This definition could have some biases. Firstly, the tomato score is a critics rating rather than an audience rating. Many movies and shows have a target audience that is better or worse represented than the other. Critics might inadvertently bring bias into their rating, and subsequently, our definition of quality could be biased as well. In addition, some shows that are watched by fewer people are less rated with tomato score, making the score easily influenced by a few critics, and therefore create bias in the definition of quality.</p>
 <p>The fifth limitation is that our analysis does not account for the different types or genres of exclusive shows on each platform, such as comedies, documentaries, actions, etc., which may have different average ratings. We would have better insights if we had more data about the genres to compare shows of similar types across platforms rather than just looking at the overall average ratings.</p>
-<p>The sixth limitation is that we do not take into account the number of views of each show across all platforms. This is a crucial factor in determining the quality of both exclusive and non-exclusive shows, as it can be a game-changer along with ratings. Many viewers may not rate a show after watching it, so the number of views plays an important role in determining if a show is popular or not, which affects its quality since quality is not solely determined by ratings.<br>
-<br>
-The seventh limitation is that our data does not include the cost of subscription for each platform. For example, suppose a particular platform has a higher subscription cost. In that case, viewers may have higher expectations for the quality of the content they are paying for and may be more likely to rate shows negatively if they feel they are not getting their money’s worth. Alternatively, if a platform has a lower subscription cost, viewers may be more forgiving of lower-quality content or may rate shows more positively if they feel they are getting a good deal. Additionally, subscription costs can also impact the target audience of a particular platform, as viewers with different budgets may be more likely to subscribe to platforms with lower costs. Overall, it’s important to consider the cost of subscriptions when analyzing the quality of shows across different platforms.</p>
+<p>The sixth limitation is that we do not take into account the number of views of each show across all platforms. This is a crucial factor in determining the quality of both exclusive and non-exclusive shows, as it can be a game-changer along with ratings. Many viewers may not rate a show after watching it, so the number of views plays an important role in determining if a show is popular or not, which affects its quality since quality is not solely determined by ratings.</p>
+<p>The seventh limitation is that our data does not include the cost of subscription for each platform. For example, suppose a particular platform has a higher subscription cost. In that case, viewers may have higher expectations for the quality of the content they are paying for and may be more likely to rate shows negatively if they feel they are not getting their money’s worth. Alternatively, if a platform has a lower subscription cost, viewers may be more forgiving of lower-quality content or may rate shows more positively if they feel they are getting a good deal. Additionally, subscription costs can also impact the target audience of a particular platform, as viewers with different budgets may be more likely to subscribe to platforms with lower costs. Overall, it’s important to consider the cost of subscriptions when analyzing the quality of shows across different platforms.</p>
 <p>Moreover, there are some other possible variables to consider in the study. The first one is release dates. Media critics have varied opinion on whether the movie/show release year has an relationship with quality or scores of a show. Setting this aside, another way the release date could impact our study is that eariler realsed shows could have a lower possibility of being exclusive, because media exclusiveness isn’t prevalent before Netflix decided to produce its own shows. Therefore, the release year could have an impact on both the exclusiveness and their quality. Similarly, the production budget for each show could be confounding as well, because exclusive shows typically require more budget to produce than non-exclusive shows. Shows with more budget could also provide a better visual experience/hire better actors and thus have an impact on tomato scores. We tried to account these factors but each platforms have a different policy of releasing their data and many of the data aren’t typically released to outside the companies.</p>
 </section>
 <section id="acknowledgments" class="level1">
 <h1>Acknowledgments</h1>
 <p>Thanks to this user who published the dataset we are using on Kraggle:</p>
 <p><a href="https://www.kaggle.com/datasets/ruchi798/tv-shows-on-netflix-prime-video-hulu-and-disney" class="uri">https://www.kaggle.com/datasets/ruchi798/tv-shows-on-netflix-prime-video-hulu-and-disney</a></p>
-<p><br>
-</p>
 
 
 </section>

@@ -184,7 +184,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
    
   <ul>
   <li><a href="#appendix" id="toc-appendix" class="nav-link active" data-scroll-target="#appendix">Appendix</a></li>
-  <li><a href="#r-write_csvx-tv_shows_cleaned-file-project-phenomenal-eveeappendices.qmd" id="toc-r-write_csvx-tv_shows_cleaned-file-project-phenomenal-eveeappendices.qmd" class="nav-link" data-scroll-target="#r-write_csvx-tv_shows_cleaned-file-project-phenomenal-eveeappendices.qmd"><code>{r} # write_csv(x = tv_shows_cleaned, file = "~/project-phenomenal-evee/appendices.qmd") #</code></a></li>
   </ul>
 </nav>
     </div>
@@ -211,29 +210,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <section id="appendix" class="level1">
 <h1>Appendix</h1>
+<p>Our <code>tv_shows</code> dataset was taken from Kaggle and originally contained the following variables: <code>ID</code> , <code>Title</code>, <code>Year</code>, <code>Age</code>, <code>IMDb</code>, <code>Rotten Tomatoes</code>, <code>Netflix</code>, <code>Hulu</code>, <code>Prime Video</code>, <code>Disney+</code>, and <code>Type.</code>The original dataset contains 12 columns and 5368 observations. Each of the variables above were used to describe an observation of a television show featured on the four platforms we’re analyzing. In our data cleaning process, we made some of the variables easier to understand; in the <code>Netflix</code>, <code>Hulu</code>, <code>Prime Video</code>, <code>Disney+</code> variables, we changed 0 or 1 binary results to “Yes” or “No” depending on whether a certain show is present on each platform. Additionally, we mutated the data to add four columns: <code>exclusive_netflix</code>, <code>exclusive_prime_video</code>, <code>exclusive_disney_plus,</code> and <code>exclusive_hulu</code>, which contains “TRUE” or “FALSE” data to indicate whether an observation is exclusively seen on the platform at hand. Finally, we removed the ‘%’ in the <code>Rotten Tomatoes</code> score and converted the values to integers to make them easier to use in our analysis.</p>
+<p>After conducting two hypothesis tests and interpreting the results (including the p-value, point-estimate, and confidence interval values), we were able to determine a few conclusions with respect to the research questions above. Regarding the first hypothesis, we were able to reject the null hypothesis and were in favor of the alternative hypothesis. This means that the first hypothesis test provides convincing evidence that the average quality of exclusive shows (measured by Rotten Tomatoes scores) is greater than the average quality of non-exclusive shows (measured by Rotten Tomatoes scores) across all platforms. In terms of the second research question, our findings were in favor of the alternate hypothesis: there is some sort of difference in ratings between the exclusive shows on each of the four platforms.</p>
+<p>The observations (rows) of the <code>tvshows</code> dataset represent each individual TV show that is readily watched and broadcasted on at least one of the four top ranking broadcasting platforms (we are focusing on Hulu, Disney+, Prime Video and Netflix). The attributes (columns) of the <code>tvshows</code> dataset categorizes each individual TV show based on the streaming platform it’s being streamed on and reveals additional information. This includes revealing the year the TV show was produced, target age group of audience, and the rating of the show (by the Rotten Tomatoes metric). This dataset was created by the curator after being inspired by personal experiences of wanting to know more about which streaming platform(s) a particular TV show can be found on. Furthermore, the curator wished to explore potential relationships between target age group of audience, year of production, and the streaming platform the show can be found on. The creation of the <code>tvshows</code> dataset was not funded by anyone and was curated solely with the desire to learn more about tv shows readily broadcasted on top streaming platforms. Specifically, the curator likely looked at TV shows broadcasted on each streaming platform to determine which Rotten Tomatoes ratings to include within the dataset and determine which year of production data as well as target age of audience should be included.</p>
+<p>As previously mentioned, the processes that might have influenced which TV shows and relevant information that was and wasn’t observed/recorded involved a combination of the curator’s personal experiences with TV shows and the observed streaming platforms. Specifically, the curator must have had some interest, interaction or experience with the streaming platforms or specific TV shows to have wanted to focus the observations of the dataset to include just TV shows from specific streaming platforms ( Netflix, Hulu, Disney Plus and Prime Video). Also, the availability of the TV show on these platforms influenced whether a particular show was included in the dataset as shows not available on the aforementioned platforms wouldn’t be observed or recorded. Finally, the availability of the information about the show (i.e., target age, year of production, Rotten Tomatoes ratings, etc.) would have influenced whether certain shows were included in the dataset or whether the show would be included with NA values in place of where this information is recorded in the dataset.</p>
+<p>In regards to the preprocessing of the data, the Rotten Tomatoes score itself needed to undergo specific calculations before the curator is able to scrape the Rotten Tomatoes score for the corresponding TV shows. To summarize, the Rotten Tomatoes score is calculated only when the show receives at least 5 reviews. Then, the critic’s rating of “Fresh” (positive) or “Rotten” bad is collected and the Rotten Tomatoes percentage is calculated by dividing the number of “Fresh” scores by the total number of “Fresh” and “Rotten” scores times 100. In addition, the curator then used a binary system (0 for “no” and 1 for “yes”) to classify which streaming platform(s) each TV show can be found on.</p>
+<p>The curator did not involve any other people during the data collection and likely collected the data from official sites that reported the taken corresponding data values. At the same time, the Rotten Tomatoes data values inherently involve people as the score is reliant on people’s opinions and rating of the show. From this perspective, the people are likely aware of this data collection as they are displaying their ratings of the tv shows in a public domain. They likely expected their data to be used to contribute to the overall rating of the TV show and used to inform others on whether they should watch the respective TV show.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loading packages</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.2     ✔ readr     2.1.4
-✔ forcats   1.0.0     ✔ stringr   1.5.0
-✔ ggplot2   3.4.2     ✔ tibble    3.2.1
-✔ lubridate 1.9.2     ✔ tidyr     1.3.0
-✔ purrr     1.0.1     
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.4.2     ✔ purrr   1.0.0
+✔ tibble  3.2.1     ✔ dplyr   1.1.2
+✔ tidyr   1.2.1     ✔ stringr 1.5.0
+✔ readr   2.1.3     ✔ forcats 0.5.2
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.0.0 ──
-✔ broom        1.0.4     ✔ rsample      1.1.1
+✔ broom        1.0.2     ✔ rsample      1.1.1
 ✔ dials        1.1.0     ✔ tune         1.1.1
 ✔ infer        1.0.4     ✔ workflows    1.1.2
 ✔ modeldata    1.0.1     ✔ workflowsets 1.0.0
-✔ parsnip      1.0.3     ✔ yardstick    1.2.0
+✔ parsnip      1.0.3     ✔ yardstick    1.1.0
 ✔ recipes      1.0.6     
 ── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
 ✖ scales::discard() masks purrr::discard()
@@ -242,7 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ✖ dplyr::lag()      masks stats::lag()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Use tidymodels_prefer() to resolve common conflicts.</code></pre>
+• Use suppressPackageStartupMessages() to eliminate package startup messages</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tv_shows <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"data/tv_shows.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -487,9 +490,9 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                            <span class="at">mean=</span><span class="fu">c</span>(netflix[[<span class="dv">3</span>]][<span class="dv">1</span>], hulu[[<span class="dv">3</span>]][<span class="dv">1</span>],</span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>                                   prime[[<span class="dv">3</span>]][<span class="dv">1</span>],  disney[[<span class="dv">3</span>]][<span class="dv">1</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="r-write_csvx-tv_shows_cleaned-file-project-phenomenal-eveeappendices.qmd" class="level1">
-<h1><code>{r} # write_csv(x = tv_shows_cleaned, file = "~/project-phenomenal-evee/appendices.qmd") #</code></h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(<span class="at">x =</span> tv_shows_cleaned, <span class="at">file =</span> <span class="st">"data/appendices.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 </section>
