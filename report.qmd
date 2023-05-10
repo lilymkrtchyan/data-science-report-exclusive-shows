@@ -263,7 +263,13 @@ tidy(lin_reg)
 
 ```
 
+$$
+Rotten Tomatoes = 35.45 + 17.02*NetflixYes + 15.79*HuluYes \\ - 0.08*Prime VideoYes + 11.86*Disney+Yes 
+$$
 
+**Linear Regression Explanation:**
+
+The intercept of 35.45 represents the expected value of **`Rotten Tomatoes`** scores when all of the binary predictor variables (**`NetflixYes`**, **`HuluYes`**, **`Prime VideoYes`**, and **`Disney+Yes`**) are equal to zero. Based on these results, we can see that shows on **`Netflix`** and **`Hulu`** are associated with higher **`Rotten Tomatoes`** ratings, as indicated by their positive estimates of 17.02 and 15.79, respectively, and their very small p-values of 1.01e-72 and 2.07e-68, respectively. In contrast, the presence of **`Prime Video`** is associated with slightly lower **`Rotten Tomatoes`** ratings, as seen by its negative estimate of -0.08 and p-value of 0.933, although this difference is not statistically significant. Finally, the presence of **`Disney+`** is associated with higher **`Rotten Tomatoes`** ratings; this can be seen by its positive estimate of 11.86 and very small p-value of 5.70e-21.
 
 **Fraction of shows that are in a given rating interval for each platform:**
 
@@ -431,7 +437,7 @@ visualize(null_fits) +
 
 **Hypothesis #1: Point-Estimate**
 
-The point estimate -1.141822 represents, on average, the estimated difference of mean Rotten Tomatoes ratings between exclusive shows (to only one platform) and non exclusive shows across all four platforms. 
+The point estimate -1.141822 represents, on average, the estimated difference of mean Rotten Tomatoes ratings between exclusive shows (to only one platform) and non exclusive shows across all four platforms.
 
 **Hypothesis #1: Confidence Interval**
 
@@ -479,9 +485,7 @@ The visualizations of `exclusive_disney_plus,` `exclusive_prime_video`, `exclusi
 
 We recognize that, in interpreting our results, a post-hoc analysis might've been beneficial to use in addition to an ANOVA test to more accurately draw conclusions from our data. In that case, the ANOVA (Analysis of Variance), would be used to test whether there are statistically significant differences between the means of two or more groups (i.e. between `exclusive_disney_plus,` `exclusive_prime_video`, `exclusive_hulu`, and the `exclusive_netflix`). If a significant difference is found, a post-hoc test like Tukey's HSD (Honestly Significant Difference) would be utilized to determine which groups in particular are significantly different from each other. However, due to the fact that this was not included in the scope of this course, we decided to omit these tests and instead only perform our traditional hypothesis tests, as seen above.
 
-**Conclusions**
-In the context of our overall analysis of the streaming wars between the most popular streaming platforms in our current pop culture, our hypothesis testing indicates that there 
-
+**Conclusions** In the context of our overall analysis of the streaming wars between the most popular streaming platforms in our current pop culture, our hypothesis testing indicates that there
 
 # Limitations
 
