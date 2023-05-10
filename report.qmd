@@ -464,7 +464,11 @@ The 95% confidence intervals for observing the estimated Rotten Tomatoes scores 
 
 -   \[-19.043264, -16.124430\] for `exclusive_prime_video`
 
-Since all the above confidence intervals include 0 within their interval, we cannot confidently rule out the possibility that shows exclusive to either Hulu, Disney+, or Prime Video do not have a significant influence on Rotten Tomatoes ratings; we cannot be confident that the estimated scores for these streaming platforms are statistically different from 0.
+The 95% confidence interval \[-6.406644, -2.7691091\] for `exclusive_disney_plus` means that we can be 95% confident that the estimated difference in Rotten Tomatoes scores between exclusive shows on Disney+ and Netflix (the reference, or intercept, variable) is within the given confidence interval range.
+
+The 95% confidence interval \[-2.813665, -0.3103026\] for `exclusive_hulu` means that we can be 95% confident that the estimated difference in Rotten Tomatoes scores between exclusive shows on Hulu and Netflix (the reference, or intercept, variable) is within the given confidence interval range.
+
+The 95% confidence interval \[-19.043264, -16.124430\] for `exclusive_prime_video` means that we can be 95% confident that the estimated difference in Rotten Tomatoes scores between exclusive shows on Prime Video and Netflix (the reference, or intercept, variable) is within the given confidence interval range.
 
 The 95% confidence interval \[52.019703, 53.415572\] for the intercept (which represents the exclusive_netflix column) shows that we can be confident that the estimated Rotten Tomato score for exclusive Netflix shows is within the given confidence interval range.
 
