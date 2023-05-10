@@ -480,7 +480,11 @@ The visualizations of `exclusive_disney_plus,` `exclusive_prime_video`, `exclusi
 
 We recognize that, in interpreting our results, a post-hoc analysis might've been beneficial to use in addition to an ANOVA test to more accurately draw conclusions from our data. In that case, the ANOVA (Analysis of Variance), would be used to test whether there are statistically significant differences between the means of two or more groups (i.e. between `exclusive_disney_plus,` `exclusive_prime_video`, `exclusive_hulu`, and the `exclusive_netflix`). If a significant difference is found, a post-hoc test like Tukey's HSD (Honestly Significant Difference) would be utilized to determine which groups in particular are significantly different from each other. However, due to the fact that this was not included in the scope of this course, we decided to omit these tests and instead only perform our traditional hypothesis tests, as seen above.
 
-**Conclusions** In the context of our overall analysis of the streaming wars between the most popular streaming platforms in our current pop culture, our hypothesis testing indicates that there
+**Further Conclusions:**
+
+In the context of our overall analysis of the "streaming wars" between the most popular streaming platforms in our current pop culture, our hypothesis testing indicates that there are likely platforms that are of higher quality than the others, although we are unable to specifically locate which one due to the scope of our data analysis. Ultimately, we are able to confidently reject both null hypotheses. The average Rotten Tomatoes score of exclusive shows is greater than the average Rotten Tomatoes score of non-exclusive shows across all four platforms. Moreover, there is some sort of difference in ratings between the exclusive shows on each of the four platforms.
+
+This could suggest that the platforms are investing in exclusive content that is of higher quality than their non-exclusive offerings; they may need to do so in order to remain competitive and retain subscribers.
 
 # Limitations
 
