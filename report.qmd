@@ -56,7 +56,7 @@ tv_shows_cleaned <- tv_shows |>
          `Rotten Tomatoes` = parse_integer(`Rotten Tomatoes`)) 
 
 # marking exclusive shows
-tv_shows_cleaned|>
+tv_shows_cleaned <- tv_shows_cleaned |>
   mutate(exclusive_netflix = Netflix == "Yes" & Hulu == "No" & `Prime Video` == "No" & `Disney+` == "No",
          exclusive_hulu = Hulu == "Yes" & Netflix == "No" & `Prime Video` == "No" & `Disney+` == "No",
          exclusive_prime_video = `Prime Video` == "Yes" & Netflix == "No" & Hulu == "No" & `Disney+` == "No",
@@ -255,13 +255,14 @@ mean_rankings |>
 ```
 
 ```{r}
-#| label: logistic-regression
 
 lin_reg <- linear_reg() |>
-  fit(rotten_tomatoes ~ Netflix + Hulu + prime_video + disney_plus, data = tv_shows_cleaned_copy) 
-
+  fit(`Rotten Tomatoes` ~ Netflix + Hulu + `Prime Video` + `Disney+`, 
+      data = tv_shows_cleaned) 
 tidy(lin_reg)
+
 ```
+
 
 
 **Fraction of shows that are in a given rating interval for each platform:**
@@ -302,7 +303,7 @@ $$
 #|label: hypothesis-testing-analysis-1
 #|fig-height: 20
 
-tv_shows_cleaned_copy1 <- tv_shows_cleaned_copy |>
+tv_shows_cleaned_h1 <- tv_shows_cleaned |>
   pivot_longer(
     cols = exclusive_netflix:exclusive_disney_plus,
     names_to = "all_platforms",
@@ -315,17 +316,17 @@ tv_shows_cleaned_copy1 <- tv_shows_cleaned_copy |>
     )
   )
 
-names(tv_shows_cleaned_copy1)[7] <- "rotten_tomatoes"
+names(tv_shows_cleaned_h1)[7] <- "rotten_tomatoes"
 
 #Point Estimate
-observed_fit1 <- tv_shows_cleaned_copy1 |>
+observed_fit1 <- tv_shows_cleaned_h1 |>
   specify(rotten_tomatoes ~ exclusivity) |>
   calculate(stat = "diff in means", order = c("yes","no"))
 
 observed_fit1
 
 #Null Distribution by Permute
-null_fits1 <- tv_shows_cleaned_copy1 |>
+null_fits1 <- tv_shows_cleaned_h1 |>
   specify(rotten_tomatoes ~ exclusivity) |>
   hypothesize(null = "independence") |>
   generate(reps = 1000, type = "permute") |>
@@ -347,7 +348,7 @@ visualize(null_fits1) +
 
 #Confidence Intervals by bootstrapping
 
-null_fits2 <- tv_shows_cleaned_copy1 |>
+null_fits2 <- tv_shows_cleaned_h1 |>
   specify(rotten_tomatoes ~ exclusivity) |>
   hypothesize(null = "independence") |>
   generate(reps = 1000, type = "bootstrap") |>
@@ -479,7 +480,7 @@ The visualizations of `exclusive_disney_plus,` `exclusive_prime_video`, `exclusi
 We recognize that, in interpreting our results, a post-hoc analysis might've been beneficial to use in addition to an ANOVA test to more accurately draw conclusions from our data. In that case, the ANOVA (Analysis of Variance), would be used to test whether there are statistically significant differences between the means of two or more groups (i.e. between `exclusive_disney_plus,` `exclusive_prime_video`, `exclusive_hulu`, and the `exclusive_netflix`). If a significant difference is found, a post-hoc test like Tukey's HSD (Honestly Significant Difference) would be utilized to determine which groups in particular are significantly different from each other. However, due to the fact that this was not included in the scope of this course, we decided to omit these tests and instead only perform our traditional hypothesis tests, as seen above.
 
 **Conclusions**
-
+In the context of our overall analysis of the streaming wars between the most popular streaming platforms in our current pop culture, our hypothesis testing indicates that there 
 
 
 # Limitations

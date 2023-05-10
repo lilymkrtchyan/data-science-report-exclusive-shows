@@ -7,7 +7,7 @@ execute:
   echo: true
 ---
 
-# Apendix
+# Appendix
 
 ```{r}
 #| label: data-cleaning-for-exclusivity
@@ -193,7 +193,7 @@ mean_rankings <- data.frame(platform = c('Netflix',
 
 ```
 
-```{r}
-write_csv(x = tv_shows_cleaned, file = "~/project-phenomenal-evee/appendices.qmd")
-```
+# ```{r}
+# write_csv(x = tv_shows_cleaned, file = "~/project-phenomenal-evee/appendices.qmd")
+# ```
 

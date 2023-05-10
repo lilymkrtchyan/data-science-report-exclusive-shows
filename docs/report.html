@@ -20,69 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -162,7 +99,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="menu-text">Report</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./appendicies.html">
+    <a class="nav-link" href="./appendicies.qmd">
  <span class="menu-text">Appendicies</span></a>
   </li>  
   <li class="nav-item">
@@ -218,9 +155,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>Streaming platforms have taken the world by storm due to their convenience and ability to house innumerable popular television shows and movies. As these mediums continue to grow in popularity, discourse about them is also developing and is often centered around one primary question: Which platform is best? Throughout our data analysis, our team seeks to answer this aforementioned question to the best of our ability, taking an in-depth look at four mainstream services —- Netflix, Amazon Prime Video, Hulu, and Disney+ —- and the programs that have been present on the site throughout roughly the past two decades. Specifically, we use rankings developed by Rotten Tomatoes and hypothesis testing to approach two research questions:</p>
-<p><strong>RQ1: “Is the quality of exclusive shows different from non-exclusive shows in each respective platform?”</strong></p>
+<p><strong>RQ1: “Is the quality of exclusive shows different from non-exclusive shows across platforms?”</strong></p>
 <p><strong>RQ2: “Are exclusive shows’ ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?”</strong></p>
-<p>Regarding the first hypothesis, we were unable to reject the null hypothesis: the quality of exclusive shows (measured by Rotten Tomatoes scores) do not appear to be different from that of non-exclusive shows on each respective platform. In terms of the second research question, our findings were in favor of the alternate hypothesis: there is some sort of difference in ratings between the exclusive shows on each of the four platforms. Specifically,</p>
+<p>Our <code>tv_shows</code> dataset was taken from Kaggle and originally contained the following variables: <code>ID</code> , <code>Title</code>, <code>Year</code>, <code>Age</code>, <code>IMDb</code>, <code>Rotten Tomatoes</code>, <code>Netflix</code>, <code>Hulu</code>, <code>Prime Video</code>, <code>Disney+</code>, and <code>Type.</code>The original dataset contains 12 columns and 5368 observations. Each of the variables above were used to describe an observation of a television show featured on the four platforms we’re analyzing. In our data cleaning process, we made some of the variables easier to understand; in the <code>Netflix</code>, <code>Hulu</code>, <code>Prime Video</code>, <code>Disney+</code> variables, we changed 0 or 1 binary results to “Yes” or “No” depending on whether a certain show is present on each platform. Additionally, we mutated the data to add four columns: <code>exclusive_netflix</code>, <code>exclusive_prime_video</code>, <code>exclusive_disney_plus,</code> and <code>exclusive_hulu</code>, which contains “TRUE” or “FALSE” data to indicate whether an observation is exclusively seen on the platform at hand. Finally, we removed the ‘%’ in the <code>Rotten Tomatoes</code> score and converted the values to integers to make them easier to use in our analysis.</p>
+<p>After conducting two hypothesis tests and interpreting the results (including the p-value, point-estimate, and confidence interval values), we were able to determine a few conclusions with respect to the research questions above. Regarding the first hypothesis, we were able to reject the null hypothesis and were in favor of the alternative hypothesis. This means that the first hypothesis test provides convincing evidence that the average quality of exclusive shows (measured by Rotten Tomatoes scores) is greater than the average quality of non-exclusive shows (measured by Rotten Tomatoes scores) across all platforms. In terms of the second research question, our findings were in favor of the alternate hypothesis: there is some sort of difference in ratings between the exclusive shows on each of the four platforms.</p>
 </section>
 <section id="data-description" class="level1">
 <h1>Data description</h1>
@@ -232,26 +170,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="data-analysis" class="level1">
 <h1>Data analysis</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-✔ ggplot2 3.4.2     ✔ purrr   1.0.0
-✔ tibble  3.2.1     ✔ dplyr   1.1.2
-✔ tidyr   1.2.1     ✔ stringr 1.5.0
-✔ readr   2.1.3     ✔ forcats 0.5.2
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.2     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ────────────────────────────────────── tidymodels 1.0.0 ──
-✔ broom        1.0.2     ✔ rsample      1.1.1
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
+── Attaching packages ────────────────────────────────────── tidymodels 1.0.0 ──
+
+✔ broom        1.0.4     ✔ rsample      1.1.1
 ✔ dials        1.1.0     ✔ tune         1.1.1
 ✔ infer        1.0.4     ✔ workflows    1.1.2
 ✔ modeldata    1.0.1     ✔ workflowsets 1.0.0
-✔ parsnip      1.0.3     ✔ yardstick    1.1.0
+✔ parsnip      1.0.3     ✔ yardstick    1.2.0
 ✔ recipes      1.0.6     
+
 ── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
 ✖ scales::discard() masks purrr::discard()
 ✖ dplyr::filter()   masks stats::filter()
@@ -259,35 +197,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ✖ dplyr::lag()      masks stats::lag()
 ✖ yardstick::spec() masks readr::spec()
 ✖ recipes::step()   masks stats::step()
-• Search for functions across packages at https://www.tidymodels.org/find/</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>tv_shows <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="at">file =</span> <span class="st">"data/tv_shows.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
+• Learn how to get started at https://www.tidymodels.org/start/
+
+Loading required package: viridisLite
+
+
+Attaching package: 'viridis'
+
+
+The following object is masked from 'package:scales':
+
+    viridis_pal
+
+
+New names:
 Rows: 5368 Columns: 12
-── Column specification
-──────────────────────────────────────────────────────── Delimiter: "," chr
-(4): Title, Age, IMDb, Rotten Tomatoes dbl (8): ...1, ID, Year, Netflix, Hulu,
-Prime Video, Disney+, Type
-ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
-Specify the column types or set `show_col_types = FALSE` to quiet this message.
-• `` -&gt; `...1`</code></pre>
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (4): Title, Age, IMDb, Rotten Tomatoes
+dbl (8): ...1, ID, Year, Netflix, Hulu, Prime Video, Disney+, Type
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tv_shows_cleaned <span class="ot">&lt;-</span> tv_shows <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Netflix =</span> <span class="fu">if_else</span>(Netflix <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>), </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">Hulu =</span> <span class="fu">if_else</span>(Hulu <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>),</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Prime Video</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">if_else</span>(<span class="st">`</span><span class="at">Prime Video</span><span class="st">`</span> <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>),</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Disney+</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">if_else</span>(<span class="st">`</span><span class="at">Disney+</span><span class="st">`</span> <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>),</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Rotten Tomatoes</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">str_remove</span>(<span class="st">`</span><span class="at">Rotten Tomatoes</span><span class="st">`</span>, <span class="st">"/100"</span>),</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Rotten Tomatoes</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">parse_integer</span>(<span class="st">`</span><span class="at">Rotten Tomatoes</span><span class="st">`</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">exclusive_netflix =</span> Netflix <span class="sc">==</span> <span class="st">"Yes"</span> <span class="sc">&amp;</span> Hulu <span class="sc">==</span> <span class="st">"No"</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">Prime Video</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"No"</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">Disney+</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"No"</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">exclusive_hulu =</span> Hulu <span class="sc">==</span> <span class="st">"Yes"</span> <span class="sc">&amp;</span> Netflix <span class="sc">==</span> <span class="st">"No"</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">Prime Video</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"No"</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">Disney+</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"No"</span>,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">exclusive_prime_video =</span> <span class="st">`</span><span class="at">Prime Video</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"Yes"</span> <span class="sc">&amp;</span> Netflix <span class="sc">==</span> <span class="st">"No"</span> <span class="sc">&amp;</span> Hulu <span class="sc">==</span> <span class="st">"No"</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">Disney+</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"No"</span>,</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">exclusive_disney_plus =</span> <span class="st">`</span><span class="at">Disney+</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"Yes"</span> <span class="sc">&amp;</span> Netflix <span class="sc">==</span> <span class="st">"No"</span> <span class="sc">&amp;</span> Hulu <span class="sc">==</span> <span class="st">"No"</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">Prime Video</span><span class="st">`</span> <span class="sc">==</span> <span class="st">"No"</span>)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>tv_shows_cleaned</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5,368 × 16
     ...1    ID Title            Year Age   IMDb  `Rotten Tomatoes` Netflix Hulu 
@@ -307,194 +239,79 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 #   exclusive_netflix &lt;lgl&gt;, exclusive_hulu &lt;lgl&gt;, exclusive_prime_video &lt;lgl&gt;,
 #   exclusive_disney_plus &lt;lgl&gt;</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>num_netflix_exclusive <span class="ot">&lt;-</span> <span class="fu">sum</span>(tv_shows_cleaned<span class="sc">$</span>exclusive_netflix <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>num_hulu_exclusive <span class="ot">&lt;-</span> <span class="fu">sum</span>(tv_shows_cleaned<span class="sc">$</span>exclusive_hulu <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>num_prime_video_exclusive <span class="ot">&lt;-</span> <span class="fu">sum</span>(tv_shows_cleaned<span class="sc">$</span>exclusive_prime_video <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>num_disney_plus_exclusive <span class="ot">&lt;-</span> <span class="fu">sum</span>(tv_shows_cleaned<span class="sc">$</span>exclusive_disney_plus <span class="sc">==</span> <span class="cn">TRUE</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>num_netflix_exclusive</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1761</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>num_hulu_exclusive</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1334</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>num_prime_video_exclusive</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1597</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>num_disney_plus_exclusive</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 306</code></pre>
 </div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5,368 × 16
+    ...1    ID Title            Year Age   IMDb  `Rotten Tomatoes` Netflix Hulu 
+   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;             &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;
+ 1     0     1 Breaking Bad     2008 18+   9.4/…               100 Yes     No   
+ 2     1     2 Stranger Things  2016 16+   8.7/…                96 Yes     No   
+ 3     2     3 Attack on Titan  2013 18+   9.0/…                95 Yes     Yes  
+ 4     3     4 Better Call Sa…  2015 18+   8.8/…                94 Yes     No   
+ 5     4     5 Dark             2017 16+   8.8/…                93 Yes     No   
+ 6     5     6 Avatar: The La…  2005 7+    9.3/…                93 Yes     No   
+ 7     6     7 Peaky Blinders   2013 18+   8.8/…                93 Yes     No   
+ 8     7     8 The Walking De…  2010 18+   8.2/…                93 Yes     No   
+ 9     8     9 Black Mirror     2011 18+   8.8/…                92 Yes     No   
+10     9    10 The Queen's Ga…  2020 18+   8.6/…                92 Yes     No   
+# ℹ 5,358 more rows
+# ℹ 7 more variables: `Prime Video` &lt;chr&gt;, `Disney+` &lt;chr&gt;, Type &lt;dbl&gt;,
+#   exclusive_netflix &lt;lgl&gt;, exclusive_hulu &lt;lgl&gt;, exclusive_prime_video &lt;lgl&gt;,
+#   exclusive_disney_plus &lt;lgl&gt;</code></pre>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>tv_shows_cleaned_copy <span class="ot">&lt;-</span> tv_shows_cleaned</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>netflix <span class="ot">&lt;-</span> <span class="fu">filter</span>(tv_shows_cleaned_copy, Netflix <span class="sc">==</span> <span class="st">"Yes"</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(netflix)[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="st">"rotten_tomatoes"</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>netflix <span class="ot">&lt;-</span> netflix <span class="sc">|&gt;</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Title, rotten_tomatoes) <span class="sc">|&gt;</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean =</span> <span class="fu">mean</span>(rotten_tomatoes)) <span class="sc">|&gt;</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">platform =</span> <span class="st">'netflix'</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="dv">100</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">0</span><span class="sc">&lt;=</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">10</span>, </span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'1-10'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">10</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">20</span>, </span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'11-20'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">20</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">30</span>, </span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'21-30'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">30</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">40</span>, </span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'31-40'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">50</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">60</span>, </span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'51-60'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">60</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">70</span>, </span>
-<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'61-70'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">70</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">80</span>, </span>
-<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'71-80'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">80</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">90</span>, </span>
-<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'81-90'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">90</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">100</span>, </span>
-<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'91-100'</span>, decile))</span>
-<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>hulu <span class="ot">&lt;-</span> <span class="fu">filter</span>(tv_shows_cleaned_copy, Hulu <span class="sc">==</span> <span class="st">"Yes"</span>)</span>
-<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(hulu)[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="st">"rotten_tomatoes"</span></span>
-<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>hulu <span class="ot">&lt;-</span> hulu <span class="sc">|&gt;</span></span>
-<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Title, rotten_tomatoes) <span class="sc">|&gt;</span></span>
-<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean =</span> <span class="fu">mean</span>(rotten_tomatoes)) <span class="sc">|&gt;</span></span>
-<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">platform =</span> <span class="st">'hulu'</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="dv">100</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">0</span><span class="sc">&lt;=</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">10</span>, </span>
-<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'1-10'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">10</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">20</span>, </span>
-<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'11-20'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">20</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">30</span>, </span>
-<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'21-30'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">30</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">40</span>, </span>
-<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'31-40'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">50</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">60</span>, </span>
-<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'51-60'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">60</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">70</span>, </span>
-<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'61-70'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">70</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">80</span>, </span>
-<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'71-80'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">80</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">90</span>, </span>
-<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'81-90'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">90</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">100</span>, </span>
-<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'91-100'</span>, decile))</span>
-<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tv_shows_cleaned_copy)[<span class="dv">10</span>] <span class="ot">&lt;-</span> <span class="st">"prime_video"</span></span>
-<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a>prime <span class="ot">&lt;-</span> <span class="fu">filter</span>(tv_shows_cleaned_copy, prime_video <span class="sc">==</span> <span class="st">"Yes"</span>)</span>
-<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(prime)[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="st">"rotten_tomatoes"</span></span>
-<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a>prime <span class="ot">&lt;-</span> prime <span class="sc">|&gt;</span></span>
-<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Title, rotten_tomatoes) <span class="sc">|&gt;</span></span>
-<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean =</span> <span class="fu">mean</span>(rotten_tomatoes)) <span class="sc">|&gt;</span></span>
-<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">platform =</span> <span class="st">'prime'</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-66"><a href="#cb17-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="dv">100</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">0</span><span class="sc">&lt;=</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">10</span>, </span>
-<span id="cb17-68"><a href="#cb17-68" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'1-10'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-69"><a href="#cb17-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">10</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">20</span>, </span>
-<span id="cb17-70"><a href="#cb17-70" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'11-20'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-71"><a href="#cb17-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">20</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">30</span>, </span>
-<span id="cb17-72"><a href="#cb17-72" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'21-30'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-73"><a href="#cb17-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">30</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">40</span>, </span>
-<span id="cb17-74"><a href="#cb17-74" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'31-40'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-75"><a href="#cb17-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">50</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">60</span>, </span>
-<span id="cb17-76"><a href="#cb17-76" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'51-60'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-77"><a href="#cb17-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">60</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">70</span>, </span>
-<span id="cb17-78"><a href="#cb17-78" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'61-70'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-79"><a href="#cb17-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">70</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">80</span>, </span>
-<span id="cb17-80"><a href="#cb17-80" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'71-80'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-81"><a href="#cb17-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">80</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">90</span>, </span>
-<span id="cb17-82"><a href="#cb17-82" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'81-90'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-83"><a href="#cb17-83" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">90</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">100</span>, </span>
-<span id="cb17-84"><a href="#cb17-84" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'91-100'</span>, decile))</span>
-<span id="cb17-85"><a href="#cb17-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-86"><a href="#cb17-86" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tv_shows_cleaned_copy)[<span class="dv">11</span>] <span class="ot">&lt;-</span> <span class="st">"disney_plus"</span></span>
-<span id="cb17-87"><a href="#cb17-87" aria-hidden="true" tabindex="-1"></a>disney <span class="ot">&lt;-</span> <span class="fu">filter</span>(tv_shows_cleaned_copy, disney_plus <span class="sc">==</span> <span class="st">"Yes"</span>)</span>
-<span id="cb17-88"><a href="#cb17-88" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(disney)[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="st">"rotten_tomatoes"</span></span>
-<span id="cb17-89"><a href="#cb17-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-90"><a href="#cb17-90" aria-hidden="true" tabindex="-1"></a>disney <span class="ot">&lt;-</span> disney <span class="sc">|&gt;</span></span>
-<span id="cb17-91"><a href="#cb17-91" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Title, rotten_tomatoes) <span class="sc">|&gt;</span></span>
-<span id="cb17-92"><a href="#cb17-92" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">mean =</span> <span class="fu">mean</span>(rotten_tomatoes)) <span class="sc">|&gt;</span></span>
-<span id="cb17-93"><a href="#cb17-93" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">platform =</span> <span class="st">'disney'</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-94"><a href="#cb17-94" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="dv">100</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-95"><a href="#cb17-95" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">0</span><span class="sc">&lt;=</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">10</span>, </span>
-<span id="cb17-96"><a href="#cb17-96" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'1-10'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-97"><a href="#cb17-97" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">10</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">20</span>, </span>
-<span id="cb17-98"><a href="#cb17-98" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'11-20'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-99"><a href="#cb17-99" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">20</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">30</span>, </span>
-<span id="cb17-100"><a href="#cb17-100" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'21-30'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-101"><a href="#cb17-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">30</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">40</span>, </span>
-<span id="cb17-102"><a href="#cb17-102" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'31-40'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-103"><a href="#cb17-103" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">50</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">60</span>, </span>
-<span id="cb17-104"><a href="#cb17-104" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'51-60'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-105"><a href="#cb17-105" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">60</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">70</span>, </span>
-<span id="cb17-106"><a href="#cb17-106" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'61-70'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-107"><a href="#cb17-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">70</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">80</span>, </span>
-<span id="cb17-108"><a href="#cb17-108" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'71-80'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-109"><a href="#cb17-109" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">80</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">90</span>, </span>
-<span id="cb17-110"><a href="#cb17-110" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'81-90'</span>, decile)) <span class="sc">|&gt;</span></span>
-<span id="cb17-111"><a href="#cb17-111" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">decile =</span> <span class="fu">ifelse</span>(<span class="dv">90</span><span class="sc">&lt;</span>rotten_tomatoes <span class="sc">&amp;</span> rotten_tomatoes <span class="sc">&lt;=</span><span class="dv">100</span>, </span>
-<span id="cb17-112"><a href="#cb17-112" aria-hidden="true" tabindex="-1"></a>                         <span class="st">'91-100'</span>, decile))</span>
-<span id="cb17-113"><a href="#cb17-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-114"><a href="#cb17-114" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">rbind</span>(netflix, hulu)</span>
-<span id="cb17-115"><a href="#cb17-115" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">rbind</span>(total,prime)</span>
-<span id="cb17-116"><a href="#cb17-116" aria-hidden="true" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">rbind</span>(total,disney)</span>
-<span id="cb17-117"><a href="#cb17-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-118"><a href="#cb17-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-119"><a href="#cb17-119" aria-hidden="true" tabindex="-1"></a>total_per_platform <span class="ot">&lt;-</span> total <span class="sc">|&gt;</span></span>
-<span id="cb17-120"><a href="#cb17-120" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(decile, platform) <span class="sc">|&gt;</span></span>
-<span id="cb17-121"><a href="#cb17-121" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">number =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'decile'. You can override using the
 `.groups` argument.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mean_rankings <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">platform =</span> <span class="fu">c</span>(<span class="st">'Netflix'</span>,</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">'Hulu'</span>,<span class="st">'Amazon Prime'</span>,</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">'Disney'</span>),</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>                            <span class="at">mean=</span><span class="fu">c</span>(netflix[[<span class="dv">3</span>]][<span class="dv">1</span>], hulu[[<span class="dv">3</span>]][<span class="dv">1</span>],</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>                                   prime[[<span class="dv">3</span>]][<span class="dv">1</span>],  disney[[<span class="dv">3</span>]][<span class="dv">1</span>]))</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>total_per_platform <span class="sc">|&gt;</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> decile, <span class="at">y =</span> number, <span class="at">fill =</span> platform)) <span class="sc">+</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>, <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Percent of shows that fall under a given decile for each platform"</span>,</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Decile"</span>, <span class="at">y =</span> <span class="st">"Fraction of shows"</span>, </span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Platforms"</span>, <span class="at">disney =</span> <span class="st">"Disney+"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="report_files/figure-html/explaratory-data-analysis-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>total <span class="sc">|&gt;</span> </span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> platform, <span class="at">y =</span> rotten_tomatoes, <span class="at">fill =</span> platform)) <span class="sc">+</span> </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">show.legend =</span>  <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ratings of Streamed Shows by Platform"</span>, </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> <span class="st">"Platforms"</span>, <span class="at">y =</span> <span class="st">"Show Ratings"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="report_files/figure-html/explaratory-data-analysis-2.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mean_rankings <span class="sc">|&gt;</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> platform, <span class="at">y =</span> mean, <span class="at">fill =</span> platform)) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)) <span class="sc">+</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">show.legend =</span>  <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Ratings of Streamed Shows by Platform"</span>,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Platforms"</span>, <span class="at">y =</span> <span class="st">"Mean Ratings"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="report_files/figure-html/explaratory-data-analysis-3.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 5
+  term             estimate std.error statistic   p.value
+  &lt;chr&gt;               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)       35.5        0.937   37.8    8.27e-278
+2 NetflixYes        17.0        0.929   18.3    1.01e- 72
+3 HuluYes           15.8        0.891   17.7    2.07e- 68
+4 `Prime Video`Yes  -0.0767     0.920   -0.0834 9.34e-  1
+5 `Disney+`Yes      11.9        1.26     9.43   5.70e- 21</code></pre>
+</div>
+</div>
+<p><strong>Fraction of shows that are in a given rating interval for each platform:</strong></p>
+<p>The graph titled <em>Fraction of shows that are in a given rating interval for each platform</em> is a normalized frequency bar chart where every bar has the same height so that each bar represents the proportion of each rating (in our case: rotten tomatoes score) interval for a given platform. This allows us to normalize the number of shows in each platform and reduce the bias of different platforms having different number of shows. In this graph, the y-axis represents the fraction of shows (compared to the overall number of shows) rather than the actual number of shows on each platform. This allows us to compare the rotten tomato scores of shows of each platform as well as across all the platforms. The x-axis represents the rotten tomato score intervals (decided) that we chose to categorize and group the shows based on.</p>
+<p>Based on the graph we can deduce that Hulu and Netflix have equally large proportion of shows ranked between 91 and 100 on rotten tomatoes. Prime Video has the third largest proportion of shows in that interval of rotten tomatoes scores, followed by the last platform, which is Disney+. The same tendency is consistent for rotten tomatoes score intervals 51-60, 61-70, 71-80, and 81-90 rotten tomatoes score intervals. The proportion of shows that have the lowest rotten tomatoes score is the largest for Prime Video. Shows ranked within the interval of 1-10 are mostly streamed on Prime Video. In general, it seems like Netflix and Hulu have the largest proportion of shows that are ranked relatively high on rotten tomatoes, meanwhile Prime Video has the largest proportion of shows that are ranked the lowest on rotten tomatoes.</p>
+<p><strong>Ratings of Streamed Shows by Platform:</strong></p>
+<p>This graph shows boxplots that represent the distribution of rotten tomatoes scores of shows on each platform. The heights of the boxplots represent the diversity of data points (in this case rotten tomatoes scores) on each platform. The rotten tomatoes scores of shows in Disney+ are the most consistent across all the shows and are similar to each other with the median rotten tomatoes score being 50 (indicated by the horizontal line). The same is true for scores of shows streaming on Netflix. On the other hand, because the boxplot for shows streaming on Prime Video is well spread out across the y-axis, meaning its IQR is large, the scores for the shows streaming on Prime Video have varying range and are not consistent or similar across all the shows on the platform. This also means that even though there is a mean value of around 40, we cannot make meaningful conclusions about Prime Video show scores that would be relevant and valid for all the shows across the platform. This said, comparatively it seems that Hulu has the highest median score for its shows.</p>
+<p><strong>Mean Ratings of Streamed Shows by Platform</strong></p>
+<p>This graph shows the mean rotten tomatoes score of shows per platform. Netflix and Hulu seem to have almost the same mean rotten tomatoes score with Netflix slightly dominating. On the third place with rotten tomatoes score is Disney+, which is followed by Prime Vide that has the lowest mean score for shows streaming on it.</p>
+<p>Overall, these exploratory data visualizations show that there is a difference between rotten tomatoes scores for shows on different platforms. Moving forward we explore the possible factors (exclusivity of the shows to each platform) that might affect these differences.</p>
 </section>
 <section id="evaluation-of-significance" class="level1">
 <h1>Evaluation of significance</h1>
 <section id="first-analysis-hypothesis-test" class="level4">
 <h4 class="anchored" data-anchor-id="first-analysis-hypothesis-test"><strong><em>First Analysis: Hypothesis Test</em></strong></h4>
-<p><strong>Research Question:</strong> Is the quality of exclusive shows different from non-exclusive shows in a specific platform, for each platform separately?</p>
+<p><strong>Research Question:</strong> Is the quality of exclusive shows different from non-exclusive shows across all streaming platforms?</p>
 <p><strong>Null Hypothesis</strong>: The average Rotten Tomatoes score of exclusive shows is less than the average Rotten Tomatoes score of non-exclusive shows across all four platforms.</p>
 <p><span class="math display">\[
 H_0: \mu_{exclusive} &lt; \mu_{non-exclusive}
@@ -504,109 +321,6 @@ H_0: \mu_{exclusive} &lt; \mu_{non-exclusive}
 H_0: \mu_{exclusive} &gt; \mu_{non-exclusive}
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#|label: hypothesis-testing-analysis-1-multivariable</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#|fig-height: 20</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tv_shows_cleaned_copy)[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="st">"rotten_tomatoes"</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>observed_fit <span class="ot">&lt;-</span> tv_shows_cleaned_copy <span class="sc">|&gt;</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(rotten_tomatoes <span class="sc">~</span> Netflix <span class="sc">+</span> Hulu <span class="sc">+</span> disney_plus <span class="sc">+</span> prime_video) <span class="sc">|&gt;</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>()</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>observed_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 2
-  term           estimate
-  &lt;chr&gt;             &lt;dbl&gt;
-1 intercept       35.5   
-2 NetflixYes      17.0   
-3 HuluYes         15.8   
-4 disney_plusYes  11.9   
-5 prime_videoYes  -0.0767</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>null_fits <span class="ot">&lt;-</span> tv_shows_cleaned_copy <span class="sc">|&gt;</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(rotten_tomatoes <span class="sc">~</span> Netflix <span class="sc">+</span> Hulu <span class="sc">+</span> disney_plus <span class="sc">+</span> prime_video) <span class="sc">|&gt;</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"permute"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>()</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">get_confidence_interval</span>(</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> null_fits,</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">point_estimate =</span> observed_fit,</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">level =</span> <span class="fl">0.95</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ci)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 3
-  term           lower_ci upper_ci
-  &lt;chr&gt;             &lt;dbl&gt;    &lt;dbl&gt;
-1 HuluYes           -1.78     1.92
-2 NetflixYes        -2.07     1.84
-3 disney_plusYes    -2.77     2.65
-4 intercept         45.4     49.2 
-5 prime_videoYes    -2.02     1.78</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_p_value</span>(</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> null_fits,</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">obs_stat =</span> observed_fit,</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"less"</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Please be cautious in reporting a p-value of 0. This result is an
-approximation based on the number of `reps` chosen in the `generate()` step. See
-`?get_p_value()` for more information.</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 5 × 2
-  term           p_value
-  &lt;chr&gt;            &lt;dbl&gt;
-1 HuluYes          1    
-2 NetflixYes       1    
-3 disney_plusYes   1    
-4 intercept        0    
-5 prime_videoYes   0.473</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_fits) <span class="sc">+</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(<span class="at">obs_stat =</span> observed_fit, <span class="at">direction=</span><span class="st">"two sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>tv_shows_cleaned_copy1 <span class="ot">&lt;-</span> tv_shows_cleaned_copy <span class="sc">|&gt;</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> exclusive_netflix<span class="sc">:</span>exclusive_disney_plus,</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"all_platforms"</span>,</span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"exclusivity"</span></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>tv_shows_cleaned_copy1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 21,472 × 14
-    ...1    ID Title  Year Age   IMDb  rotten_tomatoes Netflix Hulu  prime_video
-   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;      
- 1     0     1 Brea…  2008 18+   9.4/…             100 Yes     No    No         
- 2     0     1 Brea…  2008 18+   9.4/…             100 Yes     No    No         
- 3     0     1 Brea…  2008 18+   9.4/…             100 Yes     No    No         
- 4     0     1 Brea…  2008 18+   9.4/…             100 Yes     No    No         
- 5     1     2 Stra…  2016 16+   8.7/…              96 Yes     No    No         
- 6     1     2 Stra…  2016 16+   8.7/…              96 Yes     No    No         
- 7     1     2 Stra…  2016 16+   8.7/…              96 Yes     No    No         
- 8     1     2 Stra…  2016 16+   8.7/…              96 Yes     No    No         
- 9     2     3 Atta…  2013 18+   9.0/…              95 Yes     Yes   No         
-10     2     3 Atta…  2013 18+   9.0/…              95 Yes     Yes   No         
-# ℹ 21,462 more rows
-# ℹ 4 more variables: disney_plus &lt;chr&gt;, Type &lt;dbl&gt;, all_platforms &lt;chr&gt;,
-#   exclusivity &lt;lgl&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tv_shows_cleaned_copy1)[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="st">"rotten_tomatoes"</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>observed_fit1 <span class="ot">&lt;-</span> tv_shows_cleaned_copy1 <span class="sc">|&gt;</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(rotten_tomatoes <span class="sc">~</span> exclusivity) <span class="sc">|&gt;</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"diff in means"</span>, <span class="at">order =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>observed_fit1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Response: rotten_tomatoes (numeric)
 Explanatory: exclusivity (factor)
@@ -615,53 +329,23 @@ Explanatory: exclusivity (factor)
   &lt;dbl&gt;
 1 -1.14</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>null_fits1 <span class="ot">&lt;-</span> tv_shows_cleaned_copy1 <span class="sc">|&gt;</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(rotten_tomatoes <span class="sc">~</span> exclusivity) <span class="sc">|&gt;</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"permute"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"diff in means"</span>, <span class="at">order =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="fu">get_p_value</span>(</span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> null_fits1,</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">obs_stat =</span> observed_fit1,</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"less"</span></span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   p_value
     &lt;dbl&gt;
-1   0.002</code></pre>
+1   0.001</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Confidence Intervals</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>null_fits1 <span class="ot">&lt;-</span> tv_shows_cleaned_copy1 <span class="sc">|&gt;</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(rotten_tomatoes <span class="sc">~</span> exclusivity) <span class="sc">|&gt;</span></span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"bootstrap"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">calculate</span>(<span class="at">stat =</span> <span class="st">"diff in means"</span>, <span class="at">order =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>ci1 <span class="ot">&lt;-</span> <span class="fu">get_confidence_interval</span>(</span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> null_fits1,</span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">point_estimate =</span> observed_fit1,</span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">level =</span> <span class="fl">0.95</span></span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(ci1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="report_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 2
   lower_ci upper_ci
      &lt;dbl&gt;    &lt;dbl&gt;
-1    -1.77   -0.525</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_fits1) <span class="sc">+</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(<span class="at">obs_stat =</span> observed_fit1, <span class="at">direction=</span><span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="report_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+1    -1.72   -0.508</code></pre>
 </div>
 </div>
-</section>
-<section id="second-analysis-hypothesis-test" class="level4">
-<h4 class="anchored" data-anchor-id="second-analysis-hypothesis-test"><strong><em>Second Analysis: Hypothesis Test</em></strong></h4>
+<p><strong><em>Second Analysis: Hypothesis Test</em></strong></p>
 <p><strong>Research Question:</strong> Are exclusive shows’ ratings different between the four platforms (Netflix, Hulu, Disney+, and Prime Video)?</p>
 <p><strong>Null Hypothesis</strong>: There is no difference in quality of the exclusive shows between the four platforms.</p>
 <p><span class="math display">\[
@@ -672,19 +356,6 @@ H_0: μ1 = μ2 = μ3 = μ4
 H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4
 \]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>tv_shows_exclusive <span class="ot">&lt;-</span> tv_shows_cleaned <span class="sc">|&gt;</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(exclusive_netflix, exclusive_hulu, exclusive_disney_plus, exclusive_prime_video), <span class="at">values_to =</span> <span class="st">"bool"</span>, <span class="at">names_to =</span> <span class="st">"shows"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(bool <span class="sc">==</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">shows =</span> <span class="fu">fct_relevel</span>(<span class="at">.f =</span> shows, <span class="st">"exclusive_netflix"</span>))</span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>observed_fit <span class="ot">&lt;-</span> tv_shows_exclusive <span class="sc">|&gt;</span></span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="st">`</span><span class="at">Rotten Tomatoes</span><span class="st">`</span> <span class="sc">~</span> shows) <span class="sc">|&gt;</span></span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>()</span>
-<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>observed_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 2
   term                       estimate
@@ -694,18 +365,6 @@ H_A: μ1 ≠ μ2 ≠ μ3 ≠ μ4
 3 showsexclusive_hulu           -1.56
 4 showsexclusive_prime_video   -17.9 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Permuting to compute p values</span></span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>null_fits <span class="ot">&lt;-</span> tv_shows_exclusive <span class="sc">|&gt;</span></span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="st">`</span><span class="at">Rotten Tomatoes</span><span class="st">`</span> <span class="sc">~</span> shows) <span class="sc">|&gt;</span></span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"permute"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>()</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="fu">get_p_value</span>(</span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> null_fits,</span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">obs_stat =</span> observed_fit,</span>
-<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">direction =</span> <span class="st">"two sided"</span></span>
-<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Please be cautious in reporting a p-value of 0. This result is an
 approximation based on the number of `reps` chosen in the `generate()` step. See
@@ -728,17 +387,6 @@ approximation based on the number of `reps` chosen in the `generate()` step. See
 3 showsexclusive_hulu           0.02
 4 showsexclusive_prime_video    0   </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bootstrapping to compute confidence interval</span></span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>h2_bootstrap <span class="ot">&lt;-</span> tv_shows_exclusive <span class="sc">|&gt;</span></span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">specify</span>(<span class="st">`</span><span class="at">Rotten Tomatoes</span><span class="st">`</span> <span class="sc">~</span> shows) <span class="sc">|&gt;</span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hypothesize</span>(<span class="at">null =</span> <span class="st">"independence"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">generate</span>(<span class="at">reps =</span> <span class="dv">1000</span>, <span class="at">type =</span> <span class="st">"bootstrap"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fit</span>()</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="fu">get_confidence_interval</span>(</span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> h2_bootstrap,</span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">point_estimate =</span> observed_fit,</span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">level =</span> .<span class="dv">95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 3
   term                       lower_ci upper_ci
@@ -748,8 +396,6 @@ approximation based on the number of `reps` chosen in the `generate()` step. See
 3 showsexclusive_hulu           -2.81   -0.310
 4 showsexclusive_prime_video   -19.0   -16.6  </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">visualize</span>(null_fits) <span class="sc">+</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">shade_p_value</span>(<span class="at">obs_stat =</span> observed_fit, <span class="at">direction=</span><span class="st">"two sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: F usually corresponds to right-tailed tests. Proceed with caution.</code></pre>
 </div>
@@ -768,35 +414,34 @@ Warning: F usually corresponds to right-tailed tests. Proceed with caution.</cod
 </section>
 <section id="interpretation-and-conclusions" class="level1">
 <h1>Interpretation and conclusions</h1>
-<p><strong>Hypothesis #1: point-estimate</strong></p>
-<p>The intercept of 35.45341513 shows, on average, the estimated Rotten Tomatoes rating for a show that is non-exclusive for any of the four platforms.</p>
-<p>The coefficients for <code>NetflixYes</code>, <code>HuluYes</code>, <code>disney_plusYes</code>, and <code>prime_videoYes</code> represent the estimated differences in Rotten Tomatoes ratings that are exclusive to each platform compared to non-exclusive. The 17.02 coefficient for <code>NetflixYes</code> shows that shows exclusive to Netflix have an estimated average Rotten Tomato ratings higher by 17.02 points than ratings non-exclusive to Netflix. Similarly, the coefficient of <code>HuluYes</code> shows that shows exclusive to Hulu have an average of 15.79 points higher ratings in Rotten Tomatoes than non exclusive shows. The coefficient of <code>disney_plusYes</code> shows that shows exclusive to Disney+ have an average of 11.86 points higher Rotten Tomato ratings than non-exclusive shows. Finally, the coefficient of <code>prime_videoYes</code> shows that the shows exclusive to Prime Video have an average of 0.07 points lower ratings in Rotten Tomatoes than shows non-exclusive to Prime Video.</p>
-<p><strong>Hypothesis #1: confidence intervals</strong></p>
-<p>The 95% confidence intervals for observing similar results in the population for shows exclusive to either Hulu, Netflix, Disney+, or Prime Video are</p>
-<ul>
-<li><p>[-2.026, 1.82] for <code>HuluYes</code></p></li>
-<li><p>[-2.01, 1.83] for <code>NetflixYes</code></p></li>
-<li><p>[-2.56, 2.43] for <code>disney_plusYes</code></p></li>
-<li><p>[-2.07, 1.89] for <code>prime_videoYes</code></p></li>
-</ul>
-<p>Because all the above confidence intervals include 0 in their interval we cannot confidently rule out the possibility that shows exclusive the given platform do not have a significant influence on Rotten Tomatoes ratings.</p>
-<p>The 95% confidence interval [45.36, 49.26] for the intercept shows that we can be confident that the average Rotten Tomato rating observed in real population falls into the observed range.</p>
-<p><strong>Hypothesis #1: p-values</strong></p>
-<p>The intercept p-value is 0.001 which represents the p-value for non-exclusive shows of all 4 platforms. For exclusive shows on Hulu, Netflix, and Disney Plus, we calculated a p-value of 1 whereas exclusive shows on Prime Video had a p-value of 0.466. Since the p-values for exclusive shows on all 4 platforms is greater than the significance level indicated by <span class="math inline">\(\alpha\)</span> = 0.05, we fail to reject the null hypothesis (the mean Rotten Tomatoes score of exclusive shows is less than the mean Rotten Tomatoes score of high-rated non-exclusive shows across all four platforms). This means that there wasn’t convincing evidence that would favor the alternative hypothesis.</p>
-<p><strong>Hypothesis #2: point estimate</strong></p>
+<p><strong>Hypothesis #1: Point-Estimate</strong></p>
+<p>The point estimate -1.141822 represents, on average, the estimated difference of mean Rotten Tomatoes ratings between exclusive shows (to only one platform) and non exclusive shows across all four platforms.</p>
+<p><strong>Hypothesis #1: Confidence Interval</strong></p>
+<p>The 95% confidence interval [-1.78, -0.500] represents that we can be 95% confident that the difference in average Rotten Tomato rating between exclusive and non-exclusive shows across all platforms observed in the real population falls into the observed range of the confidence interval.</p>
+<p>Additionally, since the bootstrapped confidence interval [-1.78, -0.500] does not include 0 in its interval, we can confidently rule out the possibility that exclusive shows across all platforms do not have a significant influence on Rotten Tomatoes ratings. In other words, since the confidence interval does not include 0, this suggests that the difference in average Rotten Tomato ratings between exclusive and non-exclusive shows is statistically significant and that exclusive shows has a significant influence on average Rotten Tomatoes ratings.</p>
+<p><strong>Hypothesis #1: P-Values</strong></p>
+<p>The calculated p-value for the difference in mean Rotten Tomato ratings between exclusive and non-exclusive shows across all 4 platforms is approximately 0.001. Since this calculated p-value is smaller than the significance level indicated by <span class="math inline">\(\alpha\)</span> = 0.05, we are able to reject the null hypothesis (the average Rotten Tomatoes score of exclusive shows is less than the average Rotten Tomatoes score of non-exclusive shows across all four platforms.). In other words, there was convincing evidence that would favor the alternative hypothesis which indicates that the average Rotten Tomatoes score of exclusive shows is greater than the average Rotten Tomatoes score of non-exclusive shows across all four platforms.</p>
+<p><strong>Hypothesis #1: Simulation-Based Null Distributions Visualization</strong></p>
+<p>The visualization displays the null distribution and the p-value (shown by the red line). Specifically, the null distribution displayed represents the distribution of the difference of mean Rotten Tomatoes scores between exclusive and non-exclusive shows under the assumption that the null hypothesis is true. Based on the visualization, the p-value is found on the left of the null distribution. Since a one-tailed test was conducted, the critical region is found on the left side of the null distribution. This then indicates that the observed test statistic (the difference in mean Rotten Tomatoes scores) falls within the critical region. This means that the difference in mean Rotten Tomatoes scores is smaller than what would be expected under the null hypothesis. This also means the observed data is unlikely to have occurred by chance alone, assuming the null hypothesis is true. Thus, correspondingly, the p-value will be a very small value and would overall provide evidence in support of the alternative hypothesis: the difference in mean Rotten Tomato ratings between exclusive and non-exclusive shows across all platforms is statistically significant in the direction specified by the alternative hypothesis (the average Rotten Tomatoes score of exclusive shows is greater than the average Rotten Tomatoes score of non-exclusive shows across all four platforms).</p>
+<p><strong>Hypothesis #2: Point Estimate</strong></p>
 <p>The intercept 52.747303 represents, on average, the Rotten Tomatoes score for exclusive Netflix shows.</p>
-<p>The estimated Rotten Tomatoes score for exclusive Disney plus shows, on average, will be 4.600244 less than the exclusive Netflix shows Rotten Tomatoes score. The estimated Rotten Tomatoes score for exclusive Hulu shows, on average, will be 1.556898 less than the exclusive Netflix shows Rotten Tomatoes score. The estimated Rotten Tomatoes score for exclusive Prime video shows, on average, will be 17.856883 less than the exclusive Netflix shows Rotten Tomatoes score</p>
-<p><strong>Hypothesis #2: confidence intervals</strong></p>
+<p>The estimated Rotten Tomatoes score for exclusive Disney plus shows, on average, will be 4.600244 less than the exclusive Netflix shows Rotten Tomatoes score. The estimated Rotten Tomatoes score for exclusive Hulu shows, on average, will be 1.556898 less than the exclusive Netflix shows Rotten Tomatoes score. The estimated Rotten Tomatoes score for exclusive Prime video shows, on average, will be 17.856883 less than the exclusive Netflix shows Rotten Tomatoes score.</p>
+<p><strong>Hypothesis #2: Confidence Intervals</strong></p>
 <p>The 95% confidence intervals for observing the estimated Rotten Tomatoes scores for shows exclusive to either Hulu, Disney+, or Prime Video are</p>
 <ul>
-<li><p>[-2.347039, 2.210689] for <code>exclusive_disney_plus</code></p></li>
-<li><p>[-1.36853, 1.278844] for <code>exclusive_hulu</code></p></li>
-<li><p>[-1.362426, 1.294262] for <code>exclusive_prime_video</code></p></li>
+<li><p>[-6.406644, -2.7691091] for <code>exclusive_disney_plus</code></p></li>
+<li><p>[-2.813665, -0.3103026] for <code>exclusive_hulu</code></p></li>
+<li><p>[-19.043264, -16.124430] for <code>exclusive_prime_video</code></p></li>
 </ul>
-<p>Since all the above confidence intervals include 0 within their interval, we cannot confidently rule out the possibility that shows exclusive to either Hulu, Disney+, or Prime Video do not have a significant influence on Rotten Tomatoes ratings.</p>
-<p>The 95% confidence interval [45.603521, 47.071124] for the intercept shows that we can be confident that the estimated Rotten Tomato score for exclusive Netflix shows is within the given confidence interval range.</p>
-<p><strong>Hypothesis #2: p-values</strong></p>
+<p>Since all the above confidence intervals include 0 within their interval, we cannot confidently rule out the possibility that shows exclusive to either Hulu, Disney+, or Prime Video do not have a significant influence on Rotten Tomatoes ratings; we cannot be confident that the estimated scores for these streaming platforms are statistically different from 0.</p>
+<p>The 95% confidence interval [52.019703, 53.415572] for the intercept (which represents the exclusive_netflix column) shows that we can be confident that the estimated Rotten Tomato score for exclusive Netflix shows is within the given confidence interval range.</p>
+<p><strong>Hypothesis #2: P-Values</strong></p>
 <p>The intercept p-value is 0.001 which represents the p-value for exclusive Netflix shows. For exclusive shows on Prime Video and Disney Plus, we calculated a p-value of 0.001 whereas exclusive shows on Hulu had a p-value of 0.02. Since the p-values for exclusive shows on all 4 platforms are less than the significance level indicated by <span class="math inline">\(\alpha\)</span> = 0.05, we are able to reject the null hypothesis (there is no difference in quality of the exclusive shows between the four platforms). This means that there was convincing evidence that would favor the alternative hypothesis which indicates that there is a difference in quality of the exclusive shows between the four platforms (measured through Rotten Tomatoes scores).</p>
+<p><strong>Hypothesis #2: Simulation-Based Null Distributions Visualization</strong></p>
+<p>The visualizations of <code>exclusive_disney_plus,</code> <code>exclusive_prime_video</code>, <code>exclusive_hulu</code>, and the <code>intercept</code> display the null distribution in reference to the p-value (the red line). A null distribution that is far from the p-value (as seen in <code>exclusive_prime_video,</code> <code>exclusive_disney_plus,</code> and the <code>intercept</code>) indicates that the observed difference in ratings between the four platforms is larger than what would be expected under the null hypothesis. Hence, the p-value is small because the observed difference is unlikely to be due to chance. Additionally, we can also reasonably say that, in the case of <code>exclusive_hulu,</code> because the red line is on the edge of the graph, it likely means that the p-value is very small; similarly to what was previously mentioned, this thus indicates that the observed difference is unlikely to be due to chance if the null hypothesis were true. Hence, this suggests strong evidence against the null hypothesis in favor of the alternate hypothesis.</p>
+<p><strong>Extra Note:</strong></p>
+<p>We recognize that, in interpreting our results, a post-hoc analysis might’ve been beneficial to use in addition to an ANOVA test to more accurately draw conclusions from our data. In that case, the ANOVA (Analysis of Variance), would be used to test whether there are statistically significant differences between the means of two or more groups (i.e.&nbsp;between <code>exclusive_disney_plus,</code> <code>exclusive_prime_video</code>, <code>exclusive_hulu</code>, and the <code>exclusive_netflix</code>). If a significant difference is found, a post-hoc test like Tukey’s HSD (Honestly Significant Difference) would be utilized to determine which groups in particular are significantly different from each other. However, due to the fact that this was not included in the scope of this course, we decided to omit these tests and instead only perform our traditional hypothesis tests, as seen above.</p>
+<p><strong>Conclusions</strong> In the context of our overall analysis of the streaming wars between the most popular streaming platforms in our current pop culture, our hypothesis testing indicates that there</p>
 </section>
 <section id="limitations" class="level1">
 <h1>Limitations</h1>
@@ -805,6 +450,10 @@ Warning: F usually corresponds to right-tailed tests. Proceed with caution.</cod
 <p>The third limitation of our study is that there are unbalanced amounts of exclusive shows on each platform; for example, Netflix has significantly larger data of exclusive shows compared to the other platforms, which may affect the overall quality comparison between platforms. Disney Plus is a relatively new platform and has a smaller library of exclusive shows, which may limit the analysis. These unbalanced amounts of exclusive shows on each platform may introduce bias and affect the conclusions we can draw from our analyses.</p>
 <p>The fourth limitation is that our analysis plan uses tomato scores to represent quality. This definition could have some biases. Firstly, the tomato score is a critics rating rather than an audience rating. Many movies and shows have a target audience that is better or worse represented than the other. Critics might inadvertently bring bias into their rating, and subsequently, our definition of quality could be biased as well. In addition, some shows that are watched by fewer people are less rated with tomato score, making the score easily influenced by a few critics, and therefore create bias in the definition of quality.</p>
 <p>The fifth limitation is that our analysis does not account for the different types or genres of exclusive shows on each platform, such as comedies, documentaries, actions, etc., which may have different average ratings. We would have better insights if we had more data about the genres to compare shows of similar types across platforms rather than just looking at the overall average ratings.</p>
+<p>The sixth limitation is that we do not take into account the number of views of each show across all platforms. This is a crucial factor in determining the quality of both exclusive and non-exclusive shows, as it can be a game-changer along with ratings. Many viewers may not rate a show after watching it, so the number of views plays an important role in determining if a show is popular or not, which affects its quality since quality is not solely determined by ratings.<br>
+<br>
+The seventh limitation is that our data does not include the cost of subscription for each platform. For example, suppose a particular platform has a higher subscription cost. In that case, viewers may have higher expectations for the quality of the content they are paying for and may be more likely to rate shows negatively if they feel they are not getting their money’s worth. Alternatively, if a platform has a lower subscription cost, viewers may be more forgiving of lower-quality content or may rate shows more positively if they feel they are getting a good deal. Additionally, subscription costs can also impact the target audience of a particular platform, as viewers with different budgets may be more likely to subscribe to platforms with lower costs. Overall, it’s important to consider the cost of subscriptions when analyzing the quality of shows across different platforms.</p>
+<p>Moreover, there are some other possible variables to consider in the study. The first one is release dates. Media critics have varied opinion on whether the movie/show release year has an relationship with quality or scores of a show. Setting this aside, another way the release date could impact our study is that eariler realsed shows could have a lower possibility of being exclusive, because media exclusiveness isn’t prevalent before Netflix decided to produce its own shows. Therefore, the release year could have an impact on both the exclusiveness and their quality. Similarly, the production budget for each show could be confounding as well, because exclusive shows typically require more budget to produce than non-exclusive shows. Shows with more budget could also provide a better visual experience/hire better actors and thus have an impact on tomato scores. We tried to account these factors but each platforms have a different policy of releasing their data and many of the data aren’t typically released to outside the companies.</p>
 </section>
 <section id="acknowledgments" class="level1">
 <h1>Acknowledgments</h1>
