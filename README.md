@@ -1,3 +1,3 @@
-# team-project
+# Data Science Report
 
-Project repo for INFO 2950 (Spring 2023).
+The relationship between the rotten tomatoes scores of the shows on streaming platforms and their exclusivity.
